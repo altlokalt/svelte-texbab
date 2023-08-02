@@ -1,5 +1,6 @@
 <script>
 	import OrderConfirmation from "$lib/components/OrderConfirmation.svelte";
+	import RiderDelivery from "$lib/components/RiderDelivery.svelte";
 </script>
 
 <svelte:head>
@@ -8,9 +9,15 @@
 </svelte:head>
 
 <section class="flex flex-col justify-center items-center flex-1">
-	<h2>Rider</h2>
+	<div class="flex items-center">
+		<a href="/admin" class="text-indigo-600 underline"><span class="mdi mdi-restore"></span>
+			Back to Admin</a>
+		<h2 class="mr-4">Rider</h2>
+	  </div>
 	<h1>Deliveries overview</h1>
 </section>
+
+<RiderDelivery />
 
 <style>
 </style>
