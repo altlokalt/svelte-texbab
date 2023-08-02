@@ -57,6 +57,28 @@ export const postPocketbase = async (endpoint: string, data: any) => {
   };
   
 
+  export const patchPocketbase = async (endpoint: string, data: any) => {
+	try {
+	  const response = await fetch(`https://api.texbab.no/api/collections/${endpoint}`, {
+		method: 'PATCH',
+		headers: {
+		  'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	  });
+  
+	  if (!response.ok) {
+		throw new Error('Failed to post data to Pocketbase.');
+	  }
+  
+	  const res = await response.json();
+	  return res;
+	} catch (error) {
+	  console.error(error);
+	  throw error;
+	}
+  };
+
 export const getImage= async (endpoint: string) => {
 	const response = await fetch('https://api.texbab.no/api/files/' + endpoint)
 	const isJson = response.headers.get('content-type')?.includes('application/json')

@@ -31,9 +31,6 @@
 			<li aria-current={$page.url.pathname.startsWith('/cart') ? 'page' : undefined}>
 				<a href="/cart">cart</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/order-confirmation') ? 'page' : undefined}>
-				<a href="/order-confirmation">order-confirmation</a>
-			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />

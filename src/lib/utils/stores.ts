@@ -6,3 +6,4 @@ const initialCart: any[] = [];
 
 // Create the cart store
 export const cart = writable(initialCart);
+export const order = writable(initialCart);
