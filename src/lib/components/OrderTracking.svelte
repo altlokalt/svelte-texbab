@@ -1,7 +1,7 @@
 <!-- src/OrderTracking.svelte -->
 <script>
   import { onMount } from 'svelte';
-  import {L, Map } from 'leaflet';
+  import L from 'leaflet';
   import axios from 'axios';
 
   let map;
