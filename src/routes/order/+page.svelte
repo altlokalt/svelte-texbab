@@ -1,5 +1,4 @@
 <script>
-	import OrderConfirmation from "$lib/components/OrderConfirmation.svelte";
 	import OrderTracking from "$lib/components/OrderTracking.svelte";
 </script>
 

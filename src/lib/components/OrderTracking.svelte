@@ -1,14 +1,14 @@
 <!-- src/OrderTracking.svelte -->
 <script>
   import { onMount } from 'svelte';
-  import L from 'leaflet';
+  import {L, Map } from 'leaflet';
   import axios from 'axios';
 
   let map;
   let orders = [];
 
   onMount(async () => {
-    map = L.map('map').setView([51.505, -0.09], 13);
+    map = L.map('map').setView([13, 80], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
@@ -29,7 +29,7 @@
       orders = response.data;
 
       orders.forEach((order) => {
-        const marker = map.getLayers().find((layer) => layer.getLatLng().equals([order.location.latitude, order.location.longitude]));
+        const marker = map.getLayers().find((layer) => layer.getLatLng().equals([order.location.lat, order.location.lng]));
         if (marker) {
           marker.setPopupContent(order.status);
         }
@@ -41,8 +41,10 @@
 <style>
   #map {
     width: 100%;
-    height: 400px;
+    height: 600px; /* Changed height to 600px to match the style provided in the other version */
   }
 </style>
 
-<div id="map"></div>
+<div id="map">
+  <!-- Removed the <Map> component as it's no longer used -->
+</div>
