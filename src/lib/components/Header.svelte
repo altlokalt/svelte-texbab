@@ -36,6 +36,9 @@ function calculateTotal() {
 			<li aria-current={$page.url.pathname.startsWith('/menu') ? 'page' : undefined}>
 				<a href="/menu">menu</a>
 			</li>
+			<li aria-current={$page.url.pathname === '/admin' ? 'page' : undefined}>
+				<a href="/admin">Admin</a>
+			</li>
 
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
