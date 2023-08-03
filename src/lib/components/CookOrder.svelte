@@ -1,12 +1,12 @@
 <!-- src/CookOrder.svelte -->
-<script>
+<script lang="ts">
   let orders = [
     { id: 1, name: "Order 1", items: "Item 1, Item 2", prepared: false },
     { id: 2, name: "Order 2", items: "Item 3, Item 4", prepared: false },
     // Add more orders here as needed
   ];
 
-  function handleOrderPrepared(id) {
+  function handleOrderPrepared(id: any) {
     orders = orders.map((order) => {
       if (order.id === id) {
         return { ...order, prepared: true };

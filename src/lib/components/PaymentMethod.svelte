@@ -1,19 +1,21 @@
 <!-- PaymentMethod.svelte -->
 <script lang="ts">
+import { processCreditCardPayment, processPayPalPayment, processVippsPayment } from '$lib/utils/api';
   // Declare a custom event
-export let onOrderStatus: any;
-export let onPaymentStatus: any;
+export let ordered: any;
+export let paid: any;
 export let selectedPaymentMethod: any;
 
 // Function to handle payment method submission
 async function handleSubmit() {
+  let paymentResult: any;
   // You can use the selectedPaymentMethod to determine which payment method was chosen
   // and perform the necessary actions accordingly.
   if (selectedPaymentMethod === 'credit_card') {
     // Handle credit card payment using Stripe
     try {
       // Replace this with your actual Stripe payment handling code
-      const paymentResult = await processCreditCardPayment();
+      paymentResult = await processCreditCardPayment();
       console.log('Credit Card Payment Result:', paymentResult);
     } catch (error) {
       console.error('Error processing credit card payment:', error);
@@ -22,7 +24,7 @@ async function handleSubmit() {
     // Handle PayPal payment
     try {
       // Replace this with your actual PayPal payment handling code
-      const paymentResult = await processPayPalPayment();
+      paymentResult = await processPayPalPayment();
       console.log('PayPal Payment Result:', paymentResult);
     } catch (error) {
       console.error('Error processing PayPal payment:', error);
@@ -31,7 +33,7 @@ async function handleSubmit() {
     // Handle vipps payment
     try {
       // Replace this with your actual vipps payment handling code
-      const paymentResult = await processVippsPayment();
+      paymentResult = await processVippsPayment();
       console.log('vipps Payment Result:', paymentResult);
     } catch (error) {
       console.error('Error processing vipps payment:', error);
@@ -41,29 +43,12 @@ async function handleSubmit() {
     alert('Please select a payment method.');
   }
 
-  // Emit custom events for order status and payment status
-  onOrderStatus(true);
-  onPaymentStatus(true);
+  paymentResult.success ? paid = true : paid = false
+  paymentResult.success ? ordered = true : ordered = false
 }
 
-// Replace these functions with your actual payment handling functions
-async function processCreditCardPayment() {
-  // Implement credit card payment handling using Stripe or other payment gateway
-  // Return the payment result or handle the payment response as needed
-  return { success: true, message: 'Credit Card Payment Successful' };
-}
 
-async function processPayPalPayment() {
-  // Implement PayPal payment handling
-  // Return the payment result or handle the payment response as needed
-  return { success: true, message: 'PayPal Payment Successful' };
-}
 
-async function processVippsPayment() {
-  // Implement vipps payment handling
-  // Return the payment result or handle the payment response as needed
-  return { success: true, message: 'vipps Payment Successful' };
-}
 </script>
   
   <div class="border p-4 mb-4">

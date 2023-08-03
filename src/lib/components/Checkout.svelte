@@ -103,7 +103,7 @@
 			</div>
 		{:else if currentStep === 3}
 			<!-- Step 3: Payment Method -->
-			<PaymentMethod onOrderStatus={handleOrderStatus} onPaymentStatus={handlePaymentStatus} bind:selectedPaymentMethod={selectedPaymentMethod} />
+			<PaymentMethod bind:ordered={ordered} bind:paid={paid} bind:selectedPaymentMethod={selectedPaymentMethod} />
 			<div class="flex justify-between mt-4">
 				<button on:click={prevStep} class="bg-blue-500 text-white px-4 py-2 rounded-md">Previous</button>
 				<button on:click={nextStep} class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-not-allowed:opacity-50">Next</button>

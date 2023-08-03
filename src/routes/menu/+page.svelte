@@ -1,19 +1,16 @@
 <script lang="ts">
-	import FoodItem from "$lib/components/FoodItem.svelte";
+	import Menu from "$lib/components/Menu.svelte"
 	export let data;
 
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>meny</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-	{#each data.items as item}
-		<FoodItem {item} />
-	{/each}
-</section>
 
+
+<Menu {data} />
 <style>
 	/* You can customize the styles here as needed */
 	.grid {
