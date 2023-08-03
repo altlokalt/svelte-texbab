@@ -1,6 +1,8 @@
 <script>
 	import OrderConfirmation from "$lib/components/OrderConfirmation.svelte";
 	import CookOrder from "$lib/components/CookOrder.svelte";
+
+	export let data;
 </script>
 
 <svelte:head>
@@ -18,7 +20,8 @@
   
 	<!-- Your cook-specific content here -->
 	
-	<CookOrder />
+	<CookOrder {data} />
+
 </section>
 
 <style>

@@ -1,13 +1,12 @@
 <!-- src/CookOrder.svelte -->
 <script lang="ts">
-  let orders = [
-    { id: 1, name: "Order 1", items: "Item 1, Item 2", prepared: false },
-    { id: 2, name: "Order 2", items: "Item 3, Item 4", prepared: false },
-    // Add more orders here as needed
-  ];
+
+
+
+  export let data: any;
 
   function handleOrderPrepared(id: any) {
-    orders = orders.map((order) => {
+    data = data.map((order: any) => {
       if (order.id === id) {
         return { ...order, prepared: true };
       }
@@ -19,7 +18,7 @@
 <div class="border border-gray-300 p-4 mb-4">
   <h2 class="text-lg font-semibold">Orders to be prepared:</h2>
   <ul class="mt-2">
-    {#each orders as order}
+    {#each data as order}
       <li class="flex items-center">
         <input
           type="checkbox"
