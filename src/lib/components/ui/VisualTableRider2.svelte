@@ -5,36 +5,36 @@
 	const dispatch = createEventDispatcher();
 	export let data: { items: any[] }; // Specify the type for 'data'
 
-	async function handleOrderPrepared(id: any, prepared: any) {
-		console.log(`Preparing order ${id}...`);
-		const orderToUpdate = data.items.find((order: any) => order.id === id);
+	async function handleOrderDelivered(id: any, delivered: any) {
+  console.log(`Preparing order ${id}...`);
+  const orderToUpdate = data.items.find((order: any) => order.id === id);
 
-		if (!orderToUpdate) {
-			console.error(`Order with ID ${id} not found.`);
-			return;
-		}
+  if (!orderToUpdate) {
+    console.error(`Order with ID ${id} not found.`);
+    return;
+  }
 
-		console.log(`Order ${id} preparation status:`, orderToUpdate.prepared);
+  console.log(`Order ${id} preparation status:`, orderToUpdate.delivered);
 
-		try {
-			console.log(`Updating order ${id} preparation status...`);
-			const updatedOrder = await patchPocketbase(`texbab_orders/records/${id}`, {
-				prepared
-			});
+  try {
+    console.log(`Updating order ${id} preparation status...`);
+    const updatedOrder = await patchPocketbase(`texbab_orders/records/${id}`, {
+      delivered
+    });
 
-			console.log(`Order ${id} preparation status updated successfully.`, updatedOrder);
+    console.log(`Order ${id} preparation status updated successfully.`, updatedOrder);
 
-			// Update the local data with the response from the server
-			data.items = data.items.map((order: any) =>
-				order.id === id ? { ...order, prepared: updatedOrder.prepared } : order
-			);
-			// Emit an event to notify the parent component about the order preparation.
-			dispatch('orderPrepared', { id });
-		} catch (error) {
-			console.error('Failed to update order preparation status.', error);
-			// Handle the error, e.g., show a notification to the user.
-		}
-	}
+    // Update the local data with the response from the server
+    data.items = data.items.map((order: any) =>
+      order.id === id ? { ...order, delivered: updatedOrder.delivered } : order
+    );
+    // Emit an event to notify the parent component about the order preparation.
+    dispatch("orderdelivered", { id });
+  } catch (error) {
+    console.error("Failed to update order preparation status.", error);
+    // Handle the error, e.g., show a notification to the user.
+  }
+}
 </script>
 
 <div class="overflow-x-auto">
@@ -51,14 +51,14 @@
 		</thead>
 		<tbody>
 			<!-- row 1 -->
-            {#each data.items.filter((order) => order.prepared && !order.delivered) as order}
+            {#each data.items.filter((order) => order.delivered) as order}
 				<tr>
 					<th>
 						<label>
 							<input
 								type="checkbox"
 								class="checkbox"
-								on:click={() => handleOrderPrepared(order.id, false)}
+								on:click={() => handleOrderDelivered(order.id, false)}
 							/>
 						</label>
 					</th>
@@ -84,12 +84,6 @@
 						<span class="badge badge-ghost badge-sm">{order.lastName}</span>
 					</td>
 					<td>
-						{#if order.prepared}
-							<span class="badge badge-success badge-sm">Prepared</span>
-						{:else}
-							<span class="badge badge-warning badge-sm">Not Prepared</span>
-						{/if}
-
 						{#if order.delivered}
 							<span class="badge badge-success badge-sm">Delivered</span>
 						{:else}

@@ -64,7 +64,7 @@
 	async function handleSubmit() {
 		const status = {
 			ordered,
-			paid,
+			paid
 		};
 
 		try {
@@ -82,31 +82,32 @@
 			<!-- Step 1: Cart Summary -->
 			<div>
 				<OrderSummary {cartItems} />
-				<button on:click={nextStep} class="bg-blue-500 text-white px-4 py-2 rounded-md">Next</button>
+				<button on:click={nextStep} class="bg-blue-500 text-white px-4 py-2 rounded-md">Next</button
+				>
 			</div>
 		{:else if currentStep === 2}
 			<!-- Step 2: Delivery Information -->
 			<DeliveryForm onDeliveryDetailsSubmit={handleDeliveryDetailsSubmit} />
 			<div class="flex justify-between mt-4">
-				<button on:click={prevStep} class="bg-blue-500 text-white px-4 py-2 rounded-md">Previous</button>
-				<button on:click={nextStep} class="bg-blue-500 text-white px-4 py-2 rounded-md">Next</button>
+				<button on:click={prevStep} class="bg-blue-500 text-white px-4 py-2 rounded-md"
+					>Previous</button
+				>
+				<button on:click={nextStep} class="bg-blue-500 text-white px-4 py-2 rounded-md">Next</button
+				>
 			</div>
 		{:else if currentStep === 3}
 			<!-- Step 3: Payment Method -->
-			<PaymentMethod bind:ordered={ordered} bind:paid={paid} bind:selectedPaymentMethod={selectedPaymentMethod} data={orderItem}/>
+			<PaymentMethod
+				bind:ordered
+				bind:paid
+				bind:selectedPaymentMethod
+				data={orderItem}
+				{placeOrder}
+			/>
 			<div class="flex justify-between mt-4">
-				<button on:click={prevStep} class="bg-blue-500 text-white px-4 py-2 rounded-md">Previous</button>
-				<button on:click={nextStep} class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-not-allowed:opacity-50">Next</button>
-			</div>
-		{:else if currentStep === 4}
-			<!-- Step 4: Order Confirmation -->
-			<div>
-				<h2 class="font-semibold text-lg mb-2">Order Summary</h2>
-				<OrderSummary {cartItems} />
-			</div>
-			<div class="flex justify-between mt-4">
-				<button on:click={prevStep} class="bg-blue-500 text-white px-4 py-2 rounded-md">Previous</button>
-				<button on:click={placeOrder} class="bg-blue-500 text-white px-4 py-2 rounded-md">Place Order</button>
+				<button on:click={prevStep} class="bg-blue-500 text-white px-4 py-2 rounded-md"
+					>Previous</button
+				>
 			</div>
 		{/if}
 	{:else}
