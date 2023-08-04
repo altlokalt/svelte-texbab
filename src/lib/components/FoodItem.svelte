@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ingenbildetilgjengelig from '$lib/images/ingenbildetilgjengelig.webp';
 	import { cart } from '$lib/utils/stores';
 
 	 export let item: any;
@@ -27,7 +26,7 @@
 	<h2 class="font-semibold text-lg mb-2">{item.item}</h2>
 	<p class="mb-2">{item.kommentar}</p>
 	<img 
-	src={item.food_image ? 'https://api.texbab.no/api/files/' + item.collectionName + '/' + item.id + '/' + item.food_image : ingenbildetilgjengelig } 
+	src={item.food_image ? 'https://api.texbab.no/api/files/' + item.collectionName + '/' + item.id + '/' + item.food_image : "https://api.texbab.no/api/files/vi08f0m1bznkfa3/lx41drdyghi9vpt/ingenbildetilgjengelig_3a5TR8Uzgq.webp" } 
 	alt={item.item} 
 	class="mb-2 w-52" />	
 	<p class="font-bold mb-2">{item.price} kr</p>

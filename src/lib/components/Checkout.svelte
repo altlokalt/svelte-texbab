@@ -54,16 +54,6 @@
 		deliveryDetailsSubmitted = true;
 	}
 
-	// handle order status
-	function handleOrderStatus() {
-		ordered = true;
-	}
-
-	// handle payment status
-	function handlePaymentStatus() {
-		paid = true;
-	}
-
 	// Handle placing the order (you can add further logic here)
 	async function placeOrder() {
 		await handleSubmit();

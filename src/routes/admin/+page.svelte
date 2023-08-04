@@ -1,5 +1,6 @@
 <script>
-	import OrderConfirmation from "$lib/components/OrderConfirmation.svelte";
+	
+	
 </script>
 
 <svelte:head>

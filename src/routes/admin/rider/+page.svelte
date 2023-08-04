@@ -1,6 +1,6 @@
 <script>
-	import OrderConfirmation from "$lib/components/OrderConfirmation.svelte";
 	import RiderDelivery from "$lib/components/RiderDelivery.svelte";
+	export let data;
 </script>
 
 <svelte:head>
@@ -17,7 +17,7 @@
 	<h1>Deliveries overview</h1>
 </section>
 
-<RiderDelivery />
+<RiderDelivery {data}/>
 
 <style>
 </style>

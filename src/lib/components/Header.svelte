@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import logo from '$lib/images/texbab-logo.png';
 	import { cart } from '$lib/utils/stores';
 
 // Use the actual cart data from your app's state management
@@ -15,7 +14,7 @@ function calculateTotal() {
 <header>
 	<div class="corner">
 		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
+			<img src="https://api.texbab.no/api/files/vi08f0m1bznkfa3/v4p2xknkqkus1kq/my_project_99h9vRBAc8.png" alt="SvelteKit" />
 		</a>
 	</div>
 
