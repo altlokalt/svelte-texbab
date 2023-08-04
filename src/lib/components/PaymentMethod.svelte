@@ -4,6 +4,7 @@ import { processCreditCardPayment, processPayPalPayment, processVippsPayment } f
   // Declare a custom event
 export let ordered: any;
 export let paid: any;
+export let data: any;
 export let selectedPaymentMethod: any;
 
 // Function to handle payment method submission
@@ -33,7 +34,7 @@ async function handleSubmit() {
     // Handle vipps payment
     try {
       // Replace this with your actual vipps payment handling code
-      paymentResult = await processVippsPayment();
+      paymentResult = await processVippsPayment(data);
       console.log('vipps Payment Result:', paymentResult);
     } catch (error) {
       console.error('Error processing vipps payment:', error);

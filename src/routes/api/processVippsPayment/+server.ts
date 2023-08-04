@@ -33,7 +33,7 @@ export async  function GET({ url }: any) {
   if (tokenResponse.ok) {
     // If the response status is 2xx (successful)
     const data = await tokenResponse.json(); // Parse the response body as JSON
-    console.log(data.access_token);
+
     return new Response(JSON.stringify({ success: true, token:data.access_token,  message: 'Payment processed successfully' }), {
       status: tokenResponse.status,
       headers: { 'Content-Type': 'application/json' },
