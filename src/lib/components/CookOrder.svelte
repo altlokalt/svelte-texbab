@@ -2,6 +2,9 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { patchPocketbase } from "$lib/utils/api";
+	import VisualTable from "./ui/VisualTable.svelte";
+	import VisualTable2 from "./ui/VisualTable2.svelte";
+	import TableXs from "./ui/TableXs.svelte";
 
   export let data: { items: any[] }; // Specify the type for 'data'
 
@@ -40,106 +43,20 @@ async function handleOrderPrepared(id: any, prepared: any) {
 
 </script>
 
-<style>
-  /* Add any custom styles here */
-</style>
-
-
 <!-- Orders to be prepared -->
 <div class="border border-gray-300 p-4 mb-4">
   <h2 class="text-lg font-semibold mb-4">Orders to be prepared:</h2>
-  <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    {#each data.items.filter((order) => !order.prepared) as order}
-      <li class="border rounded-lg p-4 flex items-center">
-        <label class="flex items-center space-x-2 cursor-pointer">
-          <button
-            class="form-checkbox h-4 w-4 text-indigo-600"
-            on:click={() => handleOrderPrepared(order.id, true)}
-          />
-          <span class="text-sm font-medium">{order.id}</span>
-          <span class="text-sm">- {order.firstName} {order.lastName}</span>
-          <span class="ml-auto">
-            {#if order.prepared}
-              <span class="px-2 py-1 rounded-lg bg-green-500 text-white text-xs">Prepared</span>
-            {:else}
-              <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-xs">Not Prepared</span>
-            {/if}
-          </span>
-          <span class="ml-auto">
-            {#if order.delivered}
-              <span class="px-2 py-1 rounded-lg bg-green-500 text-white text-xs">delivered</span>
-            {:else}
-              <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-xs">Not delivered</span>
-            {/if}
-          </span>
-          
-        </label>
-      </li>
-    {/each}
-  </ul>
+  <VisualTable  {data} />
 </div>
 
 <!-- Prepared but not delivered orders -->
 <div class="border border-gray-300 p-4 mb-4">
   <h2 class="text-lg font-semibold mb-4">Prepared but not delivered:</h2>
-  <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    {#each data.items.filter((order) => order.prepared && !order.delivered) as order}
-      <li class="border rounded-lg p-4 flex items-center">
-        <label class="flex items-center space-x-2 cursor-pointer">
-          <button
-          class="form-checkbox h-4 w-4 text-indigo-600"
-          on:click={() => handleOrderPrepared(order.id, false)}
-        />
-          <span class="text-sm font-medium">{order.id}</span>
-          <span class="text-sm">- {order.firstName} {order.lastName}</span>
-          <span class="ml-auto">
-            {#if order.prepared}
-              <span class="px-2 py-1 rounded-lg bg-green-500 text-white text-xs">Prepared</span>
-            {:else}
-              <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-xs">Not Prepared</span>
-            {/if}
-          </span>
-          <span class="ml-auto">
-            {#if order.delivered}
-              <span class="px-2 py-1 rounded-lg bg-green-500 text-white text-xs">delivered</span>
-            {:else}
-              <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-xs">Not delivered</span>
-            {/if}
-          </span>
-        </label>
-      </li>
-    {/each}
-  </ul>
+  <VisualTable2  {data} />
 </div>
 
 <!-- Prepared and delivered orders -->
 <div class="border border-gray-300 p-4 mb-4">
   <h2 class="text-lg font-semibold mb-4">Prepared and delivered:</h2>
-  <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    {#each data.items.filter((order) => order.prepared && order.delivered) as order}
-      <li class="border rounded-lg p-4 flex items-center">
-        <label class="flex items-center space-x-2 cursor-pointer">
-          <button
-          class="form-checkbox h-4 w-4 text-indigo-600"
-        />
-          <span class="text-sm font-medium">{order.id}</span>
-          <span class="text-sm">- {order.firstName} {order.lastName}</span>
-          <span class="ml-auto">
-            {#if order.prepared}
-              <span class="px-2 py-1 rounded-lg bg-green-500 text-white text-xs">prepared</span>
-            {:else}
-              <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-xs">Not prepared</span>
-            {/if}
-          </span>
-          <span class="ml-auto">
-            {#if order.delivered}
-              <span class="px-2 py-1 rounded-lg bg-green-500 text-white text-xs">delivered</span>
-            {:else}
-              <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-xs">Not delivered</span>
-            {/if}
-          </span>
-        </label>
-      </li>
-    {/each}
-  </ul>
+  <TableXs  {data} />
 </div>
