@@ -14,10 +14,13 @@
 			Back to Admin</a>
 		<h2 class="mr-4">Rider</h2>
 	  </div>
+	  
 	<h1>Deliveries overview</h1>
-</section>
 
 <RiderDelivery {data}/>
+</section>
+
 
 <style>
 </style>
+

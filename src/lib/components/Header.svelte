@@ -32,7 +32,7 @@ function calculateTotal() {
         <div tabindex="0" class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
           <div class="card-body">
             <span class="font-bold text-lg">{cartItems.length} Items</span>
-            <span class="text-info">Subtotal: {calculateTotal().toFixed(2)} kr</span>
+            <span class="text-info" >Subtotal: {calculateTotal().toFixed(2)} kr</span>
             <div class="card-actions">
               <a class="btn btn-primary btn-block" href="/cart">View cart</a>
             </div>
