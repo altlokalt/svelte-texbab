@@ -13,7 +13,7 @@ import FoodItem from "$lib/components/FoodItem.svelte";
 </svelte:head>
 <Home />
 
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+<section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
 	{#each data.items as item}
 		<FoodItem {item} />
 	{/each}

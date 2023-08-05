@@ -6,7 +6,7 @@
 </script>
 
   <MenuCarousel />
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center mx-4">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 justify-items-center mx-4">
     {#each data.items as item}
 	<FoodItem {item} />
     {/each}
