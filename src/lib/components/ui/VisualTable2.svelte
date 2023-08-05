@@ -44,7 +44,6 @@
 			<tr>
 				<th />
 				<th>id</th>
-				<th>name</th>
 				<th>status</th>
 			</tr>
 		</thead>
@@ -73,15 +72,11 @@
 							</div>
 							<div>
 								<div class="font-bold">{order.id}</div>
-								<div class="text-sm opacity-50">{order.address}</div>
+								<div class="text-sm opacity-50">{order.firstName} {order.lastName}</div>
 							</div>
 						</div>
 					</td>
-					<td>
-						{order.firstName}
-						<br />
-						<span class="badge badge-ghost badge-sm">{order.lastName}</span>
-					</td>
+				
 					<td>
 						{#if order.prepared}
 							<span class="badge badge-success badge-sm">Prepared</span>
@@ -103,7 +98,6 @@
 			<tr>
 				<th />
 				<th>Id</th>
-				<th>Name</th>
 				<th>Status</th>
 			</tr>
 		</tfoot>

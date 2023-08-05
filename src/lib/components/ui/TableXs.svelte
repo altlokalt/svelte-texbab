@@ -9,7 +9,6 @@
 				<th>ID</th>
 				<th>Name</th>
 				<th>location</th>
-				<th>created</th>
 				<th>status</th>
 			</tr>
 		</thead>
@@ -19,7 +18,6 @@
 					<td>{order.id}</td>
 					<td>{order.firstName} {order.lastName}</td>
 					<td>{order.address}</td>
-					<td>{order.created}</td>
 					<td>
 						{#if order.prepared}
 							<span class="badge badge-success badge-sm">Prepared</span>
@@ -41,7 +39,6 @@
 				<th>ID</th>
 				<th>Name</th>
 				<th>location</th>
-				<th>created</th>
 				<th>status</th>
 			</tr>
 		</tfoot>
