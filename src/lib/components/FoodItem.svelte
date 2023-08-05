@@ -4,7 +4,7 @@
 
 	 export let item: any;
 
-	 function addToCart(item: any) {
+	 function addToCart(item: any, quantity: number) {
 		cart.update((cartItems) => {
 			const updatedCart = [...cartItems];
 			// Check if the item is already in the cart
@@ -15,7 +15,7 @@
 				existingItem.quantity += 1;
 			} else {
 				// If the item is not in the cart, add it with quantity 1
-				updatedCart.push({ ...item, quantity: 1 });
+				updatedCart.push({ ...item, quantity: quantity });
 			}
 
 			return updatedCart;

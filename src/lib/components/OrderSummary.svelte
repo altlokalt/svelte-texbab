@@ -12,7 +12,7 @@
 	<div class="grid grid-cols-2 gap-2">
 		{#each cartItems as item}
 			<div>
-				<p class="font-semibold">{item.item}</p>
+				<p class="font-semibold">{item.name}</p>
 				<p>Quantity: {item.quantity}</p>
 				<p class="font-bold">{(item.price * item.quantity).toFixed(2)} kr</p>
 			</div>
