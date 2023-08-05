@@ -30,7 +30,7 @@
 		<div class="card-actions justify-end">
       <form on:submit={handleSubmit}>
         <div class="form-control">
-          <label class="label">
+          <label class="label" >
             <span class="label-text">Add to cart</span>
           </label>
           <label class="join">
