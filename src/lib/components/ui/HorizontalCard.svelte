@@ -1,6 +1,7 @@
 <script lang="ts">
     export let title: any;
     export let img: any;
+    export let url: any;
 
 </script>
 
@@ -12,7 +13,7 @@
     <h2 class="card-title">{title} meny</h2>
     <p class="text-xs">Sjekk ut vår {title} meny.</p>
     <div class="card-actions justify-end">
-      <button class="btn btn-primary">Bestill</button>
+      <a class="btn btn-primary" href={url}>Bestill</a>
     </div>
   </div>
 </div>
