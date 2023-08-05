@@ -1,10 +1,11 @@
 <script>
-    
+	import Hero from "$lib/components/ui/Hero.svelte"
+	import MenuCarousel from "./MenuCarousel.svelte";
 </script>
 
 <section>
-	<h1>Welcome to <br />Texbab</h1>
-	<!-- Add your call-to-action button here to prompt users to order food -->
+	<Hero />
+	<MenuCarousel />
 </section>
 
 <style>

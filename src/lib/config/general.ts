@@ -3,52 +3,120 @@ import type { ThemeConfig, HeadConfig, HeaderConfig, FooterConfig, DateConfig, F
 export const theme: ThemeConfig = [
   {
     name: 'retro',
-    text: '🌇 Retro'
+    text: '🌇 Retro',
   },
   {
-    name: 'valentine',
-    text: '🌸 Valentine'
+    name: 'light',
+    text: '🌞 Light',
   },
   {
-    name: 'cmyk',
-    text: '🖨 Light'
-  },
-  {
-    name: 'dracula',
-    text: '🧛 Dark'
-  },
-  {
-    name: 'aqua',
-    text: '💦 Aqua'
-  },
-  {
-    name: 'synthwave',
-    text: '🌃 Synthwave'
-  },
-  {
-    name: 'night',
-    text: '🌃 Night'
-  },
-  {
-    name: 'lofi',
-    text: '🎶 Lo-Fi'
-  },
-  {
-    name: 'lemonade',
-    text: '🍋 Lemonade'
+    name: 'dark',
+    text: '🌑 Dark',
   },
   {
     name: 'cupcake',
-    text: '🧁 Cupcake'
+    text: '🧁 Cupcake',
+  },
+  {
+    name: 'bumblebee',
+    text: '🐝 Bumblebee',
+  },
+  {
+    name: 'emerald',
+    text: '💎 Emerald',
+  },
+  {
+    name: 'corporate',
+    text: '🏢 Corporate',
+  },
+  {
+    name: 'synthwave',
+    text: '🌃 Synthwave',
+  },
+  {
+    name: 'cyberpunk',
+    text: '🤖 Cyberpunk',
+  },
+  {
+    name: 'valentine',
+    text: '🌸 Valentine',
+  },
+  {
+    name: 'halloween',
+    text: '🎃 Halloween',
   },
   {
     name: 'garden',
-    text: '🏡 Garden'
+    text: '🏡 Garden',
+  },
+  {
+    name: 'forest',
+    text: '🌳 Forest',
+  },
+  {
+    name: 'aqua',
+    text: '💦 Aqua',
+  },
+  {
+    name: 'lofi',
+    text: '🎶 Lo-Fi',
+  },
+  {
+    name: 'pastel',
+    text: '🎨 Pastel',
+  },
+  {
+    name: 'fantasy',
+    text: '🧚 Fantasy',
+  },
+  {
+    name: 'wireframe',
+    text: '📏 Wireframe',
   },
   {
     name: 'black',
-    text: '🖤 Black'
-  }
+    text: '🖤 Black',
+  },
+  {
+    name: 'luxury',
+    text: '💎 Luxury',
+  },
+  {
+    name: 'dracula',
+    text: '🧛 Dracula',
+  },
+  {
+    name: 'cmyk',
+    text: '🖨 CMYK',
+  },
+  {
+    name: 'autumn',
+    text: '🍂 Autumn',
+  },
+  {
+    name: 'business',
+    text: '🏢 Business',
+  },
+  {
+    name: 'acid',
+    text: '💊 Acid',
+  },
+  {
+    name: 'lemonade',
+    text: '🍋 Lemonade',
+  },
+  {
+    name: 'night',
+    text: '🌃 Night',
+  },
+  {
+    name: 'coffee',
+    text: '☕ Coffee',
+  },
+  {
+    name: 'winter',
+    text: '🌨️ Winter',
+  },
 ]
 
 export const head: HeadConfig = {}
