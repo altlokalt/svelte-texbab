@@ -46,7 +46,7 @@
 				<th>id</th>
 				<th>name</th>
 				<th>status</th>
-				<th />
+			
 			</tr>
 		</thead>
 		<tbody>
@@ -92,9 +92,7 @@
 							<span class="badge badge-warning badge-sm">Not Prepared</span>
 						</td>
 					{/if}
-					<th>
-						<button class="btn btn-ghost btn-xs">details</button>
-					</th>
+				
 				</tr>
 			{/each}
 		</tbody>
@@ -105,7 +103,6 @@
 				<th>Id</th>
 				<th>Name</th>
 				<th>Status</th>
-				<th />
 			</tr>
 		</tfoot>
 	</table>
