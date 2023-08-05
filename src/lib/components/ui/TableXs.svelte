@@ -8,7 +8,6 @@
 			<tr>
 				<th>ID</th>
 				<th>Name</th>
-				<th>contact</th>
 				<th>location</th>
 				<th>created</th>
 				<th>status</th>
@@ -19,7 +18,6 @@
 				<tr>
 					<td>{order.id}</td>
 					<td>{order.firstName} {order.lastName}</td>
-					<td>{order.phoneNumber}</td>
 					<td>{order.address}</td>
 					<td>{order.created}</td>
 					<td>
@@ -42,7 +40,6 @@
 			<tr>
 				<th>ID</th>
 				<th>Name</th>
-				<th>contact</th>
 				<th>location</th>
 				<th>created</th>
 				<th>status</th>
