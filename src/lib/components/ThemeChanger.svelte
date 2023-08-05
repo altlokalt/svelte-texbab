@@ -3,6 +3,7 @@
   import { browser, dev } from '$app/environment'
   import { theme } from '$lib/config/general'
   import { hslToHex } from '$lib/utils/color'
+  import Icon from '@iconify/svelte';
 
   let currentTheme: string
   let currentThemeColor: string
@@ -42,9 +43,10 @@
 <div id="change-theme" class="dropdown dropdown-end">
     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
     <!-- reference: https://github.com/saadeghi/daisyui/issues/1285 -->
-    <div tabindex="0" class="btn btn-square btn-ghost">
-      <span class="i-heroicons-outline-color-swatch" />
+    <div tabindex="0" class="btn btn-circle btn-ghost">
+      <Icon icon="heroicons-outline:color-swatch" />
     </div>
+    
     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
     <!-- reference: https://github.com/saadeghi/daisyui/issues/1285 -->
     <ul
