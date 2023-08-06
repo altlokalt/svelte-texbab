@@ -19,9 +19,16 @@
 
 <section class="flex flex-col justify-center items-center flex-1">
 	<OrderConfirmation />
+	<ul class="steps">
+	  <li class="step step-primary">Order received</li>
+	  <li class="step step-primary">Food is being prepared</li>
+	  <li class="step">Food is on the way</li>
+	  <li class="step">Succesful delivery</li>
+	</ul>
+
 	<!--OrderTracking-->
 	<div class="w-full h-screen">
-		<Leaflet view={initialView} zoom={14}>
+		<Leaflet view={initialView} zoom={18}>
 			{#each markerLocations as latLng}
 				<Marker {latLng} width={70} height={70}>
 					<!-- ShipBit Icon -->
