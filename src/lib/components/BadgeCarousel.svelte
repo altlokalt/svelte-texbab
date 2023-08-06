@@ -26,6 +26,7 @@
 
 </script>
 
+<h3 class="text-3xl font-semibold text-left mt-8 mb-4 mx-4">Populære</h3>
     <div class=" w-full flex overflow-x-auto">
         {#each badges as badge}
         <BadgeCard name={badge.name} url={badge.url} />
