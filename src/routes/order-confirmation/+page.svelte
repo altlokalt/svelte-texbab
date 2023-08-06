@@ -19,6 +19,13 @@
 
 <section class="flex flex-col justify-center items-center flex-1">
 	<OrderConfirmation />
+	<ul class="steps">
+	  <li class="step step-primary">Order received</li>
+	  <li class="step step-primary">Food is being prepared</li>
+	  <li class="step">Food is on the way</li>
+	  <li class="step">Succesful delivery</li>
+	</ul>
+
 	<!--OrderTracking-->
 	<div class="w-full h-screen">
 		<Leaflet view={initialView} zoom={14}>
