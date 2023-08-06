@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
 	import type { LatLngExpression } from 'leaflet';
 	import Leaflet from '$lib/components/map/Leaflet.svelte';
 	import Marker from '$lib/components/map/Marker.svelte';
@@ -22,6 +24,26 @@
     { id: 4, latLng: [51.50382427638138, 7.463396045511974], price: 0, more: 'This price is not valid' },
     // Add more marker locations with prices and ids here
   ];
+
+
+  let mapKey = 0;
+  onMount(() => {
+    // This will trigger a re-render of the map when mapKey changes
+    // It's important to note that the onMount block ensures this code runs after the initial render
+  });
+
+  function changeMarkerLocation() {
+    const markerIndex = markerData.findIndex((marker) => marker.id === 4);
+
+    if (markerIndex !== -1) {
+      markerData[markerIndex].latLng = [51.60841968929518, 7.464769336409579];
+    }
+
+    // Update mapKey to trigger a re-render of the map
+    mapKey += 1;
+  }
+  console.log(mapKey);
+
 </script>
 
 <form class="p-4" method="POST" id="routing-form" required>
@@ -109,14 +131,19 @@
   </div>
 </form>
 
+<div class="flex justify-center">
+  <button class="button is-primary py-2 px-4 rounded-lg" on:click={changeMarkerLocation}>
+    Change Marker Location
+  </button>
+</div>
 
 <div class="w-full h-screen">
 	<Leaflet view={initialView} zoom={14}>
 	{#each markerData as data, index}
+     <!-- Use data.latLng to set the position of the circle svg -->
     <PriceMarker latLng={data.latLng} width={40} height={40}>
       <!-- ShipBit Icon -->
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64" height="64">
-        <!-- Use data.latLng to set the position of the circle -->
         <circle r="15" cx="32" cy="32" style="fill:{data.price === 0 ? 'white' : data.price >= 50 ? 'green' : data.price >= 40 ? 'yellow' : data.price <= 50 ? 'red' : 'white'};stroke:gray;stroke-width:0.1"/>
       </svg>
 
