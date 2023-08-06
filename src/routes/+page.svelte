@@ -2,7 +2,11 @@
 import FoodItem from "$lib/components/FoodItem.svelte";
  	import Home from "$lib/components/Home.svelte"
 	export let data;
+<<<<<<< HEAD
 	export let site_name = 'Texbab';
+=======
+	export let site_name = '';
+>>>>>>> d65d96b90a9db6a0f60b5bc249149b8f6d492ac6
 	export let site_logo = 'https://api.texbab.no/api/files/vi08f0m1bznkfa3/3yha8lupmqzb8pr/logo_W4qE8S8Q9i.png';
 
 
