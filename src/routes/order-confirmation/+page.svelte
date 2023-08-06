@@ -28,7 +28,7 @@
 
 	<!--OrderTracking-->
 	<div class="w-full h-screen">
-		<Leaflet view={initialView} zoom={14}>
+		<Leaflet view={initialView} zoom={18}>
 			{#each markerLocations as latLng}
 				<Marker {latLng} width={70} height={70}>
 					<!-- ShipBit Icon -->
