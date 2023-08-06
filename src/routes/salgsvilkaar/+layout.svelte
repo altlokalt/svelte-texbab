@@ -39,9 +39,9 @@
                   handelen. {" "}
                   <a
                     class="text-black dark:font-bold"
-                    href="https://minfuel.no"
+                    href="/"
                   >
-                    https://minfuel.no
+                    {company_site}
                   </a>
                 </b>
               </p>
