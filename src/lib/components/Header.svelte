@@ -3,6 +3,10 @@
 	import { cart } from '$lib/utils/stores';
 	import ThemeChanger from './ThemeChanger.svelte';
 
+  let site_name = 'Altlokal';
+  let site_logo = 'https://analytics.minfuel.com/api/files/n4sfebjxm43jxvc/gxwksgwmarbu7sv/alt_removebg_preview_SBbxuEEU6B.png';
+
+
 
 // Use the actual cart data from your app's state management
 let cartItems: any = [];
@@ -17,7 +21,7 @@ function calculateTotal() {
 <div class="navbar bg-base-100">
     <div class="flex-1">
       <a class="btn btn-ghost w-32" href="/">
-			<img src={site_logo}" alt="SvelteKit" />
+			<img src={site_logo} alt="SvelteKit" />
 		</a>
     </div>
   <ThemeChanger />

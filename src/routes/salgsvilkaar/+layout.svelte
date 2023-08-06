@@ -15,7 +15,6 @@
 
 <div>
   <div>
-    
     <div class="py-6 min-h-screen">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:flex-col sm:align-center space-y-4">
