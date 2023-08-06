@@ -17,7 +17,7 @@ function calculateTotal() {
 <div class="navbar bg-base-100">
     <div class="flex-1">
       <a class="btn btn-ghost w-32" href="/">
-			<img src="https://api.texbab.no/api/files/vi08f0m1bznkfa3/3yha8lupmqzb8pr/logo_W4qE8S8Q9i.png" alt="SvelteKit" />
+			<img src={site_logo}" alt="SvelteKit" />
 		</a>
     </div>
   <ThemeChanger />
