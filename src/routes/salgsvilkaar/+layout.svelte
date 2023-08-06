@@ -18,9 +18,9 @@
     <div class="py-6 min-h-screen">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:flex-col sm:align-center space-y-4">
-          <div class="text-gray-500 prose mx-auto">
+          <div class="prose mx-auto">
             <h1
-              class="flex justify-center text-3xl font-extrabold tracking-tight text-coolGray-800 dark:text-slate-200 sm:text-4xl"
+              class="flex justify-center text-3xl font-extrabold tracking-tight text-coolGray-800  sm:text-4xl"
             >
               Salgsvilkår
             </h1>
@@ -38,7 +38,7 @@
                   oppstiller partenes viktigste rettigheter og plikter for
                   handelen. {" "}
                   <a
-                    class="text-black dark:text-white"
+                    class="text-black dark:font-bold"
                     href="https://minfuel.no"
                   >
                     https://minfuel.no
@@ -46,7 +46,7 @@
                 </b>
               </p>
               <p />
-              <h4 class="text-black dark:text-white" id="h-1-avtalen">
+              <h4 class="text-black dark:font-bold" id="h-1-avtalen">
                 1. Avtalen
               </h4>
               <p>
@@ -77,7 +77,7 @@
                 fremkomme i bestillingsløsningen.
               </p>
               <p />
-              <h4 class="text-black dark:text-white" id="h-2-partner">
+              <h4 class="text-black dark:font-bold" id="h-2-partner">
                 2. Partner
               </h4>
               <p>
@@ -89,7 +89,7 @@
                 i det følgende som kjøper/kjøperen.
               </p>
               <p />
-              <h4 class="text-black dark:text-white" id="h-3-priser">
+              <h4 class="text-black dark:font-bold" id="h-3-priser">
                 3. Priser
               </h4>
               <p>
@@ -115,7 +115,7 @@
               </p>
               <p />
               <h4
-                class="text-black dark:text-white"
+                class="text-black dark:font-bold"
                 id="h-4-bestilling-og-levering"
               >
                 4. Bestilling og levering
@@ -131,7 +131,7 @@
                 kanselleres, helt eller delvis, og du vil bli refundert tilsvarende.
               </p>
               <p />
-              <h4 class="text-black dark:text-white" id="h-5-avtaleinngaelsen">
+              <h4 class="text-black dark:font-bold" id="h-5-avtaleinngaelsen">
                 5. Avtaleinngåelsen
               </h4>
               <p>
@@ -163,7 +163,7 @@
                 kjøpsbeslutningen.
               </p>
               <p />
-              <h4 class="text-black dark:text-white" id="h-6-betaling">
+              <h4 class="text-black dark:font-bold" id="h-6-betaling">
                 6. Betaling
               </h4>
               <ul>
@@ -181,7 +181,7 @@
                 </li>
               </ul>
               <h4
-                class="text-black dark:text-white"
+                class="text-black dark:font-bold"
                 id="h-6-klager-og-reklamasjonsrett"
               >
                 6. Klager og reklamasjonsrett
@@ -195,7 +195,7 @@
               </p>
               <p />
               <h4
-                class="text-black dark:text-white"
+                class="text-black dark:font-bold"
                 id="h-7-personvern-sikkerhet-og-personopplysninger"
               >
                 7. Personvern, sikkerhet og personopplysninger
@@ -211,7 +211,7 @@
                 vi har lagret om deg. Vi forbeholder oss retten til å bruke e-post
                 for å sende markedsføring og nyhetsbrev.
               </p>
-              <h4 class="text-black dark:text-white" id="h-8-angrerett">
+              <h4 class="text-black dark:font-bold" id="h-8-angrerett">
                 8. Angrerett
               </h4>
               <p>
@@ -270,7 +270,7 @@
               </p>
               <p />
               <h4
-                class="text-black dark:text-white"
+                class="text-black dark:font-bold"
                 id="h-9-returer-og-refusjoner"
               >
                 9. Returer og refusjoner
@@ -293,7 +293,7 @@
                 angående bestillingen
               </p>
               <p />
-              <h4 class="text-black dark:text-white" id="h-10-cookies">
+              <h4 class="text-black dark:font-bold" id="h-10-cookies">
                 10. Cookies
               </h4>
               <p>
@@ -308,13 +308,13 @@
                 vi ikke bruker cookies for å lagre personlig informasjon om deg.
               </p>
               <p />
-              <h4 class="text-black dark:text-white" id="h-11-lover">
+              <h4 class="text-black dark:font-bold" id="h-11-lover">
                 11. Lover
               </h4>
               <p>
                 Norsk lov skal gjelde for alle kjøp gjort under disse vilkårene.
               </p>
-              <h4 class="text-black dark:text-white">
+              <h4 class="text-black dark:font-bold">
                 12. Catering, Matservering bestilling
               </h4>
               <p>
@@ -364,13 +364,13 @@
                 ansvar å gjennomgå nettstedets brukervilkår regelmessig for å
                 holde seg informert om eventuelle endringer.
               </p>
-              <h4 class="text-black dark:text-white" id="h-trenger-hjelp">
+              <h4 class="text-black dark:font-bold" id="h-trenger-hjelp">
                 Trenger hjelp?
               </h4>
               <p>
                 Kontakte oss via e-post: {" "}
                 <a
-                  class="text-black dark:text-white"
+                  class="text-black dark:font-bold"
                   href="mailto: {company_email}"
                 >
                   {company_email}
