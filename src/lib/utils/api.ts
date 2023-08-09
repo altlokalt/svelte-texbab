@@ -1,19 +1,42 @@
 import PocketBase from 'pocketbase';
+import { authData } from '$lib/utils/stores';
+
 
 const pb = new PocketBase('https://api.texbab.no');
 
 export const authPocketbase = async (user: string, password: string) => {
-	const authData = await pb.collection('users').authWithPassword(user, password);
+	const res = await pb.collection('users').authWithPassword(user, password);
+
+	console.log("authdata authPocketbase: ", res.record)
+
+	authData.set(res.record)
 
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
 	} else {
-		return authData;
+		return res;
+	}
+};
+
+export const logoutPocketbase = async () => {
+	pb.authStore.clear();
+
+	authData.set({})
+
+	if (!pb.authStore.isValid) {
+		throw { status: 200, message: 'logged out' };
+	} else {
+		return {  message: 'something went wrong' };;
 	}
 };
 
 export const createPocketbaseUser = async (data: any) => {
-	const authData = await pb.collection('users').create(data);
+	const res = await pb.collection('users').create(data);
+
+	console.log("authdata createPocketbaseUser: ", res)
+
+	authData.set(res)
+
 
 	// (optional) send an email verification request
 	await pb.collection('users').requestVerification(data.email);
@@ -21,16 +44,21 @@ export const createPocketbaseUser = async (data: any) => {
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
 	} else {
-		return authData;
+		return res;
 	}
 };
 export const authPocketbaseAdmin = async (user: string, password: string) => {
-	const authData = await pb.admins.authWithPassword(user, password);
+	const res = await pb.admins.authWithPassword(user, password);
+
+	console.log("authdata: ", res)
+
+	authData.set(res)
+
 
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
 	} else {
-		return authData;
+		return res;
 	}
 };
 
