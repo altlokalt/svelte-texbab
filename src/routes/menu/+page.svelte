@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Menu from "$lib/components/Menu.svelte"
+	import Menu from '$lib/components/Menu.svelte';
 	export let data;
-
 </script>
 
 <svelte:head>
@@ -9,8 +8,8 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-
 <Menu {data} />
+
 <style>
 	/* You can customize the styles here as needed */
 	.grid {

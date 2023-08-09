@@ -24,7 +24,7 @@
 			<p class="font-bold text-xl">Total: {calculateTotal().toFixed(2)} kr</p>
 			<!-- Add a checkout button or any other relevant information here -->
 		</div>
-		
+
 		<a class="bg-blue-500 text-white px-4 py-2 rounded-md btn-primary" href="/checkout">Checkout</a>
 	{:else}
 		<p class="text-center">Your cart is empty.</p>

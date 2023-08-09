@@ -2,9 +2,9 @@
 	import { cart } from '$lib/utils/stores';
 	import CompactCard from './ui/CompactCard.svelte';
 
-	 export let item: any;
+	export let item: any;
 
-	 function addToCart(item: any, quantity: number) {
+	function addToCart(item: any, quantity: number) {
 		cart.update((cartItems) => {
 			const updatedCart = [...cartItems];
 			// Check if the item is already in the cart

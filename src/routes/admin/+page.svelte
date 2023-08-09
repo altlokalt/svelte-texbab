@@ -1,6 +1,4 @@
 <script>
-	
-	
 </script>
 
 <svelte:head>
@@ -11,8 +9,7 @@
 <section class="flex flex-col justify-center items-center flex-1">
 	<a href="/admin/chef" class="button-cook">CHEF</a>
 	<a href="/admin/rider" class="button-rider">RIDER</a>
-  </section>
-  
+</section>
 
 <style>
 </style>

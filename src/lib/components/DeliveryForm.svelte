@@ -19,12 +19,12 @@
 			firstName,
 			lastName,
 			address,
-			phoneNumber,
+			phoneNumber
 		};
 
 		try {
 			menuItems = await postPocketbase('texbab_orders/records', deliveryDetails); // the actual endpoint for menu items in your Pocketbase
-			
+
 			// Update the order store with the menu items
 			order.set(menuItems);
 
@@ -45,19 +45,39 @@
 		<div class="grid grid-cols-2 gap-4">
 			<div>
 				<label class="block font-semibold">First Name</label>
-				<input type="text" bind:value={firstName} class="w-full px-3 py-2 rounded-lg border" required />
+				<input
+					type="text"
+					bind:value={firstName}
+					class="w-full px-3 py-2 rounded-lg border"
+					required
+				/>
 			</div>
 			<div>
 				<label class="block font-semibold">Last Name</label>
-				<input type="text" bind:value={lastName} class="w-full px-3 py-2 rounded-lg border" required />
+				<input
+					type="text"
+					bind:value={lastName}
+					class="w-full px-3 py-2 rounded-lg border"
+					required
+				/>
 			</div>
 			<div class="col-span-2">
 				<label class="block font-semibold">Address</label>
-				<input type="text" bind:value={address} class="w-full px-3 py-2 rounded-lg border" required />
+				<input
+					type="text"
+					bind:value={address}
+					class="w-full px-3 py-2 rounded-lg border"
+					required
+				/>
 			</div>
 			<div class="col-span-2">
 				<label class="block font-semibold">Phone Number</label>
-				<input type="tel" bind:value={phoneNumber} class="w-full px-3 py-2 rounded-lg border" required />
+				<input
+					type="tel"
+					bind:value={phoneNumber}
+					class="w-full px-3 py-2 rounded-lg border"
+					required
+				/>
 			</div>
 		</div>
 		<div class="text-right mt-4">

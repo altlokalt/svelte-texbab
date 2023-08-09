@@ -6,35 +6,35 @@
 	export let data: { items: any[] }; // Specify the type for 'data'
 
 	async function handleOrderDelivered(id: any, delivered: any) {
-  console.log(`Preparing order ${id}...`);
-  const orderToUpdate = data.items.find((order: any) => order.id === id);
+		console.log(`Preparing order ${id}...`);
+		const orderToUpdate = data.items.find((order: any) => order.id === id);
 
-  if (!orderToUpdate) {
-    console.error(`Order with ID ${id} not found.`);
-    return;
-  }
+		if (!orderToUpdate) {
+			console.error(`Order with ID ${id} not found.`);
+			return;
+		}
 
-  console.log(`Order ${id} preparation status:`, orderToUpdate.delivered);
+		console.log(`Order ${id} preparation status:`, orderToUpdate.delivered);
 
-  try {
-    console.log(`Updating order ${id} preparation status...`);
-    const updatedOrder = await patchPocketbase(`texbab_orders/records/${id}`, {
-      delivered
-    });
+		try {
+			console.log(`Updating order ${id} preparation status...`);
+			const updatedOrder = await patchPocketbase(`texbab_orders/records/${id}`, {
+				delivered
+			});
 
-    console.log(`Order ${id} preparation status updated successfully.`, updatedOrder);
+			console.log(`Order ${id} preparation status updated successfully.`, updatedOrder);
 
-    // Update the local data with the response from the server
-    data.items = data.items.map((order: any) =>
-      order.id === id ? { ...order, delivered: updatedOrder.delivered } : order
-    );
-    // Emit an event to notify the parent component about the order preparation.
-    dispatch("orderdelivered", { id });
-  } catch (error) {
-    console.error("Failed to update order preparation status.", error);
-    // Handle the error, e.g., show a notification to the user.
-  }
-}
+			// Update the local data with the response from the server
+			data.items = data.items.map((order: any) =>
+				order.id === id ? { ...order, delivered: updatedOrder.delivered } : order
+			);
+			// Emit an event to notify the parent component about the order preparation.
+			dispatch('orderdelivered', { id });
+		} catch (error) {
+			console.error('Failed to update order preparation status.', error);
+			// Handle the error, e.g., show a notification to the user.
+		}
+	}
 </script>
 
 <div class="overflow-x-auto">
@@ -49,7 +49,7 @@
 		</thead>
 		<tbody>
 			<!-- row 1 -->
-            {#each data.items.filter((order) => order.delivered) as order}
+			{#each data.items.filter((order) => order.delivered) as order}
 				<tr>
 					<th>
 						<label>
@@ -76,7 +76,7 @@
 							</div>
 						</div>
 					</td>
-				
+
 					<td>
 						{#if order.delivered}
 							<span class="badge badge-success badge-sm">Delivered</span>
@@ -84,7 +84,6 @@
 							<span class="badge badge-warning badge-sm">Not Delivered</span>
 						{/if}
 					</td>
-				
 				</tr>
 			{/each}
 		</tbody>
