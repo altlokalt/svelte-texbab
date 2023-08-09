@@ -1,5 +1,6 @@
 <script lang="ts">
-	import FoodItem from '$lib/components/FoodItem.svelte';
+	import Chat from '$lib/components/Chat.svelte';
+import FoodItem from '$lib/components/FoodItem.svelte';
 	import Home from '$lib/components/Home.svelte';
 	export let data;
 	export let site_name = 'Altlokal';
@@ -18,3 +19,5 @@
 		<FoodItem {item} />
 	{/each}
 </section>
+
+<Chat />

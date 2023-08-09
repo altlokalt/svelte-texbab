@@ -2,6 +2,8 @@
 	export let message: any;
 	export let sender;
 
+	console.log('sender', sender, 'and message', message);
+
 	const messageClass = message.who === sender ? 'chat-end' : 'chat-start';
 
 	const avatar = `https://avatars.dicebear.com/api/initials/${message.who}.svg`;

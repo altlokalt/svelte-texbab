@@ -2,15 +2,10 @@
 	import { page } from '$app/stores';
 	import { cart } from '$lib/utils/stores';
 	import ThemeChanger from './ThemeChanger.svelte';
-	import { user } from '$lib/utils/user';
-	import { username } from '$lib/utils/stores';
+	import { logoutPocketbase } from '$lib/utils/api';
+	import { authData } from '$lib/utils/stores';
 
-	function signout() {
-		user.leave();
-		username.set('');
-	}
-
-	let site_name = 'Altlokal';
+	console.log("header authData", $authData);
 	let site_logo =
 		'https://analytics.minfuel.com/api/files/n4sfebjxm43jxvc/gxwksgwmarbu7sv/alt_removebg_preview_SBbxuEEU6B.png';
 
@@ -67,11 +62,11 @@
 		</div>
 
 		<!-- profile-->
-		{#if $username}
+		{#if $authData.username}
 			<div class="dropdown dropdown-end">
 				<label tabindex="0" class="btn btn-ghost btn-circle avatar">
 					<div class="w-10 rounded-full">
-						<img src={`https://avatars.dicebear.com/api/initials/${$username}.svg`} />
+						<img src={`https://avatars.dicebear.com/api/initials/${$authData.username}.svg`} />
 					</div>
 				</label>
 				<ul
@@ -100,7 +95,7 @@
 						<a href="/admin">Admin</a>
 					</li>
 					<li><a>Settings</a></li>
-					<li><button class="signout-button" on:click={signout}>Sign Out</button></li>
+					<li><button class="signout-button" on:click={logoutPocketbase}>Sign Out</button></li>
 				</ul>
 			</div>
 		{:else}

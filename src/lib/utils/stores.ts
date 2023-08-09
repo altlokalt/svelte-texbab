@@ -11,7 +11,6 @@ const initialUser: any = {};
 export const cart = writable(initialCart);
 export const order = writable(initialCart);
 
-// Current User's username
-export const username = writable('');
-export const userPb = writable(initialUser);
+// Current User
+export const authData = writable(initialUser);
 

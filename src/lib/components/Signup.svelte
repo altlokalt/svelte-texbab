@@ -1,98 +1,86 @@
 <script lang="ts">
-  import { user } from '$lib/utils/user'
-  import { goto } from '$app/navigation';
-  import { createPocketbaseUser } from '$lib/utils/api';
-  import { userPb } from '$lib/utils/stores';
+	import { goto } from '$app/navigation';
+	import { createPocketbaseUser } from '$lib/utils/api';
 
+	let username: string = '';
+	let password: string = '';
+	let email: string = '';
+	let passwordConfirm: string = '';
 
-  let username: string = '';
-  let password: string = '';
-  let email: string = '';
-  let passwordConfirm: string = '';
-
-    const data = {
+	const data = {
 		username,
-		 email,
-		"emailVisibility": true,
-		 password,
-		passwordConfirm,  
+		email,
+		emailVisibility: true,
+		password,
+		passwordConfirm
+	};
 
+	function signup() {
+		try {
+			// create pocketbase user
+			const res = createPocketbaseUser(data);
+
+			goto('/login');
+		} catch (err: any) {
+			alert(err.message);
+		}
 	}
+</script>
 
-    function signup() {
-      // create pocketbase user
-      const res = createPocketbaseUser(data)
+<div class="p-4 space-y-4">
+	<div class="form-control">
+		<label class="input-group input-group-vertical">
+			<span class="bg-primary">Username</span>
 
-      userPb.set(res);
+			<input
+				name="username"
+				bind:value={data.username}
+				minlength="3"
+				maxlength="16"
+				class="input input-bordered"
+			/>
+		</label>
+	</div>
 
-      // create gun user
-      user.create(data.username, data.password, ({ err }: any) => {
-        if (err) {
-          alert(err);
-        } else {
-          goto('/login')
-        }
-      });
-    }
-  </script>
- 
+	<div class="form-control">
+		<label class="input-group input-group-vertical">
+			<span class="bg-primary">Password</span>
 
- 
-  <div class="p-4 space-y-4">
-    <div class="form-control">
-      <label class="input-group input-group-vertical">
-        <span class="bg-primary">Username</span>
-    
-      <input
-        name="username"
-        bind:value={data.username}
-        minlength="3"
-        maxlength="16"
-        class="input input-bordered"
-      />
-    </label>
-    </div>
-  
-    <div class="form-control">
-      <label class="input-group input-group-vertical">
-        <span class="bg-primary">Password</span>
-    
-      <input
-        name="password"
-        bind:value={data.password}
-        minlength="8"
-        type="password"
-        class="input input-bordered"
-      />
-    </label>
-    </div>
-  
-    <div class="form-control">
-      <label class="input-group input-group-vertical">
-        <span class="bg-primary">Confirm Password</span>
-      <input
-        name="passwordConfirm"
-        bind:value={data.passwordConfirm}
-        minlength="8"
-        type="password"
-        class="input input-bordered"
-      />
-      </label>
-    </div>
-  
-    <div class="form-control">
-      <label class="input-group input-group-vertical">
-        <span class="bg-primary">Your Email</span>
-        <input 
-        bind:value={data.email}
-        type="email" 
-        placeholder="info@site.com" 
-        class="input input-bordered"
-         />
-      </label>
-    </div>
+			<input
+				name="password"
+				bind:value={data.password}
+				minlength="8"
+				type="password"
+				class="input input-bordered"
+			/>
+		</label>
+	</div>
 
-    <a href="/login" class="text-blue-600 hover:underline block">Already registered? Login</a>
-    <button on:click={signup} class="btn btn-primary w-full">Sign Up</button>
-  </div>
-  
+	<div class="form-control">
+		<label class="input-group input-group-vertical">
+			<span class="bg-primary">Confirm Password</span>
+			<input
+				name="passwordConfirm"
+				bind:value={data.passwordConfirm}
+				minlength="8"
+				type="password"
+				class="input input-bordered"
+			/>
+		</label>
+	</div>
+
+	<div class="form-control">
+		<label class="input-group input-group-vertical">
+			<span class="bg-primary">Your Email</span>
+			<input
+				bind:value={data.email}
+				type="email"
+				placeholder="info@site.com"
+				class="input input-bordered"
+			/>
+		</label>
+	</div>
+
+	<a href="/login" class="text-blue-600 hover:underline block">Already registered? Login</a>
+	<button on:click={signup} class="btn btn-primary w-full">Sign Up</button>
+</div>
