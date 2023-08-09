@@ -2,6 +2,13 @@
 	import { page } from '$app/stores';
 	import { cart } from '$lib/utils/stores';
 	import ThemeChanger from './ThemeChanger.svelte';
+	import { user } from '$lib/utils/user';
+	import { username } from '$lib/utils/stores';
+
+	function signout() {
+		user.leave();
+		username.set('');
+	}
 
 	let site_name = 'Altlokal';
 	let site_logo =
@@ -23,6 +30,8 @@
 		</a>
 	</div>
 	<ThemeChanger />
+
+	<!-- cart-->
 	<div class="flex-none">
 		<div class="dropdown dropdown-end">
 			<label tabindex="0" class="btn btn-ghost btn-circle">
@@ -56,42 +65,46 @@
 				</div>
 			</div>
 		</div>
-		<div class="dropdown dropdown-end">
-			<label tabindex="0" class="btn btn-ghost btn-circle avatar">
-				<div class="w-10 rounded-full">
-					<img
-						src="https://api.texbab.no/api/files/vi08f0m1bznkfa3/v4p2xknkqkus1kq/my_project_99h9vRBAc8.png"
-					/>
-				</div>
-			</label>
-			<ul
-				tabindex="0"
-				class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-			>
-				<li>
-					<a class="justify-between">
-						Profile
-						<span class="badge">New</span>
-					</a>
-				</li>
-				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-					<a href="/">Home</a>
-				</li>
-				<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-					<a href="/about">About</a>
-				</li>
-				<!-- <li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
+
+		<!-- profile-->
+		{#if $username}
+			<div class="dropdown dropdown-end">
+				<label tabindex="0" class="btn btn-ghost btn-circle avatar">
+					<div class="w-10 rounded-full">
+						<img src={`https://avatars.dicebear.com/api/initials/${$username}.svg`} />
+					</div>
+				</label>
+				<ul
+					tabindex="0"
+					class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+				>
+					<li>
+						<a class="justify-between">
+							Profile
+							<span class="badge">New</span>
+						</a>
+					</li>
+					<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+						<a href="/">Home</a>
+					</li>
+					<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
+						<a href="/about">About</a>
+					</li>
+					<!-- <li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
 				<a href="/sverdle">Sverdle</a>
 			</li> -->
-				<li aria-current={$page.url.pathname.startsWith('/menu') ? 'page' : undefined}>
-					<a href="/menu">menu</a>
-				</li>
-				<li aria-current={$page.url.pathname === '/admin' ? 'page' : undefined}>
-					<a href="/admin">Admin</a>
-				</li>
-				<li><a>Settings</a></li>
-				<li><a>Logout</a></li>
-			</ul>
-		</div>
+					<li aria-current={$page.url.pathname.startsWith('/menu') ? 'page' : undefined}>
+						<a href="/menu">menu</a>
+					</li>
+					<li aria-current={$page.url.pathname === '/admin' ? 'page' : undefined}>
+						<a href="/admin">Admin</a>
+					</li>
+					<li><a>Settings</a></li>
+					<li><button class="signout-button" on:click={signout}>Sign Out</button></li>
+				</ul>
+			</div>
+		{:else}
+			<a href="/login" class="btn btn-primary">login</a>
+		{/if}
 	</div>
 </div>

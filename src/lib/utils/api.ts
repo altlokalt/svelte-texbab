@@ -1,5 +1,38 @@
-// For demonstration purposes, this is a simple mock API service that returns static data.
-// In a real-world scenario, you would replace this with actual API calls to your backend.
+import PocketBase from 'pocketbase';
+
+const pb = new PocketBase('https://api.texbab.no');
+
+export const authPocketbase = async (user: string, password: string) => {
+	const authData = await pb.collection('users').authWithPassword(user, password);
+
+	if (!pb.authStore.isValid) {
+		throw { status: pb.authStore.isValid, message: pb.authStore.token };
+	} else {
+		return authData;
+	}
+};
+
+export const createPocketbaseUser = async (data: any) => {
+	const authData = await pb.collection('users').create(data);
+
+	// (optional) send an email verification request
+	await pb.collection('users').requestVerification(data.email);
+
+	if (!pb.authStore.isValid) {
+		throw { status: pb.authStore.isValid, message: pb.authStore.token };
+	} else {
+		return authData;
+	}
+};
+export const authPocketbaseAdmin = async (user: string, password: string) => {
+	const authData = await pb.admins.authWithPassword(user, password);
+
+	if (!pb.authStore.isValid) {
+		throw { status: pb.authStore.isValid, message: pb.authStore.token };
+	} else {
+		return authData;
+	}
+};
 
 const menuItems = [
 	{ id: 1, name: 'Item 1', price: 10, description: 'Description of item 1' },
