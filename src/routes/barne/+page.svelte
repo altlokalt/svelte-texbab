@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Barne from "$lib/components/Barne.svelte"
+	import Barne from '$lib/components/Barne.svelte';
 	export let data;
-	
 </script>
 
 <svelte:head>
@@ -9,8 +8,8 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-
 <Barne {data} />
+
 <style>
 	/* You can customize the styles here as needed */
 	.grid {

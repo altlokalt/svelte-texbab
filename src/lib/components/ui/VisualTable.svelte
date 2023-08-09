@@ -45,7 +45,6 @@
 				<th />
 				<th>id</th>
 				<th>status</th>
-			
 			</tr>
 		</thead>
 		<tbody>
@@ -86,7 +85,6 @@
 							<span class="badge badge-warning badge-sm">Not Prepared</span>
 						</td>
 					{/if}
-				
 				</tr>
 			{/each}
 		</tbody>

@@ -49,7 +49,7 @@
 		</thead>
 		<tbody>
 			<!-- row 1 -->
-            {#each data.items.filter((order) => order.prepared && !order.delivered) as order}
+			{#each data.items.filter((order) => order.prepared && !order.delivered) as order}
 				<tr>
 					<th>
 						<label>
@@ -76,7 +76,7 @@
 							</div>
 						</div>
 					</td>
-				
+
 					<td>
 						{#if order.prepared}
 							<span class="badge badge-success badge-sm">Prepared</span>

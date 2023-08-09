@@ -1,7 +1,5 @@
 <script>
-	import Checkout from "$lib/components/Checkout.svelte";
-
-	
+	import Checkout from '$lib/components/Checkout.svelte';
 </script>
 
 <svelte:head>
@@ -10,7 +8,7 @@
 </svelte:head>
 
 <section class="flex flex-col justify-center items-center flex-1">
-    <Checkout />
+	<Checkout />
 </section>
 
 <style>

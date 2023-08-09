@@ -8,6 +8,4 @@ export const csr = dev;
 export const prerender = true;
 
 // export async function load({ params }) {
-export async function load({ params }: { params: { slug: string } }) {
-
-}
+export async function load({ params }: { params: { slug: string } }) {}

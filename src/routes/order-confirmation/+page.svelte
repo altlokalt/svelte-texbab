@@ -1,5 +1,5 @@
 <script lang="ts">
-	import OrderConfirmation from "$lib/components/OrderConfirmation.svelte";
+	import OrderConfirmation from '$lib/components/OrderConfirmation.svelte';
 	// OrderTracking
 	import type { LatLngExpression } from 'leaflet';
 	import Leaflet from '$lib/components/map/Leaflet.svelte';
@@ -20,10 +20,10 @@
 <section class="flex flex-col justify-center items-center flex-1">
 	<OrderConfirmation />
 	<ul class="steps">
-	  <li class="step step-primary">Order received</li>
-	  <li class="step step-primary">Food is being prepared</li>
-	  <li class="step">Food is on the way</li>
-	  <li class="step">Succesful delivery</li>
+		<li class="step step-primary">Order received</li>
+		<li class="step step-primary">Food is being prepared</li>
+		<li class="step">Food is on the way</li>
+		<li class="step">Succesful delivery</li>
 	</ul>
 
 	<!--OrderTracking-->
