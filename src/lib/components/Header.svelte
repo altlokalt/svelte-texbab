@@ -7,7 +7,7 @@
 
 	console.log("header authData", $authData);
 	let site_logo =
-		'https://analytics.minfuel.com/api/files/n4sfebjxm43jxvc/gxwksgwmarbu7sv/alt_removebg_preview_SBbxuEEU6B.png';
+		'https://api.texbab.no/api/files/vi08f0m1bznkfa3/uthvsiulqhkbz1l/alt_removebg_preview_4QM2sGBAzu.png';
 
 	// Use the actual cart data from your app's state management
 	let cartItems: any = [];

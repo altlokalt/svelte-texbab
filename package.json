@@ -38,6 +38,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@anoram/leaflet-svelte": "0.0.7-1",
 		"axios": "^1.4.0",
 		"pocketbase": "^0.16.0",
 		"uuid": "^9.0.0"
