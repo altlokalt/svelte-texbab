@@ -9,7 +9,9 @@
 
 	import { writable } from "svelte/store";
 
-	let orderid
+	export let orderid;
+  let orderid_lat;
+  let orderid_lng;
 
 	const orderidStore = writable(orderid);
 	
@@ -33,6 +35,8 @@
 		const params = new URLSearchParams(window.location.search);
 		orderid = params.get("orderid");
 		orderidStore.set(orderid);
+    orderid_lat = 58.02858321980406;
+    orderid_lng = 7.444969014787201;
 		console.log(orderid)
 	});
 
@@ -81,18 +85,22 @@
       lng,
     };
   }
-  
+
+
+
+  orderid_lat = 58.12795677990184;
+  orderid_lng = 7.064472146021274;
   let options = {
     recenter: true,
     center: [59.4109, 10.465],
     zoom: 14,
     markers: [
       {
-        lat: 59.4109,
-        lng: 10.4655,
+        lat: orderid_lat,
+        lng: orderid_lng,
         tooltip: {
           isOpen: true,
-          text: `Permanant Tooltip`,
+          text: `Registerd delivery address`,
           direction: "right",
           permanent: "true",
         },
@@ -100,11 +108,9 @@
           iconUrl: "https://icon-library.com/images/marker-icon/marker-icon-26.jpg",
           shadowUrl:
             "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
-          iconSize: [95, 95],
+          iconSize: [55, 55],
           shadowSize: [50, 64],
-          iconAnchor: [22, 94],
-          shadowAnchor: [4, 62],
-          popupAnchor: [-3, -76],
+        
         },
       },
     ],
@@ -127,8 +133,9 @@
         lng: latlng.lng,
         tooltip: {
           isOpen: false,
-          text: `International Svelte Station`,
-          direction: "top",
+          text: `Driver`,
+          direction: "right",
+          permanent: "true",
           sticky: "true",
         },
         icon: {
