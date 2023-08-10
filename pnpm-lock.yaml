@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@anoram/leaflet-svelte':
+    specifier: 0.0.7-1
+    version: 0.0.7-1
   axios:
     specifier: ^1.4.0
     version: 1.4.0
@@ -108,6 +111,16 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
     dev: true
+
+  /@anoram/leaflet-svelte@0.0.7-1:
+    resolution: {integrity: sha512-vHOC2Qozp0JEGpHAaVvx72UANCj5Xk4GQ3eqFOlndpx7csi7t+OTbc4N5H+mcoYQyRcmS+NF1Q1TIU0wkwqwLw==}
+    dependencies:
+      '@beyonk/async-script-loader': 2.3.0
+    dev: false
+
+  /@beyonk/async-script-loader@2.3.0:
+    resolution: {integrity: sha512-/vbDM5j8OHmtnWLx87sef0T/jGWVvZV6ILm3QFLpfRwSg0KmhQoAZnOT4XSaUL/EjOC9eMzgX5qtS2jztKzY2A==}
+    dev: false
 
   /@esbuild/android-arm64@0.18.17:
     resolution: {integrity: sha512-9np+YYdNDed5+Jgr1TdWBsozZ85U1Oa3xW0c7TWqH0y2aGghXtZsuT8nYRbzOMcl0bXZXjOGbksoTtVOlWrRZg==}
