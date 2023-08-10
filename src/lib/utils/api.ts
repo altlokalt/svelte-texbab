@@ -2,15 +2,13 @@ import PocketBase from 'pocketbase';
 import { authData } from '$lib/utils/stores';
 
 
-const pb = new PocketBase('https://api.texbab.no');
+export const pb = new PocketBase('https://api.texbab.no');
 
 export const authPocketbase = async (user: string, password: string) => {
 	const res = await pb.collection('users').authWithPassword(user, password);
+	authData.set(pb.authStore.model)
 
-	console.log("authdata authPocketbase: ", res.record)
-
-	authData.set(res.record)
-
+	
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
 	} else {
@@ -20,7 +18,6 @@ export const authPocketbase = async (user: string, password: string) => {
 
 export const logoutPocketbase = async () => {
 	pb.authStore.clear();
-
 	authData.set({})
 
 	if (!pb.authStore.isValid) {
@@ -32,11 +29,7 @@ export const logoutPocketbase = async () => {
 
 export const createPocketbaseUser = async (data: any) => {
 	const res = await pb.collection('users').create(data);
-
-	console.log("authdata createPocketbaseUser: ", res)
-
 	authData.set(res)
-
 
 	// (optional) send an email verification request
 	await pb.collection('users').requestVerification(data.email);
@@ -47,13 +40,10 @@ export const createPocketbaseUser = async (data: any) => {
 		return res;
 	}
 };
+
 export const authPocketbaseAdmin = async (user: string, password: string) => {
 	const res = await pb.admins.authWithPassword(user, password);
-
-	console.log("authdata: ", res)
-
 	authData.set(res)
-
 
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
@@ -68,9 +58,10 @@ const menuItems = [
 	// Add more menu items as needed
 ];
 
-export async function fetchMenuItems() {
+export async function fetchMenuItems(menu: string) {
 	// Simulate API request delay with a timeout
 	await new Promise((resolve) => setTimeout(resolve, 500));
+	
 	return menuItems;
 }
 
@@ -89,7 +80,6 @@ export const getPocketbase = async (endpoint: string) => {
 	const response = await fetch('https://api.texbab.no/api/collections/' + endpoint);
 	const isJson = response.headers.get('content-type')?.includes('application/json');
 	const res = isJson ? await response.json() : await response.text();
-	// console.log("data from pocketbase:", res.items)
 
 	if (response?.status > 399) {
 		throw { status: response.status, message: response.statusText };

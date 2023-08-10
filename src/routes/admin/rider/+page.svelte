@@ -1,6 +1,7 @@
-<script>
+<script >
 	import RiderDelivery from '$lib/components/RiderDelivery.svelte';
 	export let data;
+
 
 	import Map from "@anoram/leaflet-svelte";
   //https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png
@@ -57,7 +58,7 @@
           sticky: "true",
         },
         icon: {
-          iconUrl: "/delivery_guy.svg",
+          iconUrl: "./iss.webp",
           iconSize: [48, 48],
         },
       };
@@ -85,14 +86,17 @@
 	<h1>Deliveries overview</h1>
 
 	<RiderDelivery {data} />
+
 	<div class="map">
 		<Map {options}  bind:this={MAP_EL} on:ready={init} />
 	</div>
+	 
 </section>
 
 <style>
-.map {
-	height: 600px;
-	width: auto;
-	}
+	.map {
+		height: 600px;
+		width: auto;
+	  }
 </style>
+
