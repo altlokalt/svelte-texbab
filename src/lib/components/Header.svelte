@@ -5,7 +5,6 @@
 	import { logoutPocketbase } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
 
-	console.log("header authData", $authData);
 	let site_logo =
 		'https://analytics.minfuel.com/api/files/n4sfebjxm43jxvc/gxwksgwmarbu7sv/alt_removebg_preview_SBbxuEEU6B.png';
 
