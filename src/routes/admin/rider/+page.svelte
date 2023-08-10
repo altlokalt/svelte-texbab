@@ -57,7 +57,7 @@
           sticky: "true",
         },
         icon: {
-          iconUrl: "./delivery_guy.svg",
+          iconUrl: "/delivery_guy.svg",
           iconSize: [48, 48],
         },
       };
