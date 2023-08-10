@@ -2,8 +2,7 @@
 	import RiderDelivery from '$lib/components/RiderDelivery.svelte';
 	export let data;
 
-	import Map from "@anoram/leaflet-svelte";
-  //https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png
+	 import Map from "@anoram/leaflet-svelte";
   async function getISS() {
     let data = await fetch(`https://api.wheretheiss.at/v1/satellites/25544`);
     let res = await data.json();
@@ -28,6 +27,16 @@
           direction: "right",
           permanent: "true",
         },
+		icon: {
+          iconUrl: "/delivery_guy.svg",
+          shadowUrl:
+            "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
+          iconSize: [38, 95],
+          shadowSize: [50, 64],
+          iconAnchor: [22, 94],
+          shadowAnchor: [4, 62],
+          popupAnchor: [-3, -76],
+        },
       },
     ],
     mapID: "map",
@@ -39,9 +48,6 @@
     ],
   };
 
-  /**
-	 * @type {{ updateMarkers: (arg0: { markers: { lat: any; lng: any; tooltip: { isOpen: boolean; text: string; direction: string; sticky: string; }; icon: { iconUrl: string; iconSize: number[]; }; }[]; }) => void; }}
-	 */
   let MAP_EL;
 
   async function init() {
@@ -73,6 +79,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
+
 <section class="flex flex-col justify-center items-center flex-1">
 	<div class="flex items-center">
 		<a href="/admin" class="text-indigo-600 underline"
@@ -85,14 +92,13 @@
 	<h1>Deliveries overview</h1>
 
 	<RiderDelivery {data} />
-	<div class="map">
-		<Map {options}  bind:this={MAP_EL} on:ready={init} />
-	</div>
 </section>
-
+<div class="map">
+	<Map {options}  bind:this={MAP_EL} on:ready={init} />
+</div>
 <style>
-.map {
-	height: 600px;
-	width: auto;
-	}
+  .map {
+    height: 600px;
+    width: auto;
+  }
 </style>
