@@ -1,5 +1,11 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+  import PocketBase from 'pocketbase';
+  import { pb } from "$lib/utils/api";
+  import { authData } from '$lib/utils/stores';
+  pb.autoCancellation(false);
+
+  
 
 	import { writable } from "svelte/store";
 
@@ -19,6 +25,9 @@
 		[59.35593987077508, 10.43815570209242] // Road right outside the restaurant
 	];
 
+  let messages: any[] = [];
+  let unsubscribe: () => void;
+
 	onMount(() => {
 		
 		const params = new URLSearchParams(window.location.search);
@@ -29,15 +38,50 @@
 
 	import Map from "@anoram/leaflet-svelte";
   async function getISS() {
-    let data = await fetch(`https://api.wheretheiss.at/v1/satellites/25544`);
-    let res = await data.json();
-    let lat = res.latitude;
-    let lng = res.longitude;
+    let lat;
+    let lng;
+    
+    // Use fetch to send data to PocketBase API
+    try {
+      
+      try {
+			  // Get initial messages
+        const resultList = await pb.collection('texbab_rider').getList(1, 50, {
+          sort: 'created',
+          expand: 'sender' // Check that 'sender' is the correct field name
+        });
+        messages = resultList.items;
+        messages.forEach(item => {
+          lat = item.lat;
+          lng = item.lng;
+          console.log("Lat:", item.lat);
+          console.log("Lng:", item.lng);
+        });
+      } catch (error) {
+        console.error('Fetching initial messages error:', error);
+      } 
+
+      //const unsubscribe = pb.collection('texbab_rider').subscribe( e=>console.log(e) )
+      //console.log(unsubscribe);
+    } catch (error) {
+      lat = 59.35611081663709;
+      lng =  10.438473972985149;
+      console.error("Error subscribing:", error);
+    }
+
+   
+
+    
+    //let data = await fetch(`https://api.wheretheiss.at/v1/satellites/25544`);
+    //let res = await data.json();
+    //let lat = res.latitude;
+    //let lng = res.longitude;
     return {
       lat,
       lng,
     };
   }
+  
   let options = {
     recenter: true,
     center: [59.4109, 10.465],
@@ -97,6 +141,9 @@
       });
     }, 5000);
   }
+
+
+     
 </script>
 
 <svelte:head>

@@ -112,21 +112,19 @@ async function sendLocationToPocketBase() {
 
     const data = {
       rider: 'azycy3juysurhhv',
+      orderid: 'jlzuuw4p5erueeb',
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     };
 
+    //const test = await pb.collection('texbab_rider').update('tt1vrf3b6z68ib4', data);
     const test = await pb.collection('texbab_rider').create(data);
-    console.log(test);
-      
+  
+    
+  
     
 
-    // Use fetch to send data to PocketBase API
-    const response = await pb.collection('texbab_rider').subscribe('*', function (e) {
-		console.log(e.action);
-		console.log(e.record);
-	});
-     
+    
 
       if (response) {
         console.log("Location sent to PocketBase");
