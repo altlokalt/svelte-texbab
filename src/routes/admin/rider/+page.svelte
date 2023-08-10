@@ -1,5 +1,8 @@
 <script>
     import { onMount } from "svelte";
+    import PocketBase from 'pocketbase';
+    const pb = new PocketBase('https://api.texbab.no');
+
 
 	import RiderDelivery from '$lib/components/RiderDelivery.svelte';
 	export let data;
@@ -88,7 +91,8 @@
 
   async function startTracking() {
     tracking = true;
-    intervalId = setInterval(sendLocationToPocketBase, 10000);
+    
+    intervalId = setInterval(sendLocationToPocketBase, 1000);
     localStorage.setItem('tracking', 'true');
     console.log("Tracking started");
   }
@@ -102,24 +106,29 @@
 
 async function sendLocationToPocketBase() {
     try {
-      const position = await navigator.geolocation.getCurrentPosition();
+      const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
 
-      const data = {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        timestamp: Date.now(),
-      };
+    const data = {
+      rider: 'azycy3juysurhhv',
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
 
-      // Use fetch to send data to PocketBase API
-      const response = await fetch("PocketBase_API_URL", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+    const test = await pb.collection('texbab_rider').create(data);
+    console.log(test);
+      
+    
 
-      if (response.ok) {
+    // Use fetch to send data to PocketBase API
+    const response = await pb.collection('texbab_rider').subscribe('*', function (e) {
+		console.log(e.action);
+		console.log(e.record);
+	});
+     
+
+      if (response) {
         console.log("Location sent to PocketBase");
         lastDataTimestamp = Date.now();
         localStorage.setItem('lastDataTimestamp', lastDataTimestamp.toString());
