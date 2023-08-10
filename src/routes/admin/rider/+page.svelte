@@ -1,4 +1,6 @@
 <script>
+    import { onMount } from "svelte";
+
 	import RiderDelivery from '$lib/components/RiderDelivery.svelte';
 	export let data;
 
@@ -72,6 +74,64 @@
       });
     }, 5000);
   }
+
+
+  let tracking = false;
+  let lastDataTimestamp = 0;
+  let intervalId;
+
+  // Load tracking state and timestamp on mount (client-side only)
+  onMount(() => {
+    tracking = localStorage.getItem('tracking') === 'true';
+    lastDataTimestamp = parseInt(localStorage.getItem('lastDataTimestamp')) || 0;
+  });
+
+  async function startTracking() {
+    tracking = true;
+    intervalId = setInterval(sendLocationToPocketBase, 10000);
+    localStorage.setItem('tracking', 'true');
+    console.log("Tracking started");
+  }
+
+  function stopTracking() {
+    tracking = false;
+    clearInterval(intervalId);
+    localStorage.setItem('tracking', 'false');
+    console.log("Tracking stopped");
+  }
+
+async function sendLocationToPocketBase() {
+    try {
+      const position = await navigator.geolocation.getCurrentPosition();
+
+      const data = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        timestamp: Date.now(),
+      };
+
+      // Use fetch to send data to PocketBase API
+      const response = await fetch("PocketBase_API_URL", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        console.log("Location sent to PocketBase");
+        lastDataTimestamp = Date.now();
+        localStorage.setItem('lastDataTimestamp', lastDataTimestamp.toString());
+      } else {
+        console.error("Failed to send location to PocketBase");
+      }
+    } catch (error) {
+      console.error("Error sending location:", error);
+    }
+  }
+
+
 </script>
 
 <svelte:head>
@@ -90,6 +150,17 @@
 	</div>
 
 	<h1>Deliveries overview</h1>
+  <button
+    class="py-2 px-4 rounded text-white font-bold"
+    class:bg-red-500={tracking}
+    class:bg-green-500={!tracking}
+    class:hover:bg-red-700={tracking}
+    class:hover:bg-green-700={!tracking}
+    on:click={tracking ? stopTracking : startTracking}
+  >
+    {tracking ? "Stop Delivery" : "Start Delivery"}
+  </button>
+
 
 	<RiderDelivery {data} />
 </section>
