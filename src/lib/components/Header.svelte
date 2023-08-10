@@ -5,9 +5,7 @@
 	import { logoutPocketbase } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
 
-	console.log("header authData", $authData);
-	let site_logo =
-		'https://api.texbab.no/api/files/vi08f0m1bznkfa3/uthvsiulqhkbz1l/alt_removebg_preview_4QM2sGBAzu.png';
+	let site_logo ='https://api.texbab.no/api/files/vi08f0m1bznkfa3/uthvsiulqhkbz1l/alt_removebg_preview_4QM2sGBAzu.png?token=';
 
 	// Use the actual cart data from your app's state management
 	let cartItems: any = [];

@@ -1,8 +1,14 @@
-<script>
+<script >
 	import RiderDelivery from '$lib/components/RiderDelivery.svelte';
 	export let data;
 
+<<<<<<< HEAD
 	 import Map from "@anoram/leaflet-svelte";
+=======
+
+	import Map from "@anoram/leaflet-svelte";
+  //https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png
+>>>>>>> 367a083cf255c5c05350fe697711b59511d9729a
   async function getISS() {
     let data = await fetch(`https://api.wheretheiss.at/v1/satellites/25544`);
     let res = await data.json();
@@ -63,7 +69,7 @@
           sticky: "true",
         },
         icon: {
-          iconUrl: "/delivery_guy.svg",
+          iconUrl: "./iss.webp",
           iconSize: [48, 48],
         },
       };
@@ -92,13 +98,29 @@
 	<h1>Deliveries overview</h1>
 
 	<RiderDelivery {data} />
+<<<<<<< HEAD
+=======
+
+	<div class="map">
+		<Map {options}  bind:this={MAP_EL} on:ready={init} />
+	</div>
+	 
+>>>>>>> 367a083cf255c5c05350fe697711b59511d9729a
 </section>
 <div class="map">
 	<Map {options}  bind:this={MAP_EL} on:ready={init} />
 </div>
 <style>
+<<<<<<< HEAD
   .map {
     height: 600px;
     width: auto;
   }
+=======
+	.map {
+		height: 600px;
+		width: auto;
+	  }
+>>>>>>> 367a083cf255c5c05350fe697711b59511d9729a
 </style>
+
