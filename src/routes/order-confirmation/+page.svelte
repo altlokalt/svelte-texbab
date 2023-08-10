@@ -93,7 +93,7 @@
   let options = {
     recenter: true,
     center: [59.4109, 10.465],
-    zoom: 14,
+    zoom: 12,
     markers: [
       {
         lat: orderid_lat,
@@ -166,7 +166,11 @@
 		<li class="step">Food is on the way</li>
 		<li class="step">Successful delivery</li>
 	</ul>
-
+  <button
+  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+>
+  Change delivery address
+</button>
 	
 	<!--OrderTracking>
 	<div class="w-full h-screen">
