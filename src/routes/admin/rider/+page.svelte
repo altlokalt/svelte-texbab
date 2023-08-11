@@ -3,6 +3,9 @@
 	export let data: any;
 
 	 import Map from "@anoram/leaflet-svelte";
+    import { onMount } from "svelte";
+    import PocketBase from 'pocketbase';
+    const pb = new PocketBase('https://api.texbab.no');
   async function getISS() {
     let data = await fetch(`https://api.wheretheiss.at/v1/satellites/25544`);
     let res = await data.json();
@@ -72,6 +75,68 @@
       });
     }, 5000);
   }
+
+
+  let tracking = false;
+  let lastDataTimestamp = 0;
+  let intervalId;
+
+  // Load tracking state and timestamp on mount (client-side only)
+  onMount(() => {
+    tracking = localStorage.getItem('tracking') === 'true';
+    lastDataTimestamp = parseInt(localStorage.getItem('lastDataTimestamp')) || 0;
+  });
+
+  async function startTracking() {
+    tracking = true;
+    
+    intervalId = setInterval(sendLocationToPocketBase, 1000);
+    localStorage.setItem('tracking', 'true');
+    console.log("Tracking started");
+  }
+
+  function stopTracking() {
+    tracking = false;
+    clearInterval(intervalId);
+    localStorage.setItem('tracking', 'false');
+    console.log("Tracking stopped");
+  }
+
+async function sendLocationToPocketBase() {
+    try {
+      const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+    const data = {
+      rider: 'azycy3juysurhhv',
+      orderid: 'jlzuuw4p5erueeb',
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+
+    //const test = await pb.collection('texbab_rider').update('tt1vrf3b6z68ib4', data);
+    const test = await pb.collection('texbab_rider').create(data);
+  
+    
+  
+    
+
+    
+
+      if (response) {
+        console.log("Location sent to PocketBase");
+        lastDataTimestamp = Date.now();
+        localStorage.setItem('lastDataTimestamp', lastDataTimestamp.toString());
+      } else {
+        console.error("Failed to send location to PocketBase");
+      }
+    } catch (error) {
+      console.error("Error sending location:", error);
+    }
+  }
+
+
 </script>
 
 <svelte:head>
@@ -92,6 +157,17 @@
 	</div>
 
 	<h1>Deliveries overview</h1>
+  <button
+    class="py-2 px-4 rounded text-white font-bold"
+    class:bg-red-500={tracking}
+    class:bg-green-500={!tracking}
+    class:hover:bg-red-700={tracking}
+    class:hover:bg-green-700={!tracking}
+    on:click={tracking ? stopTracking : startTracking}
+  >
+    {tracking ? "Stop Delivery" : "Start Delivery"}
+  </button>
+
 
 
 
