@@ -1,13 +1,11 @@
-<script>
+<script lang="ts">
+	import RiderDelivery from '$lib/components/RiderDelivery.svelte';
+	export let data: any;
+
+	 import Map from "@anoram/leaflet-svelte";
     import { onMount } from "svelte";
     import PocketBase from 'pocketbase';
     const pb = new PocketBase('https://api.texbab.no');
-
-
-	import RiderDelivery from '$lib/components/RiderDelivery.svelte';
-	export let data;
-
-	 import Map from "@anoram/leaflet-svelte";
   async function getISS() {
     let data = await fetch(`https://api.wheretheiss.at/v1/satellites/25544`);
     let res = await data.json();
@@ -53,7 +51,7 @@
     ],
   };
 
-  let MAP_EL;
+  let MAP_EL: any;
 
   async function init() {
     setInterval(async () => {
@@ -147,6 +145,8 @@ async function sendLocationToPocketBase() {
 </svelte:head>
 
 
+
+  
 <section class="flex flex-col justify-center items-center flex-1">
 	<div class="flex items-center">
 		<a href="/admin" class="text-indigo-600 underline"
@@ -169,14 +169,14 @@ async function sendLocationToPocketBase() {
   </button>
 
 
-	<RiderDelivery {data} />
+
+
 </section>
-<div class="map">
-	<Map {options}  bind:this={MAP_EL} on:ready={init} />
+
+<div class="h-96 w-full md:w-1/2 ">
+  <Map {options}  bind:this={MAP_EL} on:ready={init} />
 </div>
-<style>
-  .map {
-    height: 600px;
-    width: auto;
-  }
-</style>
+
+<RiderDelivery {data} />
+
+
