@@ -1,4 +1,4 @@
-<!-- src/CookOrder.svelte -->
+<!-- src/RiderDelivery.svelte -->
 <script lang="ts">
 	import VisualTableRider from './ui/VisualTableRider.svelte';
 	import VisualTableRider2 from './ui/VisualTableRider2.svelte';

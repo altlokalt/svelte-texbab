@@ -80,6 +80,8 @@
 </svelte:head>
 
 
+
+  
 <section class="flex flex-col justify-center items-center flex-1">
 	<div class="flex items-center">
 		<a href="/admin" class="text-indigo-600 underline"
@@ -91,14 +93,14 @@
 
 	<h1>Deliveries overview</h1>
 
-	<RiderDelivery {data} />
+
+
 </section>
-<div class="map">
-	<Map {options}  bind:this={MAP_EL} on:ready={init} />
+
+<div class="h-96 w-full md:w-1/2 ">
+  <Map {options}  bind:this={MAP_EL} on:ready={init} />
 </div>
-<style>
-  .map {
-    height: 600px;
-    width: auto;
-  }
-</style>
+
+<RiderDelivery {data} />
+
+
