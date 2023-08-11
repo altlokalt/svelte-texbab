@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import RiderDelivery from '$lib/components/RiderDelivery.svelte';
-	export let data;
+	export let data: any;
 
 	 import Map from "@anoram/leaflet-svelte";
   async function getISS() {
@@ -48,7 +48,7 @@
     ],
   };
 
-  let MAP_EL;
+  let MAP_EL: any;
 
   async function init() {
     setInterval(async () => {
