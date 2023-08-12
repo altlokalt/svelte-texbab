@@ -7,7 +7,6 @@ export const pb = new PocketBase('https://api.texbab.no');
 export const authPocketbase = async (user: string, password: string) => {
 	const res = await pb.collection('users').authWithPassword(user, password);
 	authData.set(pb.authStore.model)
-
 	
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };

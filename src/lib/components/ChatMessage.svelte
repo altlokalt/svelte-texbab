@@ -6,15 +6,15 @@
 	//console.log('message: ', message, 'sender: ', message.expand?.sender.username);
 
 	const messageClass = message.expand?.sender.username === sender ? 'chat-end' : 'chat-start';
+	const avatar = `https://avatars.dicebear.com/api/adventurer-neutral/${message.expand?.sender?.username}.svg`;
 
-	const avatar = `https://avatars.dicebear.com/api/initials/${message.expand?.sender.username}.svg`;
 	const ts = new Date(message.created);
 </script>
 
 <div class={`chat ${messageClass}`}>
 	<div class="chat-image avatar">
 		<div class="w-10 rounded-full">
-			<img src={avatar} alt="avatar" />
+			<img src={avatar} alt="avatar"/>
 		</div>
 	</div>
 	<div class="chat-header">

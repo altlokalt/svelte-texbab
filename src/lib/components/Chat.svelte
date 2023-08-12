@@ -39,11 +39,12 @@
 
 			// Subscribe to realtime messages
 			unsubscribe = await pb.collection('chat').subscribe('*', async ({ action, record }) => {
+				console.log('Realtime message: ', action, record);
 				try {
 					if (action === 'create') {
 						// Fetch associated user
-						const user = await pb.collection('users').getOne(record.user); // Check the correct field name
-						record.expand = { user };
+						const sender = await pb.collection('users').getOne(record.sender); // Check the correct field name
+						record.expand = { sender };
 						messages = [...messages, record];
 					}
 					if (action === 'delete') {
@@ -86,7 +87,6 @@
 		{/each}
 		<div class="dummy" bind:this={scrollBottom} />
 	</main>
-
 	<div class="border-t pt-4">
 		{#if $authData.username}
 			<form on:submit|preventDefault={sendMessage} class="space-x-2 flex items-center">
