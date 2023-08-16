@@ -5,7 +5,7 @@
 	import { logoutPocketbase } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
 
-	let site_logo ='${import.meta.env.VITE_PB_URL}/api/files/n4sfebjxm43jxvc/uthvsiulqhkbz1l/altlokalt_logo_8YCYczkHgU.png';
+	let site_logo =`${import.meta.env.VITE_PB_URL}/api/files/n4sfebjxm43jxvc/uthvsiulqhkbz1l/altlokalt_logo_8YCYczkHgU.png`;
 
 	// Use the actual cart data from your app's state management
 	let cartItems: any = [];

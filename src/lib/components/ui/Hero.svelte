@@ -6,7 +6,7 @@
 
 <div
 	class="hero min-h-screen"
-	style="background-image: url(https://api.texbab.no/api/files/texbab_burger/wpjb8f7r8vu8ikd/pizza_3O6P9DTPPR.jpg);"
+	style="background-image: url({import.meta.env.VITE_PB_URL}/api/files/texbab_burger/wpjb8f7r8vu8ikd/pizza_3O6P9DTPPR.jpg);"
 >
 	<div class="hero-overlay bg-opacity-60" />
 	<div class="hero-content text-center text-neutral-content">
