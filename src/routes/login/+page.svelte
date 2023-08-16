@@ -1,6 +1,6 @@
 <svelte:head>
 	<title>login</title>
-	<meta name="description" content="login to this app" />
+	<meta name="description" content="login to this app" "use at least 8 characters" />
 </svelte:head>
 
 <script>
@@ -8,5 +8,9 @@
 
 	
 </script>
+
+if (not user
+  [prompt (a href="https://api.texbab.no/api/files/n4sfebjxm43jxvc/sh65y20zdf3e6zh/pass_HN0c2MR9hj.PNG?token=")]
+)
 
 <Login />
