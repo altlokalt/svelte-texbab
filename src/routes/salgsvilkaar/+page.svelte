@@ -1,15 +1,15 @@
 <script lang="ts">
-	let company_name = 'Smart Innovative Products AS';
-	let company_org_number = '928 257 045';
-	let company_email = 'gregorygitata7@gmail.com';
-	let company_telefon = '+4748431734';
-	let company_site = 'https://altlokal.no';
-	let site = 'Altlokal.no';
+	let company_name = `${import.meta.env.VITE_SITE_COMPANY}`;
+	let company_org_number = `${import.meta.env.VITE_SITE_ORG}`;
+	let company_email = `${import.meta.env.VITE_SITE_EMAIL}`;
+	let company_telefon = `${import.meta.env.VITE_SITE_PHONE}`;
+	let company_site = `${import.meta.env.VITE_SITE_URL}`;
+	let site = `${import.meta.env.VITE_SITE_NAME}`;
 </script>
 
 <svelte:head>
 	<title>Salgsvilkår</title>
-	<meta name="description" content="Salgsvilkår - Altlokal.no" />
+	<meta name="description" content="Salgsvilkår - {site}" />
 </svelte:head>
 
 <div class="py-6 min-h-screen">

@@ -1,7 +1,7 @@
 <script lang="ts">
-	let site_name = 'Altlokal';
-	let site_logo =
-		'https://analytics.minfuel.com/api/files/n4sfebjxm43jxvc/gxwksgwmarbu7sv/alt_removebg_preview_SBbxuEEU6B.png';
+	 let site_name = `${import.meta.env.VITE_SITE_NAME}`;
+	 let site_logo =`${import.meta.env.VITE_SITE_LOGO}`;
+	
 </script>
 
 <div
