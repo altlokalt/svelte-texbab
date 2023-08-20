@@ -3,7 +3,7 @@
 	import ChatMessage from './ChatMessage.svelte';
 	import { onMount, onDestroy } from 'svelte';
 	import { authData } from '$lib/utils/stores';
-	import { pb, postPocketbase } from '$lib/utils/api';
+	import { pb2, postPocketbase } from '$lib/utils/api';
   
 	let newMessage: string = '';
 	let messages: any[] = [];
@@ -26,7 +26,7 @@
   
 	async function getInitialMessages() {
 	  try {
-		const resultList = await pb.collection('chat').getList(1, 50, {
+		const resultList = await pb2.collection('chat').getList(1, 50, {
 		  sort: 'created',
 		  expand: 'sender'
 		});
@@ -41,7 +41,7 @@
 	async function handleRealtimeMessage({ action, record }: any) {
 	  try {
 		if (action === 'create') {
-		  const sender = await pb.collection('users').getOne(record.sender);
+		  const sender = await pb2.collection('users').getOne(record.sender);
 		  record.expand = { sender };
 		  messages = [...messages, record];
   
@@ -59,7 +59,7 @@
   
 	onMount(async () => {
 	  messages = await getInitialMessages();
-	  unsubscribe = await pb.collection('chat').subscribe('*', handleRealtimeMessage);
+	  unsubscribe = await pb2.collection('chat').subscribe('*', handleRealtimeMessage);
 	});
   
 	onDestroy(() => {
@@ -72,8 +72,7 @@
 		sender: $authData.id,
 		receiver: $authData.id
 	  };
-	  const createdMessage = await postPocketbase('chat/records', data);
-  
+	  const createdMessage = await pb2.collection('chat').create(data);
 	  newMessage = '';
 	  canAutoScroll = true;
 	  autoScroll();

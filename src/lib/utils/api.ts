@@ -3,11 +3,13 @@ import { authData } from '$lib/utils/stores';
 
 
 export const pb = new PocketBase(`${import.meta.env.VITE_PB_URL}`);
+export const pb2= new PocketBase(`${import.meta.env.VITE_PB_API_2}`);
 
 export const authPocketbase = async (user: string, password: string) => {
 	const res = await pb.collection('users').authWithPassword(user, password);
+	const res2 = await pb2.collection('users').authWithPassword(user, password);
 	authData.set(pb.authStore.model)
-	
+
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
 	} else {
@@ -17,6 +19,7 @@ export const authPocketbase = async (user: string, password: string) => {
 
 export const logoutPocketbase = async () => {
 	pb.authStore.clear();
+	pb2.authStore.clear();
 	authData.set({})
 
 	if (!pb.authStore.isValid) {
@@ -28,10 +31,11 @@ export const logoutPocketbase = async () => {
 
 export const createPocketbaseUser = async (data: any) => {
 	const res = await pb.collection('users').create(data);
+	const res2 = await pb2.collection('users').create(data);
 	authData.set(res)
 
 	// (optional) send an email verification request
-	await pb.collection('users').requestVerification(data.email);
+	await pb2.collection('users').requestVerification(data.email);
 
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
@@ -42,6 +46,7 @@ export const createPocketbaseUser = async (data: any) => {
 
 export const authPocketbaseAdmin = async (user: string, password: string) => {
 	const res = await pb.admins.authWithPassword(user, password);
+	const res2 = await pb2.admins.authWithPassword(user, password);
 	authData.set(res)
 
 	if (!pb.authStore.isValid) {
