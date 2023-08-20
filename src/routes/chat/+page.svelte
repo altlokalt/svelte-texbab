@@ -3,8 +3,8 @@
 
 </script>
 <svelte:head>
-	<title>About</title>
-	<meta name="description" content="About this app" />
+	<title>Chat</title>
+	<meta name="description" content="Chat this app" />
 </svelte:head>
 
 <div class="text-column">

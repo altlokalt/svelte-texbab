@@ -74,14 +74,17 @@
 					<li>
 						<a class="justify-between">
 							Profile
-							<span class="badge">New</span>
+							<span class="badge">Soon</span>
 						</a>
 					</li>
 					<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 						<a href="/">Home</a>
 					</li>
-					<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-						<a href="/about">About</a>
+					<li aria-current={$page.url.pathname === '/chat' ? 'page' : undefined}>
+						<a href="/chat">
+							Chat
+							<span class="badge">New</span>
+						</a>
 					</li>
 					<!-- <li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
 				<a href="/sverdle">Sverdle</a>
@@ -92,8 +95,13 @@
 					<li aria-current={$page.url.pathname === '/admin' ? 'page' : undefined}>
 						<a href="/admin">Admin</a>
 					</li>
-					<li><a>Settings</a></li>
-					<li><button class="signout-button" on:click={logoutPocketbase}>Sign Out</button></li>
+					<li>
+						<a class="justify-between">
+							Settings
+							<span class="badge">Soon</span>
+						</a>
+					</li>
+					<li><button class="signout-button bg-error opacity-80" on:click={logoutPocketbase}>Sign Out</button></li>
 				</ul>
 			</div>
 		{:else}

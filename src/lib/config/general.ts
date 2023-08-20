@@ -9,6 +9,10 @@ import type {
 
 export const theme: ThemeConfig = [
 	{
+		name: 'bumblebee',
+		text: '🐝 Bumblebee'
+	},
+	{
 		name: 'retro',
 		text: '🌇 Retro'
 	},
@@ -23,10 +27,6 @@ export const theme: ThemeConfig = [
 	{
 		name: 'cupcake',
 		text: '🧁 Cupcake'
-	},
-	{
-		name: 'bumblebee',
-		text: '🐝 Bumblebee'
 	},
 	{
 		name: 'emerald',

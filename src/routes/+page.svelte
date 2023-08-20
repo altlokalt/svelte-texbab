@@ -20,4 +20,4 @@ import FoodItem from '$lib/components/FoodItem.svelte';
 	{/each}
 </section>
 
-<Chat />
+<!-- <Chat /> -->
