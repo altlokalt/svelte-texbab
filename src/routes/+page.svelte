@@ -1,16 +1,15 @@
 <script lang="ts">
 	import Chat from '$lib/components/Chat.svelte';
-import FoodItem from '$lib/components/FoodItem.svelte';
+	import FoodItem from '$lib/components/FoodItem.svelte';
 	import Home from '$lib/components/Home.svelte';
 	export let data;
-	export let site_name = `${import.meta.env.VITE_SITE_NAME}`;
-	export let site_logo =`${import.meta.env.VITE_SITE_LOGO}`;
 
+	export let site_name = `${import.meta.env.VITE_SITE_NAME}`;
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>{site_name}</title>
+	<meta name="description" content={site_name + '- home'} />
 </svelte:head>
 <Home />
 
