@@ -4,15 +4,27 @@
 
 	let username: string;
 	let password: string;
+	let passwordError: boolean;
+
+	function checkPassword() {
+		passwordError = password.length < 8;
+	}
 
 	async function login() {
+		if (passwordError) {
+			return;
+		}
+
 		try {
-			// pb
-			const res = await authPocketbase(username, password)
+			const res = await authPocketbase(username, password);
 			goto('/');
 		} catch (err: any) {
 			alert(err.message);
 		}
+	}
+
+	function name() {
+		console.log("eroro")
 	}
 </script>
 
@@ -20,28 +32,40 @@
 	<div class="form-control">
 		<label class="input-group input-group-vertical">
 			<span class="bg-primary">Username</span>
-
-			<input
-				name="username"
-				bind:value={username}
-				minlength="3"
-				maxlength="16"
-				class="input input-bordered"
-			/>
+			<input name="username" bind:value={username} minlength="3" class="input input-bordered" />
 		</label>
 	</div>
 
 	<div class="form-control">
 		<label class="input-group input-group-vertical">
 			<span class="bg-primary">Password</span>
+			{#if !passwordError}
+				<input
+					name="password"
+					bind:value={password}
+					minlength="8"
+					type="password"
+					class="input input-bordered "
+					class:input-error={passwordError}
+					on:input={checkPassword}
+					on:error={name}
 
-			<input
-				name="password"
-				bind:value={password}
-				minlength="8"
-				type="password"
-				class="input input-bordered"
-			/>
+				/>
+			{:else}
+				<input
+					name="password"
+					bind:value={password}
+					minlength="8"
+					type="password"
+					class="input input-bordered input-error w-full"
+					class:input-bordered={passwordError}
+					on:input={checkPassword}
+				/>
+				<label class="label">
+					<span class="label-text-alt text-error">Password must be at least 8 characters long.</span
+					>
+				</label>
+			{/if}
 		</label>
 	</div>
 
