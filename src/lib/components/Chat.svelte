@@ -26,6 +26,38 @@
 		unreadMessages = !canAutoScroll;
 	}
 
+	// import PocketBase from 'pocketbase';
+
+	// let builtRecords = [];
+
+	// async function getRecords() {
+	// 	const records = await pb.collection('posts').getFullList(200, { sort: '-created' });
+
+	// 	const results = records.map((record) => {
+	// 		return {
+	// 			title: record.title,
+	// 			contents: record.contents,
+	// 			likes: record.likes,
+	// 			dislikes: record.dislikes,
+	// 			id: record.id
+	// 		};
+	// 	});
+
+	// 	return results;
+	// }
+
+	// pb.collection('posts').subscribe('*', async (e) => {
+	// 	builtRecords = await getRecords();
+	// });
+
+	// onMount(async () => {
+	// 	builtRecords = await getRecords();
+	// });
+
+	// onDestroy(() => {
+	// 	pb.collection('posts').unsubscribe('*');
+	// });
+
 	onMount(async () => {
 		try {
 			// Get initial messages
@@ -35,29 +67,28 @@
 			});
 
 			messages = resultList.items;
-
 			//console.log('messages: ', messages);
 
 			// Subscribe to realtime messages
 			unsubscribe = await pb.collection('chat').subscribe('*', async ({ action, record }) => {
-			try {
-				if (action === 'create') {
-					const sender = await pb.collection('users').getOne(record.sender);
-					record.expand = { sender };
-					messages = [...messages, record];
+				try {
+					if (action === 'create') {
+						const sender = await pb.collection('users').getOne(record.sender);
+						record.expand = { sender };
+						messages = [...messages, record];
 
-					if ($authData.id !== record.receiver) {
-						//console.log("caught one")
-						unreadMessages = true; // Set unreadMessages to true for the receiver of the message
+						if ($authData.id !== record.receiver) {
+							//console.log("caught one")
+							unreadMessages = true; // Set unreadMessages to true for the receiver of the message
+						}
 					}
+					if (action === 'delete') {
+						messages = messages.filter((m) => m.id !== record.id);
+					}
+				} catch (error) {
+					console.error('Realtime message subscription error:', error);
 				}
-				if (action === 'delete') {
-					messages = messages.filter((m) => m.id !== record.id);
-				}
-			} catch (error) {
-				console.error('Realtime message subscription error:', error);
-			}
-		});
+			});
 		} catch (error) {
 			console.error('Fetching initial messages error:', error);
 		}
@@ -73,7 +104,6 @@
 			message: newMessage,
 			sender: $authData.id, // Assuming the authenticated user's username is available
 			receiver: $authData.id // Set the receiver to the logged-in user's ID
-
 		};
 		const createdMessage = await postPocketbase('chat/records', data); // Adjust this call according to your API
 
@@ -82,7 +112,6 @@
 		autoScroll();
 	}
 </script>
-
 
 <div class="container p-4 space-y-4">
 	<h2 class="text-2xl font-bold mb-4">Join the Discussion</h2>
@@ -95,16 +124,14 @@
 	</main>
 
 	{#if !canAutoScroll}
-	<div class="text-center justify-center flex">
-		<button on:click={autoScroll} class="btn btn-secondary">
-		
-			{#if unreadMessages && $authData.id === messages[messages.length - 1].receiver}
-			💬
-			{/if}
-			🡣
-		</button>
-	</div>
-	
+		<div class="text-center justify-center flex">
+			<button on:click={autoScroll} class="btn btn-secondary">
+				{#if unreadMessages && $authData.id === messages[messages.length - 1].receiver}
+					💬
+				{/if}
+				🡣
+			</button>
+		</div>
 	{/if}
 
 	<div class="border-t pt-4">
