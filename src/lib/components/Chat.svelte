@@ -3,7 +3,7 @@
 	import ChatMessage from './ChatMessage.svelte';
 	import { onMount, onDestroy } from 'svelte';
 	import { authData } from '$lib/utils/stores';
-	import { pb2, postPocketbase } from '$lib/utils/api';
+	import { pb2 } from '$lib/utils/api';
   
 	let newMessage: string = '';
 	let messages: any[] = [];
@@ -44,10 +44,12 @@
 		  const sender = await pb2.collection('users').getOne(record.sender);
 		  record.expand = { sender };
 		  messages = [...messages, record];
-  
+
+		  console.log("unreadMessages before:", unreadMessages);
 		  if ($authData.id !== record.receiver) {
 			unreadMessages = true;
 		  }
+		  console.log("unreadMessages after:", unreadMessages);
 		}
 		if (action === 'delete') {
 		  messages = messages.filter((m) => m.id !== record.id);
@@ -92,7 +94,7 @@
 	{#if !canAutoScroll}
 	  <div class="text-center justify-center flex">
 		<button on:click={autoScroll} class="btn btn-secondary">
-		  {#if unreadMessages && $authData.id === messages[messages.length - 1].receiver}
+		  {#if unreadMessages}
 			💬
 		  {/if}
 		  🡣
