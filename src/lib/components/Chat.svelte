@@ -16,13 +16,14 @@
 	let unreadMessages = false;
 
 	function autoScroll() {
-		setTimeout(() => scrollBottom?.scrollIntoView({ behavior: 'auto' }), 50);
+		setTimeout(() => scrollBottom?.scrollIntoView({ behavior: 'smooth' }), 50);
 		unreadMessages = false;
 	}
 
 	function watchScroll(e: any) {
 		canAutoScroll = (e.target.scrollTop || Infinity) > lastScrollTop;
 		lastScrollTop = e.target.scrollTop;
+		unreadMessages = !canAutoScroll;
 	}
 
 	onMount(async () => {
@@ -35,25 +36,28 @@
 
 			messages = resultList.items;
 
-			console.log('messages: ', messages);
+			//console.log('messages: ', messages);
 
 			// Subscribe to realtime messages
 			unsubscribe = await pb.collection('chat').subscribe('*', async ({ action, record }) => {
-				console.log('Realtime message: ', action, record);
-				try {
-					if (action === 'create') {
-						// Fetch associated user
-						const sender = await pb.collection('users').getOne(record.sender); // Check the correct field name
-						record.expand = { sender };
-						messages = [...messages, record];
+			try {
+				if (action === 'create') {
+					const sender = await pb.collection('users').getOne(record.sender);
+					record.expand = { sender };
+					messages = [...messages, record];
+
+					if ($authData.id !== record.receiver) {
+						//console.log("caught one")
+						unreadMessages = true; // Set unreadMessages to true for the receiver of the message
 					}
-					if (action === 'delete') {
-						messages = messages.filter((m) => m.id !== record.id);
-					}
-				} catch (error) {
-					console.error('Realtime message subscription error:', error);
 				}
-			});
+				if (action === 'delete') {
+					messages = messages.filter((m) => m.id !== record.id);
+				}
+			} catch (error) {
+				console.error('Realtime message subscription error:', error);
+			}
+		});
 		} catch (error) {
 			console.error('Fetching initial messages error:', error);
 		}
@@ -67,7 +71,9 @@
 	async function sendMessage() {
 		const data = {
 			message: newMessage,
-			sender: $authData.id // Assuming the authenticated user's username is available
+			sender: $authData.id, // Assuming the authenticated user's username is available
+			receiver: $authData.id // Set the receiver to the logged-in user's ID
+
 		};
 		const createdMessage = await postPocketbase('chat/records', data); // Adjust this call according to your API
 
@@ -77,16 +83,30 @@
 	}
 </script>
 
+
 <div class="container p-4 space-y-4">
 	<h2 class="text-2xl font-bold mb-4">Join the Discussion</h2>
-	<!-- Add a creative title -->
 
-	<main on:scroll={watchScroll}>
+	<main class="overflow-y-auto max-h-[60vh]" on:scroll={watchScroll}>
 		{#each messages as message (message.id)}
 			<ChatMessage {message} sender={$authData.username} />
 		{/each}
 		<div class="dummy" bind:this={scrollBottom} />
 	</main>
+
+	{#if !canAutoScroll}
+	<div class="text-center justify-center flex">
+		<button on:click={autoScroll} class="btn btn-secondary">
+		
+			{#if unreadMessages && $authData.id === messages[messages.length - 1].receiver}
+			💬
+			{/if}
+			🡣
+		</button>
+	</div>
+	
+	{/if}
+
 	<div class="border-t pt-4">
 		{#if $authData.username}
 			<form on:submit|preventDefault={sendMessage} class="space-x-2 flex items-center">
@@ -106,15 +126,4 @@
 			</div>
 		{/if}
 	</div>
-
-	{#if !canAutoScroll}
-		<div class="text-center">
-			<button on:click={autoScroll} class="btn btn-secondary" class:red={unreadMessages}>
-				{#if unreadMessages}
-					💬
-				{/if}
-				👇
-			</button>
-		</div>
-	{/if}
 </div>
