@@ -1,17 +1,32 @@
-<footer class="flex flex-col items-center justify-center py-3 bg-gray-200">
-	<a href="/salgsvilkaar" class="font-bold text-blue-500 hover:text-blue-700 mb-2">Salgsvilkår</a>
-	<p class="text-gray-600 text-sm">
-		Made by <a href="https://altlokalt.com" class="font-bold text-blue-500 hover:text-blue-700"
-			>altlokalt.</a
-		> All rights reserved
-	</p>
-</footer>
+<script lang="ts">
+	import Icon from '@iconify/svelte';
 
-<style>
-	@media (min-width: 480px) {
-		/* Media queries can be directly applied to the elements using Daisy UI classes */
-		footer {
-			padding: 12px 0;
-		}
-	}
-</style>
+	export let site_logo = `${import.meta.env.VITE_SITE_LOGO}`;
+</script>
+
+<footer class="footer footer-center p-10 text-primary-content">
+	<div>
+		<a href="/" class=" rounded-2xl hover:bg-primary">
+			<img src={site_logo} alt="SvelteKit" class="w-14" />
+		</a>
+		<p class="font-bold">Texbab AS: Hvor hvert bitt er en rodeo av smak</p>
+		<p class="font-bold">
+			Made by <a href="https://altlokalt.com" class="font-bold hover:text-primary">altlokalt.</a> Copyright
+			© 2023 - All rights reserved
+		</p>
+		<a href="/salgsvilkaar" class="font-bold hover:text-primary">Salgsvilkår</a>
+	</div>
+	<div>
+		<div class="grid grid-flow-col gap-4">
+			<a href="/">
+				<Icon icon="brandico:twitter-bird" width="24" height="24" />
+			</a>
+			<a href="/">
+				<Icon icon="fa6-brands:youtube" width="24" height="24" />
+			</a>
+			<a href="/">
+				<Icon icon="brandico:facebook" width="24" height="24" />
+			</a>
+		</div>
+	</div>
+</footer>
