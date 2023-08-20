@@ -13,13 +13,13 @@
 	<figure>
 		<img
 			src={item.food_image
-				? 'https://api.texbab.no/api/files/' +
+				? `${import.meta.env.VITE_PB_URL}/api/files/` +
 				  item.collectionName +
 				  '/' +
 				  item.id +
 				  '/' +
 				  item.food_image
-				: 'https://api.texbab.no/api/files/vi08f0m1bznkfa3/lx41drdyghi9vpt/ingenbildetilgjengelig_vhlNaJijHB.png'}
+				: `${import.meta.env.VITE_PB_URL}/api/files/vi08f0m1bznkfa3/lx41drdyghi9vpt/ingenbildetilgjengelig_vhlNaJijHB.png`}
 			alt={item.name}
 		/>
 	</figure>

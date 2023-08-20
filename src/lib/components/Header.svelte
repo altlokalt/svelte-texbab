@@ -5,8 +5,8 @@
 	import { logoutPocketbase } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
 
-	let site_logo ='https://api.texbab.no/api/files/vi08f0m1bznkfa3/uthvsiulqhkbz1l/alt_removebg_preview_4QM2sGBAzu.png?token=';
 
+	export let site_logo =`${import.meta.env.VITE_SITE_LOGO}`;
 	// Use the actual cart data from your app's state management
 	let cartItems: any = [];
 	$: cartItems = $cart; // Observe the cart store and update the cartItems variable
@@ -18,7 +18,7 @@
 
 <div class="navbar bg-base-100">
 	<div class="flex-1">
-		<a class="btn btn-ghost w-32" href="/">
+		<a class="absolute h-auto w-32" href="/">
 			<img src={site_logo} alt="SvelteKit" />
 		</a>
 	</div>

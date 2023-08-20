@@ -1,12 +1,12 @@
 <script lang="ts">
-	let site_name = 'Altlokal';
-	let site_logo =
-		'https://analytics.minfuel.com/api/files/n4sfebjxm43jxvc/gxwksgwmarbu7sv/alt_removebg_preview_SBbxuEEU6B.png';
+	 let site_name = `${import.meta.env.VITE_SITE_NAME}`;
+	 let site_logo =`${import.meta.env.VITE_SITE_LOGO}`;
+	
 </script>
 
 <div
 	class="hero min-h-screen"
-	style="background-image: url(https://api.texbab.no/api/files/texbab_burger/wpjb8f7r8vu8ikd/pizza_3O6P9DTPPR.jpg);"
+	style="background-image: url({import.meta.env.VITE_PB_URL}/api/files/texbab_burger/wpjb8f7r8vu8ikd/pizza_3O6P9DTPPR.jpg);"
 >
 	<div class="hero-overlay bg-opacity-60" />
 	<div class="hero-content text-center text-neutral-content">

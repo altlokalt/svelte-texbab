@@ -2,7 +2,7 @@ import PocketBase from 'pocketbase';
 import { authData } from '$lib/utils/stores';
 
 
-export const pb = new PocketBase('https://api.texbab.no');
+export const pb = new PocketBase(`${import.meta.env.VITE_PB_URL}`);
 
 export const authPocketbase = async (user: string, password: string) => {
 	const res = await pb.collection('users').authWithPassword(user, password);
@@ -76,7 +76,7 @@ export async function placeOrder(orderData: any) {
 }
 
 export const getPocketbase = async (endpoint: string) => {
-	const response = await fetch('https://api.texbab.no/api/collections/' + endpoint);
+	const response = await fetch(`${import.meta.env.VITE_PB_URL}/api/collections/` + endpoint);
 	const isJson = response.headers.get('content-type')?.includes('application/json');
 	const res = isJson ? await response.json() : await response.text();
 
@@ -89,7 +89,7 @@ export const getPocketbase = async (endpoint: string) => {
 
 export const postPocketbase = async (endpoint: string, data: any) => {
 	try {
-		const response = await fetch(`https://api.texbab.no/api/collections/${endpoint}`, {
+		const response = await fetch(`${import.meta.env.VITE_PB_URL}/api/collections/${endpoint}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -111,7 +111,7 @@ export const postPocketbase = async (endpoint: string, data: any) => {
 
 export const patchPocketbase = async (endpoint: string, data: any) => {
 	try {
-		const response = await fetch(`https://api.texbab.no/api/collections/${endpoint}`, {
+		const response = await fetch(`${import.meta.env.VITE_PB_URL}/api/collections/${endpoint}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json'
@@ -132,7 +132,7 @@ export const patchPocketbase = async (endpoint: string, data: any) => {
 };
 
 export const getImage = async (endpoint: string) => {
-	const response = await fetch('https://api.texbab.no/api/files/' + endpoint);
+	const response = await fetch(`${import.meta.env.VITE_PB_URL}/api/files/` + endpoint);
 	const isJson = response.headers.get('content-type')?.includes('application/json');
 	const res = isJson ? await response.json() : await response.text();
 	// console.log("data from pocketbase:", res.items)

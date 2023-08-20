@@ -5,7 +5,7 @@
 	 import Map from "@anoram/leaflet-svelte";
     import { onMount } from "svelte";
     import PocketBase from 'pocketbase';
-    const pb = new PocketBase('https://api.texbab.no');
+    const pb = new PocketBase(`${import.meta.env.VITE_PB_URL}`);
   async function getISS() {
     let data = await fetch(`https://api.wheretheiss.at/v1/satellites/25544`);
     let res = await data.json();
