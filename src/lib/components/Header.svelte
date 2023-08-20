@@ -19,7 +19,7 @@
 <div class="navbar bg-base-100">
 	<div class="flex-1">
 		<a class="absolute h-auto w-32" href="/">
-			<img src={site_logo} alt="SvelteKit" />
+			<img src={site_logo} alt="SvelteKit" class="w-14"/>
 		</a>
 	</div>
 	<ThemeChanger />
