@@ -4,13 +4,13 @@
 	export let site_logo = `${import.meta.env.VITE_SITE_LOGO}`;
 </script>
 
-<footer class="footer footer-center p-10 text-primary-content">
+<footer class="footer footer-center p-10">
 	<div>
 		<a href="/" class=" rounded-2xl hover:bg-primary">
-			<img src={site_logo} alt="SvelteKit" class="w-14" />
+			<img src={site_logo} alt="Texbab logo" class="w-14" />
 		</a>
-		<p class="font-bold">Texbab AS: Hvor hvert bitt er en rodeo av smak</p>
-		<p class="font-bold">
+		<p >Texbab AS: Hvor hvert bitt er en rodeo av smak</p>
+		<p >
 			Made by <a href="https://altlokalt.com" class="font-bold hover:text-primary">altlokalt.</a> Copyright
 			© 2023 - All rights reserved
 		</p>
