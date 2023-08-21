@@ -43,20 +43,16 @@ export const data = [
 		]
 	},
 	{
-		section: 'Pictures',
+		section: 'Profile',
 		icon: PicturesIcon,
 		content: [
 			{
-				title: 'Vacations',
-				link: '/dashboard/pictures/vacations'
+				title: 'Preview',
+				link: '/dashboard/profile/preview'
 			},
 			{
-				title: 'Anniversary',
-				link: '/dashboard/pictures/anniversary'
-			},
-			{
-				title: 'University',
-				link: '/dashboard/pictures/university'
+				title: 'Edit',
+				link: '/dashboard/profile/edit'
 			}
 		]
 	},
