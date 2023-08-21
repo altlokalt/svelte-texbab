@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Burger from '$lib/components/Burger.svelte';
-	export let data../../burger/$types.js;
+	export let data;
 </script>
 
 <svelte:head>

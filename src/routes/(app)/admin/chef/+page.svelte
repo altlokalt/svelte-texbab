@@ -1,7 +1,7 @@
 <script>
 	import CookOrder from '$lib/components/CookOrder.svelte';
 
-	export let data../../../admin/chef/$types.js;
+	export let data;
 </script>
 
 <svelte:head>
