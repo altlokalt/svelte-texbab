@@ -7,20 +7,20 @@ import StatisticsIcon from './icons/StatisticsIcon.svelte';
 
 export const data = [
 	{
-		section: 'Documents',
+		section: 'Admin',
 		icon: DocumentsIcon,
 		content: [
 			{
-				title: 'Taxes',
+				title: 'Home',
 				link: '/dashboard/'
 			},
 			{
-				title: 'Travel',
-				link: '/dashboard/documents/travel'
+				title: 'Chef',
+				link: '/dashboard/admin/chef'
 			},
 			{
-				title: 'Insurance',
-				link: '/dashboard/documents/insurance'
+				title: 'Rider',
+				link: '/dashboard/admin/rider'
 			}
 		]
 	},

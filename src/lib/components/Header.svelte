@@ -92,9 +92,6 @@
 					<li aria-current={$page.url.pathname.startsWith('/menu') ? 'page' : undefined}>
 						<a href="/menu">menu</a>
 					</li>
-					<li aria-current={$page.url.pathname === '/admin' ? 'page' : undefined}>
-						<a href="/admin">Admin</a>
-					</li>
 					<li aria-current={$page.url.pathname === '/dashboard' ? 'page' : undefined}>
 						<a class="justify-between" href="/dashboard">
 							Dashboard
