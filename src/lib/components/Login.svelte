@@ -22,10 +22,6 @@
 			alert(err.message);
 		}
 	}
-
-	function name() {
-		console.log("eroro")
-	}
 </script>
 
 <div class="p-4 space-y-4">
@@ -48,8 +44,6 @@
 					class="input input-bordered "
 					class:input-error={passwordError}
 					on:input={checkPassword}
-					on:error={name}
-
 				/>
 			{:else}
 				<input

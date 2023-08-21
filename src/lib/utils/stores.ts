@@ -14,3 +14,16 @@ export const order = writable(initialCart);
 // Current User
 export const authData = writable(initialUser);
 
+const sidebarOpen = writable(true);
+
+const toggleSidebar = () => {
+	sidebarOpen.update((prev) => !prev);
+};
+
+const closeSidebar = () => {
+	sidebarOpen.update(() => false);
+};
+
+export { sidebarOpen, toggleSidebar, closeSidebar };
+
+

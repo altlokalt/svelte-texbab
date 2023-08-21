@@ -95,10 +95,10 @@
 					<li aria-current={$page.url.pathname === '/admin' ? 'page' : undefined}>
 						<a href="/admin">Admin</a>
 					</li>
-					<li>
-						<a class="justify-between">
-							Settings
-							<span class="badge">Soon</span>
+					<li aria-current={$page.url.pathname === '/dashboard' ? 'page' : undefined}>
+						<a class="justify-between" href="/dashboard">
+							Dashboard
+							<span class="badge">New</span>
 						</a>
 					</li>
 					<li><button class="signout-button bg-error opacity-80" on:click={logoutPocketbase}>Sign Out</button></li>

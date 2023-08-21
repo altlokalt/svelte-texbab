@@ -1,5 +1,6 @@
 import PocketBase from 'pocketbase';
 import { authData } from '$lib/utils/stores';
+import { goto } from '$app/navigation';
 
 
 export const pb = new PocketBase(`${import.meta.env.VITE_PB_URL}`);
@@ -22,10 +23,11 @@ export const logoutPocketbase = async () => {
 	pb2.authStore.clear();
 	authData.set({})
 
+	goto('/')
 	if (!pb.authStore.isValid) {
-		throw { status: 200, message: 'logged out' };
+		return { status: 200, message: 'logged out' };
 	} else {
-		return {  message: 'something went wrong' };;
+		throw {  message: 'something went wrong' };;
 	}
 };
 

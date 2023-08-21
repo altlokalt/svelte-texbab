@@ -65,7 +65,7 @@
 							<div class="avatar">
 								<div class="mask mask-squircle w-12 h-12">
 									<img
-										src="{import.meta.env.VITE_PB_URL}/api/files/vi08f0m1bznkfa3/lx41drdyghi9vpt/ingenbildetilgjengelig_3a5TR8Uzgq.webp"
+										src={`https://avatars.dicebear.com/api/adventurer-neutral/${order.firstName}.svg`}
 										alt="Avatar Tailwind CSS Component"
 									/>
 								</div>
