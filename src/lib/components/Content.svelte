@@ -1,5 +1,21 @@
 <script lang="ts">
 	import ContentTableUser from './ContentTableUser.svelte';
+	import { getPocketbase } from '$lib/utils/api';
+	import { updated } from '$app/stores';
+
+	let users: any[] = [];
+
+	async function getUsers() {
+		try {
+			const res = await getPocketbase('users/records?page=1&perPage=30&sort=-created'); // the actual endpoint for menu items in your Pocketbase
+			users = res.items;
+		} catch (error) {
+			console.error('Fetching users error:', error);
+			return [];
+		}
+	}
+
+	getUsers();
 
 	export let title: any;
 </script>
@@ -27,8 +43,8 @@
 				</svg>
 			</div>
 			<div>
-				<div class="text-lg font-bold">500</div>
-				<div class="text-sm">Product reviews</div>
+				<div class="text-lg font-bold">{users.sort((user)=>user.updated)[0]?.updated}</div>
+				<div class="text-sm">Last Registered user</div>
 			</div>
 		</div>
 		<div
@@ -51,8 +67,8 @@
 				</svg>
 			</div>
 			<div>
-				<div class="text-lg font-bold">300</div>
-				<div class="text-sm">Messages delivered</div>
+				<div class="text-lg font-bold">{users.length} </div>
+				<div class="text-sm">Registered Users</div>
 			</div>
 		</div>
 		<div
@@ -75,8 +91,8 @@
 				</svg>
 			</div>
 			<div>
-				<div class="text-lg font-bold">300</div>
-				<div class="text-sm">Data centers</div>
+				<div class="text-lg font-bold">{users.filter((user)=> user.verified).length}</div>
+				<div class="text-sm">Verified Users</div>
 			</div>
 		</div>
 	</div>
@@ -119,12 +135,15 @@
 							</tr>
 						</thead>
 						<tbody>
-							<ContentTableUser />
-							<ContentTableUser />
-							<ContentTableUser />
-							<ContentTableUser />
-							<ContentTableUser />
-							<ContentTableUser />
+							{#if users.length > 0}
+								{#each users as user}
+									<ContentTableUser bind:data={user} />
+								{/each}
+							{:else}
+								<tr>
+									<td colspan="5">No users found.</td>
+								</tr>
+							{/if}
 						</tbody>
 					</table>
 					<div class="xs:flex-row xs:justify-between flex flex-col items-center p-5">

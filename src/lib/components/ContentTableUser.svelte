@@ -1,12 +1,6 @@
 <script lang="ts">
-    export let data: any = {
-            name: 'Marcus coco',
-            role: 'Designer',
-            status: 'Active',
-            avatar: 'https://res.cloudinary.com/beloved/image/upload/v1623196231/Assets/person/4_iauuag.jpg',
-            created: '01/10/2012',
-            key: 1
-        }
+    export let data: any;
+    const avatar = data.avatar ? `https://nameless-cloud-5581.fly.dev/api/files/_pb_users_auth_/7dbtzclvnds9jlp/${data.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${data.username}.svg`
 </script>
 
 <tr>
@@ -16,18 +10,18 @@
                 <span class="relative block">
                     <img
                         alt="profil"
-                        src={data.avatar}
+                        src={avatar}
                         class="mx-auto h-10 w-10 rounded-full object-cover"
                     />
                 </span>
             </div>
             <div class="ml-3">
-                <p class="whitespace-nowrap">{data.name}</p>
+                <p class="whitespace-nowrap">{data.username}</p>
             </div>
         </div>
     </td>
     <td class="border-b border-primary p-5 text-sm">
-        <p class="whitespace-nowrap">{data.role}</p>
+        <p class="whitespace-nowrap">{data.title}</p>
     </td>
     <td class="border-b border-primary p-5 text-sm">
         <p class="whitespace-nowrap">{data.created}</p>
@@ -40,7 +34,11 @@
                 aria-hidden="true"
                 class="absolute inset-0 rounded-full bg-success opacity-50"
             />
-            <span class="relative">{data.status}</span>
+            {#if data.verified}
+            <span class="relative">verified</span>
+            {:else}
+            <span class="relative">not Verified</span>
+            {/if}
         </span>
     </td>
     <td class="border-b border-primary p-5 text-sm">

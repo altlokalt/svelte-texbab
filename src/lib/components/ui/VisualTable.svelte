@@ -18,7 +18,7 @@
 
 		try {
 			console.log(`Updating order ${id} preparation status...`);
-			const updatedOrder = await patchPocketbase(`texbab_orders/records/${id}`, {
+			const updatedOrder = await patchPocketbase('texbab_orders',id, {
 				prepared
 			});
 
