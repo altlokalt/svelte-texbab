@@ -8,7 +8,7 @@
 	export let site_logo = `${import.meta.env.VITE_SITE_LOGO}`;
 	export let site_name = `${import.meta.env.VITE_SITE_NAME}`;
 	
-	const avatar =  $authData.avatar ? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`
+	const avatar =  $authData.avatar ? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
 </script>
 
 <header class="relative z-10 h-16 w-full items-center border-b  border-primary md:h-20">

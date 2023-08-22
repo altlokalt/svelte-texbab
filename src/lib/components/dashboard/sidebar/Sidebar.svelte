@@ -16,9 +16,8 @@
 </script>
 
 <aside
-	class={`${style.default} ${style.mobileOrientation[mobileOrientation]}${
-		$sidebarOpen ? style.open : style.close
-	} scrollbar`}
+	class={`${style.default} ${style.mobileOrientation[mobileOrientation]}
+       ${$sidebarOpen ? style.open : style.close} scrollbar`}
 >
 	<div class="h-screen w-full">
 		<SidebarItems />
