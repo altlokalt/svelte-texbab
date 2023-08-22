@@ -2,19 +2,18 @@
 	import { onMount } from 'svelte';
 	import { data } from './data';
 	import { page } from '$app/stores';
-	import { closeSidebar, sidebarOpen } from '$lib/utils/stores';
+	import { closeSidebar, sidebarOpen, currentSection } from '$lib/utils/stores';
 
-	let currentSection: any = '';
 
 	const updateCurrentSection = (section: any) => {
-		currentSection = section;
+		currentSection.set(section);
 		if (window.innerWidth > 1024) {
 			closeSidebar();
 		}
 	};
 
 	onMount(() => {
-		const sidebarData = data.flatMap((section) => {
+		const sidebarData: any = data.flatMap((section) => {
 			return section.content.map((content) => ({
 				title: content.title,
 				link: content.link,
@@ -22,7 +21,13 @@
 			}));
 		});
 
-		currentSection = sidebarData.find((item) => item.link === $page.url.pathname)?.section;
+		currentSection.set(sidebarData.find((item: any) => item.link === $page.url.pathname)?.section);
+
+		console.log($currentSection); 
+		console.log(sidebarData);
+		console.log($page.url.pathname);
+
+		// sidebar section not updating even though currentSection is updated
 	});
 </script>
 
@@ -34,7 +39,7 @@
 					<div>
 						<div
 							class={`flex h-8 w-8 items-center justify-center ${
-								section === currentSection && 'rounded-full bg-primary'
+								section === $currentSection && 'rounded-full bg-primary'
 							}`}
 						>
 							<span><svelte:component this={icon} /></span>
@@ -49,7 +54,7 @@
 		<div class="h-full w-full bg-base-200 pt-5">
 			{#each data as { section, content } (section)}
 				<div>
-					{#if section === currentSection}
+					{#if section === $currentSection}
 						<div>
 							<div class="pl-3 text-lg font-medium ">
 								{section}

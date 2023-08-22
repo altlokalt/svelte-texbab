@@ -26,7 +26,7 @@
   
 	async function getInitialMessages() {
 	  try {
-		const resultList = await pb2.collection('chat').getList(1, 50, {
+		const resultList = await pb2.collection('chat_texbab').getList(1, 50, {
 		  sort: 'created',
 		  expand: 'sender'
 		});
@@ -61,7 +61,7 @@
   
 	onMount(async () => {
 	  messages = await getInitialMessages();
-	  unsubscribe = await pb2.collection('chat').subscribe('*', handleRealtimeMessage);
+	  unsubscribe = await pb2.collection('chat_texbab').subscribe('*', handleRealtimeMessage);
 	});
   
 	onDestroy(() => {
@@ -74,7 +74,7 @@
 		sender: $authData.id,
 		receiver: $authData.id
 	  };
-	  const createdMessage = await pb2.collection('chat').create(data);
+	  const createdMessage = await pb2.collection('chat_texbab').create(data);
 	  newMessage = '';
 	  canAutoScroll = true;
 	  autoScroll();

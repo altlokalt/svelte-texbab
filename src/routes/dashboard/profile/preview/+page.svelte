@@ -1,5 +1,6 @@
 <script>
-	import { authData } from '$lib/utils/stores';
+	import Chat from '$lib/components/Chat.svelte';
+import { authData } from '$lib/utils/stores';
 
 	const avatar =  $authData.avatar ? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
 </script>
@@ -65,4 +66,5 @@
 			</div>
 		</section>
 	</main>
+	<Chat />
 </div>

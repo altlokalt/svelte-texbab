@@ -1,14 +1,8 @@
-<svg
-	xmlns="http://www.w3.org/2000/svg"
-	class="h-5 w-5"
-	fill="none"
-	viewBox="0 0 24 24"
-	stroke="currentColor"
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+	><path
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		d="M8 11A5 5 0 1 0 8 1a5 5 0 0 0 0 10Zm5.023 2.023C11.772 11.76 10.013 11 8 11c-4 0-7 3-7 7v5h7m2-3.5a2.5 2.5 0 1 0 5.002-.002A2.5 2.5 0 0 0 10 19.5ZM23 15l-3-3l-6 6m3.5-3.5l3 3l-3-3Z"
+	/></svg
 >
-	<path
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		stroke-width={2}
-		d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-	/>
-</svg>

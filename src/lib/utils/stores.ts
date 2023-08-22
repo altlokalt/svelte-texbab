@@ -26,4 +26,7 @@ const closeSidebar = () => {
 
 export { sidebarOpen, toggleSidebar, closeSidebar };
 
+// Current sidebar section
+export const currentSection = writable('');
+
 
