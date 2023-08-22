@@ -3,6 +3,7 @@
 	import InputWithLabel from '$lib/components/ui/InputWithLabel.svelte';
 	import { patchPocketbase, refreshAuthPocketbase } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
+	import { compressImage } from '$lib/utils/api';
 
 	let updated: boolean = false;
 
@@ -19,6 +20,10 @@
 	async function updateProfile() {
 		console.log('updateProfile from', $authData, 'to', data);
 		try {
+			// Convert image to compressed base64 before uploading
+			const compressedImage = await compressImage(data.avatar);
+			data.avatar = compressedImage;
+
 			const formData = new FormData();
 			formData.append('data', JSON.stringify(data)); // Include the entire data object
 			for (const key in data) {

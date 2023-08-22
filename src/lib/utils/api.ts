@@ -168,6 +168,39 @@ export const getImage = async (endpoint: string) => {
 	}
 };
 
+export const compressImage = async (file: any) => {
+	return new Promise<File>((resolve, reject) => {
+		const reader = new FileReader();
+
+		reader.onload = async (event: any) => {
+			const image = new Image();
+			image.src = event.target.result as string;
+
+			image.onload = () => {
+				const canvas = document.createElement('canvas');
+				const MAX_WIDTH = 200; // Adjust the maximum width as needed
+				const scaleRatio = MAX_WIDTH / image.width;
+				canvas.width = MAX_WIDTH;
+				canvas.height = image.height * scaleRatio;
+
+				const ctx: any = canvas.getContext('2d');
+				ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+				// Convert canvas to Blob and create a new File object
+				canvas.toBlob((blob: any) => {
+					const compressedFile = new File([blob], file.name, {
+						type: file.type,
+						lastModified: Date.now()
+					});
+					resolve(compressedFile);
+				}, file.type, 0.7); // Adjust compression quality
+			};
+		};
+
+		reader.readAsDataURL(file);
+	});
+}
+
 // Replace these functions with your actual payment handling functions
 export async function processCreditCardPayment() {
 	// Implement credit card payment handling using Stripe or other payment gateway
