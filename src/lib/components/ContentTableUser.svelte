@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Chat from "./Chat.svelte";
+
     export let data: any;
     const avatar = data.avatar ? `https://nameless-cloud-5581.fly.dev/api/files/_pb_users_auth_/7dbtzclvnds9jlp/${data.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${data.username}.svg`
 </script>
@@ -45,3 +47,4 @@
         <span class="text-secondary hover:text-info"> Edit </span>
     </td>
 </tr>
+

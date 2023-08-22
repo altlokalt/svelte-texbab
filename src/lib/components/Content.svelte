@@ -2,6 +2,8 @@
 	import ContentTableUser from './ContentTableUser.svelte';
 	import { getPocketbase } from '$lib/utils/api';
 	import { updated } from '$app/stores';
+	import Chat from './Chat.svelte';
+
 
 	let users: any[] = [];
 
@@ -97,85 +99,96 @@
 		</div>
 	</div>
 
-	<div class="container mt-10 border border-primary">
-		<div class="py-8">
-			<div class="py-4">
-				<div class="max-w-full overflow-x-auto rounded-lg">
-					<table class="w-full leading-normal">
-						<thead>
-							<tr>
-								<th
-									scope="col"
-									class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
-								>
-									User
-								</th>
-								<th
-									scope="col"
-									class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
-								>
-									Role
-								</th>
-								<th
-									scope="col"
-									class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
-								>
-									Created_at
-								</th>
-								<th
-									scope="col"
-									class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
-								>
-									status
-								</th>
-								<th
-									scope="col"
-									class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
-								/>
-							</tr>
-						</thead>
-						<tbody>
-							{#if users.length > 0}
-								{#each users as user}
-									<ContentTableUser bind:data={user} />
-								{/each}
-							{:else}
-								<tr>
-									<td colspan="5">No users found.</td>
-								</tr>
-							{/if}
-						</tbody>
-					</table>
-					<div class="xs:flex-row xs:justify-between flex flex-col items-center p-5">
-						<div class="flex items-center">
-							<button
-								type="button"
-								class="w-full rounded-l-xl border bg-primary p-2 text-base hover:bg-secondary"
-							>
-								🢀
-							</button>
-							<button
-								type="button"
-								class="w-full border-y bg-base-200 px-4 py-2 text-base font-bold hover:bg-secondary"
-							>
-								1
-							</button>
-							<button
-								type="button"
-								class="w-full border bg-base-200 px-4 py-2 text-base hover:bg-secondary"
-							>
-								2
-							</button>
-							<button
-								type="button"
-								class="w-full rounded-r-xl border-y border-r bg-primary p-2 hover:bg-secondary"
-							>
-								🢂
-							</button>
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full h-full">
+		<div class="w-full">
+			<div class="container mt-10 border border-primary">
+				<div class="py-8">
+					<div class="py-4">
+						<div class="max-w-full overflow-x-auto rounded-lg">
+							<table class="w-full leading-normal">
+								<thead>
+									<tr>
+										<th
+											scope="col"
+											class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
+										>
+											User
+										</th>
+										<th
+											scope="col"
+											class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
+										>
+											Role
+										</th>
+										<th
+											scope="col"
+											class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
+										>
+											Created_at
+										</th>
+										<th
+											scope="col"
+											class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
+										>
+											status
+										</th>
+										<th
+											scope="col"
+											class="border-b border-primary px-5 py-3 text-left text-sm font-normal uppercase"
+										/>
+									</tr>
+								</thead>
+								<tbody>
+									{#if users.length > 0}
+										{#each users as user}
+											<ContentTableUser bind:data={user} />
+										{/each}
+									{:else}
+										<tr>
+											<td colspan="5">No users found.</td>
+										</tr>
+									{/if}
+								</tbody>
+							</table>
+							<div class="xs:flex-row xs:justify-between flex flex-col items-center p-5">
+								<div class="flex items-center">
+									<button
+										type="button"
+										class="w-full rounded-l-xl border bg-primary p-2 text-base hover:bg-secondary"
+									>
+										🢀
+									</button>
+									<button
+										type="button"
+										class="w-full border-y bg-base-200 px-4 py-2 text-base font-bold hover:bg-secondary"
+									>
+										1
+									</button>
+									<button
+										type="button"
+										class="w-full border bg-base-200 px-4 py-2 text-base hover:bg-secondary"
+									>
+										2
+									</button>
+									<button
+										type="button"
+										class="w-full rounded-r-xl border-y border-r bg-primary p-2 hover:bg-secondary"
+									>
+										🢂
+									</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		
+		</div>
+		<div class="w-full">
+			<Chat />
 		</div>
 	</div>
 </div>
+
+
+
