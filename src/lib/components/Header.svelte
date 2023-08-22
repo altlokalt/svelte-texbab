@@ -77,7 +77,7 @@
 					<li>
 						<a class="justify-between" href="/dashboard/profile/preview">
 							Profile
-							<span class="badge">Soon</span>
+							<span class="badge">New</span>
 						</a>
 					</li>
 					<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
@@ -95,8 +95,8 @@
 					<li aria-current={$page.url.pathname.startsWith('/menu') ? 'page' : undefined}>
 						<a href="/menu">menu</a>
 					</li>
-					<li aria-current={$page.url.pathname === '/dashboard' ? 'page' : undefined}>
-						<a class="justify-between" href="/dashboard">
+					<li aria-current={$page.url.pathname === '/dashboard/profile/preview' ? 'page' : undefined}>
+						<a class="justify-between" href="/dashboard/profile/preview">
 							Dashboard
 							<span class="badge">New</span>
 						</a>

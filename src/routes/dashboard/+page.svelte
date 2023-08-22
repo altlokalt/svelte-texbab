@@ -1,12 +1,10 @@
 <script>
-	import { goto } from '$app/navigation';
-  goto('/dashboard/profile/preview');
-
-
+	import Content from '$lib/components/Content.svelte';
 </script>
 
 <svelte:head>
   <title>Dashboard</title>
 </svelte:head>
 
-
+<Content title="Home"/>
+  

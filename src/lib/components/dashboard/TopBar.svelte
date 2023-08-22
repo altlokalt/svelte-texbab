@@ -50,7 +50,7 @@
 						<li>
 							<a class="justify-between" href="/dashboard/profile/preview">
 								Profile
-								<span class="badge">Soon</span>
+								<span class="badge">New</span>
 							</a>
 						</li>
 						<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>

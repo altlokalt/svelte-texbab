@@ -24,6 +24,8 @@
 <div class="mt-4">
 	<div class="mb-5 text-2xl font-medium">{title}</div>
 	<div class="flex gap-8">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full h-full">
+			<div class="w-full">
 		<div
 			class="flex items-center gap-4 rounded-md border border-primary bg-secondary px-8 py-4 shadow"
 		>
@@ -48,6 +50,8 @@
 				<div class="text-sm">Last Registered user</div>
 			</div>
 		</div>
+		</div>
+		<div class="w-full">
 		<div
 			class="flex items-center gap-4 rounded-md border border-primary bg-secondary px-8 py-4 shadow"
 		>
@@ -72,6 +76,8 @@
 				<div class="text-sm">Registered Users</div>
 			</div>
 		</div>
+		</div>
+		<div class="w-full">
 		<div
 			class="flex items-center gap-4 rounded-md border border-primary bg-secondary px-8 py-4 shadow"
 		>
@@ -95,6 +101,8 @@
 				<div class="text-lg font-bold">{users.filter((user)=> user.verified).length}</div>
 				<div class="text-sm">Verified Users</div>
 			</div>
+		</div>
+		</div>
 		</div>
 	</div>
 
