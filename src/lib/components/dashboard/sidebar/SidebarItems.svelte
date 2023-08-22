@@ -22,11 +22,6 @@
 		});
 
 		currentSection.set(sidebarData.find((item: any) => item.link === $page.url.pathname)?.section);
-
-		console.log($currentSection); 
-		console.log(sidebarData);
-		console.log($page.url.pathname);
-
 		// sidebar section not updating even though currentSection is updated
 	});
 </script>

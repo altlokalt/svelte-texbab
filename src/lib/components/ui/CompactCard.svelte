@@ -1,7 +1,29 @@
 <script lang="ts">
+	import { getImage } from "$lib/utils/api";
+	import { onMount } from "svelte";
 	export let item: any; // Specify the type for 'data'
 	export let addToCart: any;
 	let quantity: number = 0;
+
+	let image: string = "";
+
+	// Get the pocketbase image for the item
+	const pb_image = item.food_image
+		? `${import.meta.env.VITE_PB_URL}/api/files/` +
+		  item.collectionName +
+		  '/' +
+		  item.id +
+		  '/' +
+		  item.food_image
+		: `${
+				import.meta.env.VITE_PB_URL
+		  }/api/files/vi08f0m1bznkfa3/lx41drdyghi9vpt/ingenbildetilgjengelig_vhlNaJijHB.png`;
+
+	onMount(async () => {
+		// run the image through the getImage function to get a compressed base64 image
+		const res = await getImage(pb_image, 350, 200);
+		image = res;
+	});
 
 	function handleSubmit(event: any) {
 		event.preventDefault(); // Prevent the form from submitting and reloading the page
@@ -11,17 +33,7 @@
 
 <div class="card card-compact w-auto bg-base-100 shadow-xl">
 	<figure>
-		<img
-			src={item.food_image
-				? `${import.meta.env.VITE_PB_URL}/api/files/` +
-				  item.collectionName +
-				  '/' +
-				  item.id +
-				  '/' +
-				  item.food_image
-				: `${import.meta.env.VITE_PB_URL}/api/files/vi08f0m1bznkfa3/lx41drdyghi9vpt/ingenbildetilgjengelig_vhlNaJijHB.png`}
-			alt={item.name}
-		/>
+		<img src={image} alt={item.name} />
 	</figure>
 	<div class="card-body">
 		<h2 class="card-title">{item.name}</h2>

@@ -17,11 +17,12 @@
 		avatar: $authData.avatar
 	};
 
+
 	async function updateProfile() {
-		console.log('updateProfile from', $authData, 'to', data);
+		// console.log('updateProfile from', $authData, 'to', data);
 		try {
 			// Convert image to compressed base64 before uploading
-			const compressedImage = await compressImage(data.avatar);
+			const compressedImage = await compressImage(data.avatar, 200, 200, 0.7);
 			data.avatar = compressedImage;
 
 			const formData = new FormData();

@@ -155,20 +155,22 @@ export const patchPocketbase = async (collection: string, id: string, data: any)
 	}
 };
 
-export const getImage = async (endpoint: string) => {
-	const response = await fetch(`${import.meta.env.VITE_PB_URL}/api/files/` + endpoint);
-	const isJson = response.headers.get('content-type')?.includes('application/json');
-	const res = isJson ? await response.json() : await response.text();
-	// console.log("data from pocketbase:", res.items)
+export const getImage = async (url: string, width: number, height: number) => {
+	try {
+		const response = await fetch(url);
+		if (response.ok) {
+			const originalImageBlob = await response.blob();
+			const compressedImageBlob = await compressImage(originalImageBlob, width, height, 1); // 1 = 100% quality (no compression) - change as needed, e.g 0 = 0% quality (full compression)
+			return URL.createObjectURL(compressedImageBlob);
+		}
 
-	if (response?.status > 399) {
-		throw { status: response.status, message: response.statusText };
-	} else {
-		return res;
+		throw new Error('Failed to fetch image');
+	} catch (error) {
+		throw error;
 	}
 };
 
-export const compressImage = async (file: any) => {
+export const compressImage = async (file: any, width: number, height: number, quality: number): Promise<File> => {
 	return new Promise<File>((resolve, reject) => {
 		const reader = new FileReader();
 
@@ -178,10 +180,8 @@ export const compressImage = async (file: any) => {
 
 			image.onload = () => {
 				const canvas = document.createElement('canvas');
-				const MAX_WIDTH = 200; // Adjust the maximum width as needed
-				const scaleRatio = MAX_WIDTH / image.width;
-				canvas.width = MAX_WIDTH;
-				canvas.height = image.height * scaleRatio;
+				canvas.width = width;
+				canvas.height = height;
 
 				const ctx: any = canvas.getContext('2d');
 				ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
@@ -193,15 +193,15 @@ export const compressImage = async (file: any) => {
 						lastModified: Date.now()
 					});
 					resolve(compressedFile);
-				}, file.type, 0.7); // Adjust compression quality
+				}, file.type, quality); // Use the provided quality parameter
 			};
 		};
 
 		reader.readAsDataURL(file);
 	});
-}
+};
 
-// Replace these functions with your actual payment handling functions
+
 export async function processCreditCardPayment() {
 	// Implement credit card payment handling using Stripe or other payment gateway
 	// Return the payment result or handle the payment response as needed
