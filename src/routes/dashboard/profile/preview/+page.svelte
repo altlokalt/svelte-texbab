@@ -1,7 +1,7 @@
 <script>
 	import { authData } from '$lib/utils/stores';
 
-	const avatar =  $authData.avatar ? `https://nameless-cloud-5581.fly.dev/api/files/_pb_users_auth_/7dbtzclvnds9jlp/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
+	const avatar =  $authData.avatar ? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
 </script>
 
 <div>

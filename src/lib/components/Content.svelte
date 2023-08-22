@@ -1,7 +1,6 @@
 <script lang="ts">
 	import ContentTableUser from './ContentTableUser.svelte';
 	import { getPocketbase } from '$lib/utils/api';
-	import { updated } from '$app/stores';
 	import Chat from './Chat.svelte';
 
 

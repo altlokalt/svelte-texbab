@@ -16,10 +16,10 @@
 	}
 
 
-	const avatar =  $authData.avatar ? `https://nameless-cloud-5581.fly.dev/api/files/_pb_users_auth_/7dbtzclvnds9jlp/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`
+	const avatar =  $authData.avatar ? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`
 </script>
 
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 sticky top-0 z-50">
 	<div class="flex-1">
 		<a class="absolute h-auto w-32" href="/">
 			<img src={site_logo} alt="SvelteKit" class="w-14"/>
@@ -109,3 +109,4 @@
 		{/if}
 	</div>
 </div>
+

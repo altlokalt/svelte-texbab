@@ -1,8 +1,7 @@
 <script lang="ts">
-	import Chat from "./Chat.svelte";
-
     export let data: any;
-    const avatar = data.avatar ? `https://nameless-cloud-5581.fly.dev/api/files/_pb_users_auth_/7dbtzclvnds9jlp/${data.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${data.username}.svg`
+    console.log("data", data);
+    const avatar = data.avatar ? `${import.meta.env.VITE_PB_URL}/api/files/_pb_users_auth_/${data.id}/${data.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${data.username}.svg`
 </script>
 
 <tr>
