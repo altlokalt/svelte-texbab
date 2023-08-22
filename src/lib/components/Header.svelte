@@ -14,6 +14,9 @@
 	function calculateTotal() {
 		return cartItems.reduce((total: any, item: any) => total + item.price * item.quantity, 0);
 	}
+
+
+	const avatar =  $authData.avatar ? `https://nameless-cloud-5581.fly.dev/api/files/_pb_users_auth_/7dbtzclvnds9jlp/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`
 </script>
 
 <div class="navbar bg-base-100">
@@ -64,7 +67,7 @@
 			<div class="dropdown dropdown-end">
 				<label tabindex="0" class="btn btn-ghost btn-circle avatar">
 					<div class="w-10 rounded-full">
-						<img src={`https://avatars.dicebear.com/api/initials/${$authData.username}.svg`} />
+						<img src={avatar} />
 					</div>
 				</label>
 				<ul
