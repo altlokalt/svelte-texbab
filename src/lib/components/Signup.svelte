@@ -20,7 +20,7 @@
 			// create pocketbase user
 			const res = createPocketbaseUser(data);
 
-			goto('/login');
+			goto('/');
 		} catch (err: any) {
 			alert(err.message);
 		}

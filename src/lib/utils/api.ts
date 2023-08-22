@@ -2,15 +2,15 @@ import PocketBase from 'pocketbase';
 import { authData } from '$lib/utils/stores';
 import { goto } from '$app/navigation';
 
-
 export const pb = new PocketBase(`${import.meta.env.VITE_PB_URL}`);
-export const pb2= new PocketBase(`${import.meta.env.VITE_PB_API_2}`);
+export const pb2 = new PocketBase(`${import.meta.env.VITE_PB_API_2}`);
 
 export const authPocketbase = async (user: string, password: string) => {
 	const res = await pb.collection('users').authWithPassword(user, password);
 	const res2 = await pb2.collection('users').authWithPassword(user, password);
-	authData.set(pb.authStore.model)
+	authData.set(pb.authStore.model);
 
+	goto('/');
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
 	} else {
@@ -21,23 +21,37 @@ export const authPocketbase = async (user: string, password: string) => {
 export const logoutPocketbase = async () => {
 	pb.authStore.clear();
 	pb2.authStore.clear();
-	authData.set({})
+	authData.set({});
 
-	goto('/')
+	goto('/');
 	if (!pb.authStore.isValid) {
 		return { status: 200, message: 'logged out' };
 	} else {
-		throw {  message: 'something went wrong' };;
+		throw { message: 'something went wrong' };
 	}
 };
 
 export const createPocketbaseUser = async (data: any) => {
 	const res = await pb.collection('users').create(data);
-	const res2 = await pb2.collection('users').create(data);
-	authData.set(res)
+	authData.set(res);
+
+	// (optional) send an email verification request and chat using the new pb2 api
+	const data2 = {
+		id: res.id,
+		username: data.username,
+		email: data.email,
+		emailVisibility: data.emailVisibility,
+		password: data.password,
+		passwordConfirm: data.passwordConfirm
+	};
+
+	const res2 = await pb2.collection('users').create(data2);
 
 	// (optional) send an email verification request
 	await pb2.collection('users').requestVerification(data.email);
+
+	// login the user
+	await authPocketbase(data.username, data.password);
 
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
@@ -49,12 +63,27 @@ export const createPocketbaseUser = async (data: any) => {
 export const authPocketbaseAdmin = async (user: string, password: string) => {
 	const res = await pb.admins.authWithPassword(user, password);
 	const res2 = await pb2.admins.authWithPassword(user, password);
-	authData.set(res)
+	authData.set(res);
 
 	if (!pb.authStore.isValid) {
 		throw { status: pb.authStore.isValid, message: pb.authStore.token };
 	} else {
 		return res;
+	}
+};
+
+// refresh the login data
+export const refreshAuthPocketbase = async () => {
+	try {
+		// Update authData store
+		const user = await pb.collection('users').authRefresh({
+			refreshToken: pb.authStore.token
+		});
+		authData.set(user);
+
+		return user;
+	} catch (error) {
+		throw error;
 	}
 };
 
@@ -67,7 +96,7 @@ const menuItems = [
 export async function fetchMenuItems(menu: string) {
 	// Simulate API request delay with a timeout
 	await new Promise((resolve) => setTimeout(resolve, 500));
-	
+
 	return menuItems;
 }
 
@@ -116,24 +145,12 @@ export const postPocketbase = async (endpoint: string, data: any) => {
 	}
 };
 
-export const patchPocketbase = async (endpoint: string, data: any) => {
+export const patchPocketbase = async (collection: string, id: string, data: any) => {
 	try {
-		const response = await fetch(`${import.meta.env.VITE_PB_URL}/api/collections/${endpoint}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data)
-		});
-
-		if (!response.ok) {
-			throw new Error('Failed to post data to Pocketbase.');
-		}
-
-		const res = await response.json();
-		return res;
+		const response = await pb.collection(collection).update(id, data);
+		const response2 = await pb2.collection(collection).update(id, data);
+		return response;
 	} catch (error) {
-		console.error(error);
 		throw error;
 	}
 };

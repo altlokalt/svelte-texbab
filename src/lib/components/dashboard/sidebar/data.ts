@@ -54,6 +54,11 @@ export const data = [
 				title: 'Edit',
 				link: '/dashboard/profile/edit'
 			}
+			,
+			{
+				title: 'Change email',
+				link: '/dashboard/profile/request-email-change'
+			}
 		]
 	},
 	{

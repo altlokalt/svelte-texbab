@@ -68,7 +68,7 @@
 		};
 
 		try {
-			const menuItems = await patchPocketbase(`texbab_orders/records/${orderItem.id}`, status); // the actual endpoint for menu items in your Pocketbase
+			const menuItems = await patchPocketbase('texbab_orders', orderItem.id, status); // the actual endpoint for menu items in your Pocketbase
 		} catch (error) {
 			throw new Error('Failed to fetch menu items.');
 		}
