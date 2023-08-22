@@ -7,7 +7,8 @@
 
 	export let site_logo = `${import.meta.env.VITE_SITE_LOGO}`;
 	export let site_name = `${import.meta.env.VITE_SITE_NAME}`;
-	const avatar = `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
+	
+	const avatar =  $authData.avatar ? `https://nameless-cloud-5581.fly.dev/api/files/_pb_users_auth_/7dbtzclvnds9jlp/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`
 </script>
 
 <header class="relative z-10 h-16 w-full items-center border-b  border-primary md:h-20">
@@ -47,7 +48,7 @@
 						class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
 					>
 						<li>
-							<a class="justify-between">
+							<a class="justify-between" href="/dashboard/profile/preview">
 								Profile
 								<span class="badge">Soon</span>
 							</a>

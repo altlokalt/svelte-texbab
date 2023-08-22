@@ -75,7 +75,7 @@
 					class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
 				>
 					<li>
-						<a class="justify-between">
+						<a class="justify-between" href="/dashboard/profile/preview">
 							Profile
 							<span class="badge">Soon</span>
 						</a>
