@@ -4,19 +4,21 @@
 	export let url: any;
 </script>
 
-<div class="card card-side bg-base-100 shadow-xl md:w-1/3 mx-4 my-4 flex-shrink-0">
-	<figure>
-		<img
-			src={img}
-			alt={`bilde anv texbab.no ${title} meny`}
-			class="h-full md:h-full w-5/7 object-cover max-h-48"
-		/>
-	</figure>
-	<div class="card-body">
-		<h2 class="card-title">{title} meny</h2>
-		<p class="text-xs">Sjekk ut vår {title} meny.</p>
-		<div class="card-actions justify-end">
-			<a class="btn btn-primary" href={url}>Bestill</a>
+<a href={url} class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-96 p-2">
+	<div class="w-full">
+		<figure class="w-full h-full rounded-lg overflow-hidden">
+			<img src={img} alt={`bilde anv texbab.no ${title} meny`} class="h-full w-full object-cover" />
+		</figure>
+	</div>
+	<div>
+		<div class="card-body">
+			<h2 class="text-lg font-semibold">{title} meny</h2>
+			<p class="text-xs">Sjekk ut vår {title} meny.</p>
+			<div class="card-actions justify-end">
+				<div class=" text-sm font-semibold px-3 py-1 rounded-full bg-primary hover:bg-accent-dark">
+					Bestill
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
+</a>
