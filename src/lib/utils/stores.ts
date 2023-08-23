@@ -29,4 +29,14 @@ export { sidebarOpen, toggleSidebar, closeSidebar };
 // Current sidebar section
 export const currentSection = writable('');
 
+// Current page
+export const page = writable(1);
 
+// pocketbase response
+export const pocketbaseResponse = writable({
+	page: 1,
+	perPage: 5,
+	totalItems: 0,
+	totalPages: 0,
+	items: []
+});

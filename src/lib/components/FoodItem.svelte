@@ -21,6 +21,7 @@
 			return updatedCart;
 		});
 	}
+	
 </script>
 
-<CompactCard {item} {addToCart} />
+<CompactCard bind:item {addToCart} />

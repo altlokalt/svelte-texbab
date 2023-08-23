@@ -23,7 +23,7 @@
 		};
 
 		try {
-			menuItems = await postPocketbase('texbab_orders/records', deliveryDetails); // the actual endpoint for menu items in your Pocketbase
+			menuItems = await postPocketbase('texbab_orders', deliveryDetails); // the actual endpoint for menu items in your Pocketbase
 
 			// Update the order store with the menu items
 			order.set(menuItems);

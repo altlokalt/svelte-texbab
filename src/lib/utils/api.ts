@@ -111,36 +111,32 @@ export async function placeOrder(orderData: any) {
 	};
 }
 
-export const getPocketbase = async (endpoint: string) => {
-	const response = await fetch(`${import.meta.env.VITE_PB_URL}/api/collections/` + endpoint);
-	const isJson = response.headers.get('content-type')?.includes('application/json');
-	const res = isJson ? await response.json() : await response.text();
+// export const getPocketbase = async (endpoint: string) => {
+// 	const response = await fetch(`${import.meta.env.VITE_PB_URL}/api/collections/` + endpoint);
+// 	const isJson = response.headers.get('content-type')?.includes('application/json');
+// 	const res = isJson ? await response.json() : await response.text();
 
-	if (response?.status > 399) {
-		throw { status: response.status, message: response.statusText };
-	} else {
-		return res;
+// 	if (response?.status > 399) {
+// 		throw { status: response.status, message: response.statusText };
+// 	} else {
+// 		return res;
+// 	}
+// };
+
+export const getPocketbase = async (collection: string, data: any) => {
+	try {
+		const resultList = await pb.collection(collection).getList(1, 5, data);
+		return resultList;
+	} catch (error) {
+		throw error;
 	}
 };
 
-export const postPocketbase = async (endpoint: string, data: any) => {
+export const postPocketbase = async (collection: string, data: any) => {
 	try {
-		const response = await fetch(`${import.meta.env.VITE_PB_URL}/api/collections/${endpoint}`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data)
-		});
-
-		if (!response.ok) {
-			throw new Error('Failed to post data to Pocketbase.');
-		}
-
-		const res = await response.json();
-		return res;
+		const resultList = await pb.collection(collection).create( data);
+		return resultList;
 	} catch (error) {
-		console.error(error);
 		throw error;
 	}
 };
@@ -154,6 +150,19 @@ export const patchPocketbase = async (collection: string, id: string, data: any)
 		throw error;
 	}
 };
+
+export const patchPocketbase1only = async (collection: string, id: string, data: any) => {
+	try {
+		const response = await pb.collection(collection).update(id, data);
+
+		return response;
+	} catch (error) {
+		throw error;
+	}
+};
+
+
+
 
 export const getImage = async (url: string, width: number, height: number) => {
 	try {

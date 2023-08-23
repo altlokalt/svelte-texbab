@@ -5,6 +5,8 @@
 	export let data;
 
 	export let site_name = `${import.meta.env.VITE_SITE_NAME}`;
+
+	console.log(data);
 </script>
 
 <svelte:head>
@@ -14,7 +16,7 @@
 <Home />
 
 <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-	{#each data.items as item}
+	{#each data.menuItems.items as item}
 		<FoodItem {item} />
 	{/each}
 </section>

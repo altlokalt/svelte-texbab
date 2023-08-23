@@ -1,6 +1,7 @@
 <script lang="ts">
-	import Menu from '$lib/components/Menu.svelte';
-	export let data;
+	import { goto } from "$app/navigation";
+
+	goto("/menu/texbab_fullmenu");
 </script>
 
 <svelte:head>
@@ -8,12 +9,6 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<Menu {data} />
+<h1>hello</h1>
 
-<style>
-	/* You can customize the styles here as needed */
-	.grid {
-		margin: 0 auto;
-		max-width: 1280px;
-	}
-</style>
+

@@ -5,7 +5,7 @@
 	import OrderSummary from '$lib/components/OrderSummary.svelte';
 	import DeliveryForm from '$lib/components/DeliveryForm.svelte';
 	import PaymentMethod from '$lib/components/PaymentMethod.svelte';
-	import { patchPocketbase } from '$lib/utils/api';
+	import { patchPocketbase1only } from '$lib/utils/api';
 
 	// Use the actual cart data from your app's state management
 	let cartItems: any = [];
@@ -14,6 +14,8 @@
 	// Use the actual order data from your app's state management
 	let orderItem: any = [];
 	$: orderItem = $order; // Observe the order store
+
+	console.log('$order:', $order);
 
 	// Step control
 	let currentStep = 1;
@@ -57,7 +59,6 @@
 	// Handle placing the order (you can add further logic here)
 	async function placeOrder() {
 		await handleSubmit();
-		console.log('Order Placed', orderItem.id);
 		goto('/order-confirmation');
 	}
 
@@ -68,7 +69,9 @@
 		};
 
 		try {
-			const menuItems = await patchPocketbase('texbab_orders', orderItem.id, status); // the actual endpoint for menu items in your Pocketbase
+
+			console.log('orderItem.id', orderItem.id);
+			const menuItems = await patchPocketbase1only('texbab_orders', orderItem.id, status); // the actual endpoint for menu items in your Pocketbase
 		} catch (error) {
 			throw new Error('Failed to fetch menu items.');
 		}

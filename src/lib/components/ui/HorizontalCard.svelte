@@ -4,7 +4,7 @@
 	export let url: any;
 </script>
 
-<a href={url} class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-96 p-2">
+<a href={url} target="_self" class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-96 p-2">
 	<div class="w-full">
 		<figure class="w-full h-full rounded-lg overflow-hidden">
 			<img src={img} alt={`bilde anv texbab.no ${title} meny`} class="h-full w-full object-cover" />
