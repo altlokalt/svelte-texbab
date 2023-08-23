@@ -171,6 +171,50 @@ export const menu: any = [
 	}
 ];
 
+// the icons are from https://iconify.design
+export const badge: any = [
+	{
+		icon: 'mdi:child-toy',
+		title: 'Barne',
+		slug: '/menu/texbab_barnemenu'
+	},
+	{
+		icon: 'majesticons:burger-line',
+		title: 'Burger',
+		slug: '/menu/texbab_burger'
+	},
+	{
+		icon: 'raphael:green',
+		title: 'Eat Green',
+		slug: '/menu/texbab_eat_green'
+	},
+	{
+		title: 'Kebab',
+		icon: 'game-icons:kebab-spit',
+		slug: '/menu/texbab_kebab'
+	},
+	{
+		title: 'Pizza',
+		slug: '/menu/texbab_pizza',
+		icon: 'emojione-monotone:pizza'
+	},
+	{
+		title: 'smaretter',
+		slug: '/menu/texbab_smaretter',
+		icon: 'map:food'
+	},
+	{
+		title: 'Full',
+		slug: '/menu/texbab_fullmenu',
+		icon: 'arcticons:foodora-dk'
+	},
+	{
+		title: 'Special',
+		slug: '/menu/texbab_special',
+		icon: 'emojione-monotone:face-savoring-food'
+	}
+];
+
 export const head: HeadConfig = {};
 
 export const header: HeaderConfig = {
