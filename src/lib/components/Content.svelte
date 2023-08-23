@@ -33,7 +33,7 @@
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full h-full">
 			<div class="w-full">
 				<div
-					class="flex items-center gap-4 rounded-md border border-primary bg-secondary px-8 py-4 shadow"
+					class="flex items-center gap-4 rounded-md border border-primary bg-secondary px-8 py-4 shadow btn-primary"
 				>
 					<div>
 						<svg
@@ -59,7 +59,7 @@
 			</div>
 			<div class="w-full">
 				<div
-					class="flex items-center gap-4 rounded-md border border-primary bg-secondary px-8 py-4 shadow"
+					class="flex items-center gap-4 rounded-md border border-primary bg-secondary px-8 py-4 shadow btn-primary"
 				>
 					<div>
 						<svg
@@ -85,7 +85,7 @@
 			</div>
 			<div class="w-full">
 				<div
-					class="flex items-center gap-4 rounded-md border border-primary bg-secondary px-8 py-4 shadow"
+					class="flex items-center gap-4 rounded-md border border-primary bg-secondary px-8 py-4 shadow btn-primary"
 				>
 					<div>
 						<svg
@@ -167,13 +167,13 @@
 								<div class="flex items-center">
 									<button
 										type="button"
-										class="w-full rounded-l-xl border bg-primary p-2 text-base hover:bg-secondary"
+										class="w-full btn-primary rounded-l-xl border bg-primary p-2 text-base hover:bg-secondary"
 									>
 										🢀
 									</button>
 									<button
 										type="button"
-										class="w-full border-y bg-base-200 px-4 py-2 text-base font-bold hover:bg-secondary"
+										class="w-full  border-y bg-base-200 px-4 py-2 text-base font-bold hover:bg-secondary"
 									>
 										1
 									</button>
@@ -185,7 +185,7 @@
 									</button>
 									<button
 										type="button"
-										class="w-full rounded-r-xl border-y border-r bg-primary p-2 hover:bg-secondary"
+										class="w-full btn-primary rounded-r-xl border-y border-r bg-primary p-2 hover:bg-secondary"
 									>
 										🢂
 									</button>
