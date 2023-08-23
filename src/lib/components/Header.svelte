@@ -31,8 +31,10 @@
 	</div>
 	<ThemeChanger />
 
-	<!-- cart-->
+	
 	<div class="flex-none">
+		
+		<!-- cart-->
 		<div class="dropdown dropdown-end">
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<label tabindex="0" for="cart items number" class="btn btn-ghost btn-circle">
