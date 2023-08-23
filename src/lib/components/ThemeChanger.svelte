@@ -6,7 +6,7 @@
 
 	let currentTheme: string;
 	let currentThemeColor: string;
-	let pin: boolean;
+	let pin = true;
 	let percent: number;
 	let [scrollY, lastY] = [0, 0];
 
