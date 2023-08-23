@@ -3,8 +3,8 @@
 	import { pb } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
 
-	let newEmail: string = '';
-	let emailChangeRequested: boolean = false;
+	let newEmail: string;
+	let emailChangeRequested: boolean;
 
 	async function requestEmailChange() {
 		try {

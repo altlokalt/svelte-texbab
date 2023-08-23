@@ -4,7 +4,7 @@
 	import Home from '$lib/components/Home.svelte';
 	import { page as current, pocketbaseResponse } from '$lib/utils/stores';
 	import { getPocketbase } from '$lib/utils/api';
-	
+
 	export let data;
 	export let site_name = `${import.meta.env.VITE_SITE_NAME}`;
 
@@ -67,4 +67,3 @@
 </div>
 
 <!-- <Chat /> -->
-

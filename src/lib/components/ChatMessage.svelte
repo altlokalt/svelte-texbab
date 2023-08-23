@@ -2,12 +2,14 @@
 	export let message: any;
 	export let sender;
 
-
-
 	//console.log('message: ', message, 'sender: ', message.expand?.sender.username);
 
 	const messageClass = message.expand?.sender.username === sender ? 'chat-end' : 'chat-start';
-	const avatar =  message.expand?.sender.avatar ? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${message.expand?.sender.id}/${message.expand?.sender.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${message.expand?.sender.username}.svg`
+	const avatar = message.expand?.sender.avatar
+		? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${message.expand?.sender.id}/${
+				message.expand?.sender.avatar
+		  }`
+		: `https://avatars.dicebear.com/api/adventurer-neutral/${message.expand?.sender.username}.svg`;
 
 	const ts = new Date(message.created);
 </script>
@@ -15,7 +17,7 @@
 <div class={`chat ${messageClass}`}>
 	<div class="chat-image avatar">
 		<div class="w-10 rounded-full">
-			<img src={avatar} alt="avatar"/>
+			<img src={avatar} alt="avatar" />
 		</div>
 	</div>
 	<div class="chat-header">

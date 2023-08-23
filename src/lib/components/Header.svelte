@@ -5,8 +5,9 @@
 	import { logoutPocketbase } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
 
-
-	export let site_logo =`${import.meta.env.VITE_SITE_LOGO}`;
+	export let site_logo = `${import.meta.env.VITE_SITE_LOGO}`;
+	export let site_name = `${import.meta.env.VITE_SITE_NAME}`;
+	export let site_url = `${import.meta.env.VITE_SITE_URL}`;
 	// Use the actual cart data from your app's state management
 	let cartItems: any = [];
 	$: cartItems = $cart; // Observe the cart store and update the cartItems variable
@@ -15,14 +16,17 @@
 		return cartItems.reduce((total: any, item: any) => total + item.price * item.quantity, 0);
 	}
 
-
-	const avatar =  $authData.avatar ? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`
+	const avatar = $authData.avatar
+		? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${
+				$authData.avatar
+		  }`
+		: `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
 </script>
 
 <div class="navbar bg-base-100 sticky top-0 z-50">
 	<div class="flex-1">
 		<a class="absolute h-auto w-32" href="/">
-			<img src={site_logo} alt="SvelteKit" class="w-14"/>
+			<img src={site_logo} alt="SvelteKit" class="w-14" />
 		</a>
 	</div>
 	<ThemeChanger />
@@ -30,7 +34,8 @@
 	<!-- cart-->
 	<div class="flex-none">
 		<div class="dropdown dropdown-end">
-			<label tabindex="0" class="btn btn-ghost btn-circle">
+			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+			<label tabindex="0" for="cart items number" class="btn btn-ghost btn-circle">
 				<div class="indicator">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -48,6 +53,7 @@
 					<span class="badge badge-sm indicator-item">{cartItems.length} </span>
 				</div>
 			</label>
+			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<div
 				tabindex="0"
 				class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
@@ -65,11 +71,16 @@
 		<!-- profile-->
 		{#if $authData.username}
 			<div class="dropdown dropdown-end">
-				<label tabindex="0" class="btn btn-ghost btn-circle avatar">
+				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+				<label tabindex="0" for="profile button" class="btn btn-ghost btn-circle avatar">
 					<div class="w-10 rounded-full">
-						<img src={avatar} />
+						<img
+							src={avatar}
+							alt={`${$authData.username} profile picture on ${site_name}, ${site_url}`}
+						/>
 					</div>
 				</label>
+				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<ul
 					tabindex="0"
 					class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
@@ -95,13 +106,19 @@
 					<li aria-current={$page.url.pathname.startsWith('/menu') ? 'page' : undefined}>
 						<a href="/menu">menu</a>
 					</li>
-					<li aria-current={$page.url.pathname === '/dashboard/profile/preview' ? 'page' : undefined}>
+					<li
+						aria-current={$page.url.pathname === '/dashboard/profile/preview' ? 'page' : undefined}
+					>
 						<a class="justify-between" href="/dashboard/profile/preview">
 							Dashboard
 							<span class="badge">New</span>
 						</a>
 					</li>
-					<li><button class="signout-button bg-error opacity-80" on:click={logoutPocketbase}>Sign Out</button></li>
+					<li>
+						<button class="signout-button bg-error opacity-80" on:click={logoutPocketbase}
+							>Sign Out</button
+						>
+					</li>
 				</ul>
 			</div>
 		{:else}
@@ -109,4 +126,3 @@
 		{/if}
 	</div>
 </div>
-

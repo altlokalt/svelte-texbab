@@ -19,7 +19,6 @@
 		try {
 			console.log(`Updating order ${id} preparation status...`);
 
-
 			const updatedOrder = await patchPocketbase1only('texbab_orders', id, {
 				prepared
 			});

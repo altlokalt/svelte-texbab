@@ -16,7 +16,7 @@
 		}
 
 		try {
-			const res = await authPocketbase(username, password);
+			await authPocketbase(username, password);
 			goto('/');
 		} catch (err: any) {
 			alert(err.message);
@@ -41,7 +41,7 @@
 					bind:value={password}
 					minlength="8"
 					type="password"
-					class="input input-bordered "
+					class="input input-bordered"
 					class:input-error={passwordError}
 					on:input={checkPassword}
 				/>
@@ -55,7 +55,7 @@
 					class:input-bordered={passwordError}
 					on:input={checkPassword}
 				/>
-				<label class="label">
+				<label class="label" for="password">
 					<span class="label-text-alt text-error">Password must be at least 8 characters long.</span
 					>
 				</label>

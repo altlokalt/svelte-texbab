@@ -9,8 +9,8 @@
 		<a href="/" class=" rounded-2xl hover:bg-primary">
 			<img src={site_logo} alt="Texbab logo" class="w-14" />
 		</a>
-		<p >Texbab AS: Hvor hvert bitt er en rodeo av smak</p>
-		<p >
+		<p>Texbab AS: Hvor hvert bitt er en rodeo av smak</p>
+		<p>
 			Made by <a href="https://altlokalt.com" class="font-bold hover:text-primary">altlokalt.</a> Copyright
 			© 2023 - All rights reserved
 		</p>

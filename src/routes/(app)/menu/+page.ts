@@ -5,7 +5,7 @@ export const ssr = false;
 // export async function load({ params }) {
 export async function load({ params }: { params: { slug: string } }) {
 	const data = {
-		sort: `-created`,
+		sort: `-created`
 	};
 
 	const menuItems = await getPocketbase('texbab_fullmenu', data).catch((error) => {
@@ -16,4 +16,3 @@ export async function load({ params }: { params: { slug: string } }) {
 		menuItems // Assuming menuItems.items is the array you want to return
 	};
 }
-

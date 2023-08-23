@@ -1,7 +1,6 @@
 <script lang="ts">
 	import BadgeCard from './ui/BadgeCard.svelte';
 	import { menu } from '$lib/config/general';
-
 </script>
 
 <h3 class="text-3xl font-semibold text-left mt-8 mb-4 mx-4">Populære</h3>

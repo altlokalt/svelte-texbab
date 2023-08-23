@@ -1,6 +1,5 @@
 <script>
-	import Chat from "$lib/components/Chat.svelte";
-
+	import Chat from '$lib/components/Chat.svelte';
 </script>
 
 <svelte:head>

@@ -3,8 +3,7 @@
 </script>
 
 <svelte:head>
-  <title>Dashboard</title>
+	<title>Dashboard</title>
 </svelte:head>
 
-<Content title="Home"/>
-  
+<Content title="Home" />

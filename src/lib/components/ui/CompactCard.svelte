@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let item: any; // Specify the type for 'data'
 	export let addToCart: any;
-	let quantity: number = 0;
+	let quantity: number;
 	import { getImage } from '$lib/utils/api';
 
 	let image: any;
@@ -52,7 +52,7 @@
 		<div class="card-actions justify-end">
 			<form on:submit={handleSubmit}>
 				<div class="form-control">
-					<label class="label">
+					<label class="label" for="add to cart">
 						<span class="label-text">Add to cart</span>
 					</label>
 					<label class="join">

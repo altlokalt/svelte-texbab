@@ -1,6 +1,6 @@
 <script>
 	import Login from '$lib/components/Login.svelte';
-import Layout from '$lib/components/dashboard/Layout.svelte';
+	import Layout from '$lib/components/dashboard/Layout.svelte';
 	import { pb } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
 	import { onMount } from 'svelte';

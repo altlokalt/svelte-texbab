@@ -5,8 +5,6 @@ import PicturesIcon from './icons/PicturesIcon.svelte';
 import DocumentsIcon from './icons/DocumentsIcon.svelte';
 import StatisticsIcon from './icons/StatisticsIcon.svelte';
 
-
-
 export const data = [
 	{
 		section: 'Profile',
@@ -19,8 +17,7 @@ export const data = [
 			{
 				title: 'Edit',
 				link: '/dashboard/profile/edit'
-			}
-			,
+			},
 			{
 				title: 'Change email',
 				link: '/dashboard/profile/request-email-change'
@@ -44,7 +41,7 @@ export const data = [
 				link: '/dashboard/admin/rider'
 			}
 		]
-	},
+	}
 	// {
 	// 	section: 'Messages',
 	// 	icon: MessagesIcon,
@@ -63,7 +60,7 @@ export const data = [
 	// 		}
 	// 	]
 	// },
-	
+
 	// {
 	// 	section: 'Statistics',
 	// 	icon: StatisticsIcon,

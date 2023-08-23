@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
+	import { goto } from '$app/navigation';
 
-	goto("/menu/texbab_fullmenu");
+	goto('/menu/texbab_fullmenu');
 </script>
 
 <svelte:head>
@@ -10,5 +10,3 @@
 </svelte:head>
 
 <h1>hello</h1>
-
-

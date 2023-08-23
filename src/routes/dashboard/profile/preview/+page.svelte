@@ -1,8 +1,12 @@
 <script>
 	import Chat from '$lib/components/Chat.svelte';
-import { authData } from '$lib/utils/stores';
+	import { authData } from '$lib/utils/stores';
 
-	const avatar =  $authData.avatar ? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${$authData.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
+	const avatar = $authData.avatar
+		? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${
+				$authData.avatar
+		  }`
+		: `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
 </script>
 
 <div>
@@ -33,11 +37,7 @@ import { authData } from '$lib/utils/stores';
 				<div class="relative bg-base-100 w-full mb-6 shadow-xl rounded-lg">
 					<div class="px-6 py-4">
 						<div class="flex items-center justify-between">
-							<img
-								alt="Profile Avatar"
-								src={avatar}
-								class="rounded-full h-20 w-20 object-cover"
-							/>
+							<img alt="Profile Avatar" src={avatar} class="rounded-full h-20 w-20 object-cover" />
 							<button class="btn btn-outline btn-accent">Like</button>
 						</div>
 						<div class="text-center mt-6">

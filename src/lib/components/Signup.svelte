@@ -2,10 +2,10 @@
 	import { goto } from '$app/navigation';
 	import { createPocketbaseUser } from '$lib/utils/api';
 
-	let username: string = '';
-	let password: string = '';
-	let email: string = '';
-	let passwordConfirm: string = '';
+	let username = '';
+	let password = '';
+	let email = '';
+	let passwordConfirm = '';
 
 	const data = {
 		username,
@@ -15,11 +15,10 @@
 		passwordConfirm
 	};
 
-	function signup() {
+	async function signup() {
 		try {
 			// create pocketbase user
-			const res = createPocketbaseUser(data);
-
+			await createPocketbaseUser(data);
 			goto('/');
 		} catch (err: any) {
 			alert(err.message);

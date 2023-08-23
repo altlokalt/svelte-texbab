@@ -13,6 +13,7 @@
 			page
 		};
 
+		// svelte-ignore error
 		const menuItems: any = await getPocketbase($page.params.slug, data).catch((error) => {
 			throw error;
 		});

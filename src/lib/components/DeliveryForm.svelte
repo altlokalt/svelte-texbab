@@ -44,36 +44,40 @@
 	<form on:submit|preventDefault={handleSubmit}>
 		<div class="grid grid-cols-2 gap-4">
 			<div>
-				<label class="block font-semibold">First Name</label>
+				<label for="firstName" class="block font-semibold">First Name</label>
 				<input
 					type="text"
+					id="firstName"
 					bind:value={firstName}
 					class="w-full px-3 py-2 rounded-lg border"
 					required
 				/>
 			</div>
 			<div>
-				<label class="block font-semibold">Last Name</label>
+				<label for="lastName" class="block font-semibold">Last Name</label>
 				<input
 					type="text"
+					id="lastName"
 					bind:value={lastName}
 					class="w-full px-3 py-2 rounded-lg border"
 					required
 				/>
 			</div>
 			<div class="col-span-2">
-				<label class="block font-semibold">Address</label>
+				<label for="address" class="block font-semibold">Address</label>
 				<input
 					type="text"
+					id="address"
 					bind:value={address}
 					class="w-full px-3 py-2 rounded-lg border"
 					required
 				/>
 			</div>
 			<div class="col-span-2">
-				<label class="block font-semibold">Phone Number</label>
+				<label for="phoneNumber" class="block font-semibold">Phone Number</label>
 				<input
 					type="tel"
+					id="phoneNumber"
 					bind:value={phoneNumber}
 					class="w-full px-3 py-2 rounded-lg border"
 					required

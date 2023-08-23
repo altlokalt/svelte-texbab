@@ -7,10 +7,10 @@ export async function load({ params }: { params: { slug: string } }) {
 			page: 1,
 			perPage: 30,
 			sort: '-created',
-			filter: 'prepared=true',
-		}
+			filter: 'prepared=true'
+		};
 		const orders = await getPocketbase('texbab_orders', data); // the actual endpoint for menu items in your Pocketbase
-		return {orders};
+		return { orders };
 	} catch (error) {
 		throw new Error('Failed to fetch orders.');
 	}

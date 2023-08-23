@@ -4,7 +4,6 @@
 	import { page } from '$app/stores';
 	import { closeSidebar, sidebarOpen, currentSection } from '$lib/utils/stores';
 
-
 	const updateCurrentSection = (section: any) => {
 		currentSection.set(section);
 		if (window.innerWidth > 1024) {
@@ -29,8 +28,8 @@
 <div class="flex h-full w-full">
 	<div class="h-full bg-base-300 pt-10">
 		{#each data as { icon, section } (section)}
-			<div class="mx-4 my-1 flex w-full items-center justify-start p-3 ">
-				<div on:click={() => updateCurrentSection(section)}>
+			<div class="mx-4 my-1 flex w-full items-center justify-start p-3">
+				<button on:click={() => updateCurrentSection(section)}>
 					<div>
 						<div
 							class={`flex h-8 w-8 items-center justify-center ${
@@ -40,7 +39,7 @@
 							<span><svelte:component this={icon} /></span>
 						</div>
 					</div>
-				</div>
+				</button>
 			</div>
 		{/each}
 	</div>
@@ -51,10 +50,10 @@
 				<div>
 					{#if section === $currentSection}
 						<div>
-							<div class="pl-3 text-lg font-medium ">
+							<div class="pl-3 text-lg font-medium">
 								{section}
 							</div>
-							<ul class="list-disc px-8 pt-6 ">
+							<ul class="list-disc px-8 pt-6">
 								{#each content as item (item.title)}
 									<li>
 										<a

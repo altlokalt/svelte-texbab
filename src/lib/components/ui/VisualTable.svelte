@@ -13,21 +13,16 @@
 			return;
 		}
 
-		try {
-			const updatedOrder = await patchPocketbase1only('texbab_orders', id, {
-				prepared
-			});
+		const updatedOrder = await patchPocketbase1only('texbab_orders', id, {
+			prepared
+		});
 
-			// Update the local data with the response from the server
-			data.items = data.items.map((order: any) =>
-				order.id === id ? { ...order, prepared: updatedOrder.prepared } : order
-			);
-			// Emit an event to notify the parent component about the order preparation.
-			dispatch('orderPrepared', { id });
-		} catch (error) {
-			// Handle the error, e.g., show a notification to the user.
-			throw error;
-		}
+		// Update the local data with the response from the server
+		data.items = data.items.map((order: any) =>
+			order.id === id ? { ...order, prepared: updatedOrder.prepared } : order
+		);
+		// Emit an event to notify the parent component about the order preparation.
+		dispatch('orderPrepared', { id });
 	}
 </script>
 

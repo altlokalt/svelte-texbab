@@ -7,7 +7,7 @@ export const pb2 = new PocketBase(`${import.meta.env.VITE_PB_API_2}`);
 
 export const authPocketbase = async (user: string, password: string) => {
 	const res = await pb.collection('users').authWithPassword(user, password);
-	const res2 = await pb2.collection('users').authWithPassword(user, password);
+	await pb2.collection('users').authWithPassword(user, password);
 	authData.set(pb.authStore.model);
 
 	goto('/');
@@ -45,7 +45,7 @@ export const createPocketbaseUser = async (data: any) => {
 		passwordConfirm: data.passwordConfirm
 	};
 
-	const res2 = await pb2.collection('users').create(data2);
+	await pb2.collection('users').create(data2);
 
 	// (optional) send an email verification request
 	await pb2.collection('users').requestVerification(data.email);
@@ -62,7 +62,7 @@ export const createPocketbaseUser = async (data: any) => {
 
 export const authPocketbaseAdmin = async (user: string, password: string) => {
 	const res = await pb.admins.authWithPassword(user, password);
-	const res2 = await pb2.admins.authWithPassword(user, password);
+	await pb2.admins.authWithPassword(user, password);
 	authData.set(res);
 
 	if (!pb.authStore.isValid) {
@@ -74,17 +74,13 @@ export const authPocketbaseAdmin = async (user: string, password: string) => {
 
 // refresh the login data
 export const refreshAuthPocketbase = async () => {
-	try {
-		// Update authData store
-		const user = await pb.collection('users').authRefresh({
-			refreshToken: pb.authStore.token
-		});
-		authData.set(user);
+	// Update authData store
+	const user = await pb.collection('users').authRefresh({
+		refreshToken: pb.authStore.token
+	});
+	authData.set(user);
 
-		return user;
-	} catch (error) {
-		throw error;
-	}
+	return user;
 };
 
 const menuItems = [
@@ -124,62 +120,44 @@ export async function placeOrder(orderData: any) {
 // };
 
 export const getPocketbase = async (collection: string, data: any) => {
-	try {
-		const resultList = await pb.collection(collection).getList(1, 8, data);
-		return resultList;
-	} catch (error) {
-		throw error;
-	}
+	const resultList = await pb.collection(collection).getList(1, 8, data);
+	return resultList;
 };
 
 export const postPocketbase = async (collection: string, data: any) => {
-	try {
-		const resultList = await pb.collection(collection).create( data);
-		return resultList;
-	} catch (error) {
-		throw error;
-	}
+	const resultList = await pb.collection(collection).create(data);
+	return resultList;
 };
 
 export const patchPocketbase = async (collection: string, id: string, data: any) => {
-	try {
-		const response = await pb.collection(collection).update(id, data);
-		const response2 = await pb2.collection(collection).update(id, data);
-		return response;
-	} catch (error) {
-		throw error;
-	}
+	const response = await pb.collection(collection).update(id, data);
+	await pb2.collection(collection).update(id, data);
+	return response;
 };
 
 export const patchPocketbase1only = async (collection: string, id: string, data: any) => {
-	try {
-		const response = await pb.collection(collection).update(id, data);
+	const response = await pb.collection(collection).update(id, data);
 
-		return response;
-	} catch (error) {
-		throw error;
-	}
+	return response;
 };
-
-
-
 
 export const getImage = async (url: string, width: number, height: number) => {
-	try {
-		const response = await fetch(url);
-		if (response.ok) {
-			const originalImageBlob = await response.blob();
-			const compressedImageBlob = await compressImage(originalImageBlob, width, height, 1); // 1 = 100% quality (no compression) - change as needed, e.g 0 = 0% quality (full compression)
-			return URL.createObjectURL(compressedImageBlob);
-		}
-
-		throw new Error('Failed to fetch image');
-	} catch (error) {
-		throw error;
+	const response = await fetch(url);
+	if (response.ok) {
+		const originalImageBlob = await response.blob();
+		const compressedImageBlob = await compressImage(originalImageBlob, width, height, 1); // 1 = 100% quality (no compression) - change as needed, e.g 0 = 0% quality (full compression)
+		return URL.createObjectURL(compressedImageBlob);
 	}
+
+	throw new Error('Failed to fetch image');
 };
 
-export const compressImage = async (file: any, width: number, height: number, quality: number): Promise<File> => {
+export const compressImage = async (
+	file: any,
+	width: number,
+	height: number,
+	quality: number
+): Promise<File> => {
 	return new Promise<File>((resolve, reject) => {
 		const reader = new FileReader();
 
@@ -196,20 +174,23 @@ export const compressImage = async (file: any, width: number, height: number, qu
 				ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
 				// Convert canvas to Blob and create a new File object
-				canvas.toBlob((blob: any) => {
-					const compressedFile = new File([blob], file.name, {
-						type: file.type,
-						lastModified: Date.now()
-					});
-					resolve(compressedFile);
-				}, file.type, quality); // Use the provided quality parameter
+				canvas.toBlob(
+					(blob: any) => {
+						const compressedFile = new File([blob], file.name, {
+							type: file.type,
+							lastModified: Date.now()
+						});
+						resolve(compressedFile);
+					},
+					file.type,
+					quality
+				); // Use the provided quality parameter
 			};
 		};
 
 		reader.readAsDataURL(file);
 	});
 };
-
 
 export async function processCreditCardPayment() {
 	// Implement credit card payment handling using Stripe or other payment gateway
@@ -223,7 +204,7 @@ export async function processPayPalPayment() {
 	return { success: true, message: 'PayPal Payment Successful' };
 }
 // Function to handle Vipps payment
-export async function processVippsPayment(data: any) {
+export async function processVippsPayment() {
 	try {
 		const paymentDataResponse = await fetch('/api/createPayment');
 		const paymentData = await paymentDataResponse.json(); // Assuming the response body is JSON

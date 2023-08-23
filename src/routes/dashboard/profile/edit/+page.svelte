@@ -5,7 +5,7 @@
 	import { authData } from '$lib/utils/stores';
 	import { compressImage } from '$lib/utils/api';
 
-	let updated: boolean = false;
+	let updated: boolean;
 
 	let data: any = {
 		username: $authData.username,
@@ -16,7 +16,6 @@
 		timezone: $authData.timezone,
 		avatar: $authData.avatar
 	};
-
 
 	async function updateProfile() {
 		// console.log('updateProfile from', $authData, 'to', data);
@@ -30,10 +29,10 @@
 			for (const key in data) {
 				formData.append(key, data[key]);
 			}
-			
+
 			// Exclude email and verified fields from being updated
-			const user = await patchPocketbase('users', $authData.id, formData);
-			
+			await patchPocketbase('users', $authData.id, formData);
+
 			// Update authData store
 			//refreshAuthPocketbase()
 
@@ -48,7 +47,7 @@
 	}
 
 	function handleFiles(event: any) {
-		data.avatar = event.target.files[0]
+		data.avatar = event.target.files[0];
 	}
 </script>
 
@@ -62,11 +61,9 @@
 	<InputWithLabel label="username" bind:value={data.username} />
 	<div class="input input-bordered flex-grow">
 		{$authData.email}
-		<a
-			href="/dashboard/profile/request-email-change"
-			class="btn btn-secondary ml-2 float-right"
+		<a href="/dashboard/profile/request-email-change" class="btn btn-secondary ml-2 float-right"
 			>Request Email Change
-		</a> 
+		</a>
 	</div>
 	<InputWithLabel label="title" bind:value={data.title} />
 	<InputWithLabel label="address" bind:value={data.address} />
@@ -79,7 +76,7 @@
 	/>
 
 	<div class="form-control w-full max-w-xs">
-		<label class="label " for="avatar-input">
+		<label class="label" for="avatar-input">
 			<span class="label-text">Avatar</span>
 		</label>
 		<input

@@ -13,6 +13,6 @@
 
 <div class="flex flex-col">
 	<Header />
-	<slot></slot>
+	<slot />
 	<Footer />
 </div>
