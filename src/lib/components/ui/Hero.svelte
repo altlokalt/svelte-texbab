@@ -16,7 +16,7 @@
 				Opplev våre smakfulle retter tilberedt med kjærlighet av våre dyktige kokker. Bestill nå og
 				nyt en eksepsjonell matopplevelse!
 			</p>
-			<a class="btn btn-primary" href="/barne">Bestill mat</a>
+			<a class="btn btn-primary" href="/menu">Bestill mat</a>
 		</div>
 	</div>
 </div>
