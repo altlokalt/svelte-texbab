@@ -3,7 +3,7 @@
 	import { page as current, pocketbaseResponse } from '$lib/utils/stores';
 	import { getPocketbase } from '$lib/utils/api';
 	import { page } from '$app/stores';
-	
+
 	let totalPages: number = Math.ceil($pocketbaseResponse.totalItems / $pocketbaseResponse.perPage);
 
 	// Function to fetch data based on the current page
@@ -37,26 +37,28 @@
 			fetchData(no);
 		}
 	}
-
-	
 </script>
 
 <div>
-	<div>
-		<button class="btn" on:click={() => setPage($current - 1)} disabled={$current === 1}
-			>Previous</button
-		>
-		<span>Page {$current} of {totalPages}</span>
-		<button class="btn" on:click={() => setPage($current + 1)} disabled={$current === totalPages}
-			>Next</button
-		>
-	</div>
-
 	<div
-		class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center"
+		class="grid grid-cols-1 gap-4 justify-items-center"
 	>
-		{#each $pocketbaseResponse.items as item}
-			<FoodItem bind:item />
-		{/each}
+		<div
+			class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center"
+		>
+			{#each $pocketbaseResponse.items as item}
+				<FoodItem bind:item />
+			{/each}
+		</div>
+
+		<div>
+			<button class="btn" on:click={() => setPage($current - 1)} disabled={$current === 1}
+				>Previous</button
+			>
+			<span>Page {$current} of {totalPages}</span>
+			<button class="btn" on:click={() => setPage($current + 1)} disabled={$current === totalPages}
+				>Next</button
+			>
+		</div>
 	</div>
 </div>

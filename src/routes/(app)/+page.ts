@@ -1,5 +1,7 @@
 import { getPocketbase } from '$lib/utils/api';
 
+export const ssr = false;
+
 // export async function load({ params }) {
 export async function load({ params }: { params: { slug: string } }) {
 	const data = {

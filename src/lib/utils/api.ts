@@ -125,7 +125,7 @@ export async function placeOrder(orderData: any) {
 
 export const getPocketbase = async (collection: string, data: any) => {
 	try {
-		const resultList = await pb.collection(collection).getList(1, 5, data);
+		const resultList = await pb.collection(collection).getList(1, 8, data);
 		return resultList;
 	} catch (error) {
 		throw error;
