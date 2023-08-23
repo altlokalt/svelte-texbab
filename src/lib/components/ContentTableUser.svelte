@@ -1,6 +1,5 @@
 <script lang="ts">
     export let data: any;
-    console.log("data", data);
     const avatar = data.avatar ? `${import.meta.env.VITE_PB_URL}/api/files/_pb_users_auth_/${data.id}/${data.avatar}` : `https://avatars.dicebear.com/api/adventurer-neutral/${data.username}.svg`
 </script>
 

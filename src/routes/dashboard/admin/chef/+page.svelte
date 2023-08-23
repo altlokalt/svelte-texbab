@@ -13,7 +13,7 @@
 	<h1 class="text-2xl font-bold mb-4">Restaurant Cook Dashboard</h1>
 
 	<!-- Your cook-specific content here -->
-	<CookOrder {data} />
+	<CookOrder data={data.orders} />
 </section>
 
 <style>

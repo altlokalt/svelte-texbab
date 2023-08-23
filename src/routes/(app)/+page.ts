@@ -1,19 +1,31 @@
+
 import { getPocketbase } from '$lib/utils/api';
+import { page, pocketbaseResponse } from '$lib/utils/stores';
 
 export const ssr = false;
+const defaultMenu = 'texbab_barnemenu'
 
 // export async function load({ params }) {
-export async function load({ params }: { params: { slug: string } }) {
-	const data = {
-		sort: `-created`,
-	};
+	export async function load({ params }: { params: { slug: string } }) {
+		let currentPage: any;
+		page.subscribe((value) => {
+			currentPage = value;	
+		});
 
-	const menuItems = await getPocketbase('texbab_barnemenu', data).catch((error) => {
-		throw error;
-	});
+		const data = {
+			sort: `-food_image`,
+			page: currentPage,
+		};
+	
+		const menuItems: any = await getPocketbase(defaultMenu, data).catch((error) => {
+			throw error;
+		});
 
-	return {
-		menuItems // Assuming menuItems.items is the array you want to return
-	};
-}
-
+		pocketbaseResponse.set(menuItems);
+		
+		return {
+			menuItems, // Assuming menuItems.items is the array you want to return
+			defaultMenu
+		};
+	}
+	

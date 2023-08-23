@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { patchPocketbase } from '$lib/utils/api';
+	import { patchPocketbase1only } from '$lib/utils/api';
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 	export let data: { items: any[] }; // Specify the type for 'data'
 
 	async function handleOrderPrepared(id: any, prepared: any) {
-		console.log(`Preparing order ${id}...`);
 		const orderToUpdate = data.items.find((order: any) => order.id === id);
 
 		if (!orderToUpdate) {
@@ -14,15 +13,10 @@
 			return;
 		}
 
-		console.log(`Order ${id} preparation status:`, orderToUpdate.prepared);
-
 		try {
-			console.log(`Updating order ${id} preparation status...`);
-			const updatedOrder = await patchPocketbase('texbab_orders',id, {
+			const updatedOrder = await patchPocketbase1only('texbab_orders', id, {
 				prepared
 			});
-
-			console.log(`Order ${id} preparation status updated successfully.`, updatedOrder);
 
 			// Update the local data with the response from the server
 			data.items = data.items.map((order: any) =>
@@ -31,8 +25,8 @@
 			// Emit an event to notify the parent component about the order preparation.
 			dispatch('orderPrepared', { id });
 		} catch (error) {
-			console.error('Failed to update order preparation status.', error);
 			// Handle the error, e.g., show a notification to the user.
+			throw error;
 		}
 	}
 </script>

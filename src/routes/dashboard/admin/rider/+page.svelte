@@ -150,7 +150,7 @@
 			<Map {options} bind:this={MAP_EL} on:ready={init} />
 		</div>
 		<div class="w-full">
-			<RiderDelivery {data} />
+			<RiderDelivery data={data.orders} />
 		</div>
 	</div>
 </section>

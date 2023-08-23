@@ -20,15 +20,6 @@
 		pocketbaseResponse.set(menuItems);
 
 		totalPages = Math.ceil(menuItems.totalItems / menuItems.perPage);
-
-		console.log(
-			'page to go to:',
-			page,
-			'current page:',
-			$current,
-			'page data response on the store:',
-			$pocketbaseResponse
-		);
 	}
 
 	function setPage(no: number) {
@@ -40,9 +31,7 @@
 </script>
 
 <div>
-	<div
-		class="grid grid-cols-1 gap-4 justify-items-center"
-	>
+	<div class="grid grid-cols-1 gap-4 justify-items-center">
 		<div
 			class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center"
 		>
@@ -51,13 +40,17 @@
 			{/each}
 		</div>
 
-		<div>
-			<button class="btn" on:click={() => setPage($current - 1)} disabled={$current === 1}
-				>Previous</button
+		<span>Page {$current} of {totalPages}</span>
+		<div class="join grid grid-cols-2">
+			<button
+				class="join-item btn btn-outline"
+				on:click={() => setPage($current - 1)}
+				disabled={$current === 1}>Previous page</button
 			>
-			<span>Page {$current} of {totalPages}</span>
-			<button class="btn" on:click={() => setPage($current + 1)} disabled={$current === totalPages}
-				>Next</button
+			<button
+				class="join-item btn btn-outline"
+				on:click={() => setPage($current + 1)}
+				disabled={$current === totalPages}>Next</button
 			>
 		</div>
 	</div>

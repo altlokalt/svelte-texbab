@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { patchPocketbase } from '$lib/utils/api';
+	import { patchPocketbase1only } from '$lib/utils/api';
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
@@ -18,7 +18,9 @@
 
 		try {
 			console.log(`Updating order ${id} preparation status...`);
-			const updatedOrder = await patchPocketbase(`texbab_orders/records/${id}`, {
+
+
+			const updatedOrder = await patchPocketbase1only('texbab_orders', id, {
 				prepared
 			});
 

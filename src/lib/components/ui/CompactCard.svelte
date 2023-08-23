@@ -24,8 +24,6 @@
 
 		const res = await getImage(pb_image, 350, 200);
 		image = res;
-
-		console.log('image:', image);
 	}
 
 	// Run the image fetching function whenever 'item' changes
