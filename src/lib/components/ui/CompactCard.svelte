@@ -1,7 +1,8 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte';
 	export let item: any; // Specify the type for 'data'
 	export let addToCart: any;
-	let quantity: number;
+	let quantity = 0;
 	import { getImage } from '$lib/utils/api';
 
 	let image: any;
@@ -33,41 +34,53 @@
 		}
 	}
 
-	function handleSubmit(event: any) {
-		event.preventDefault(); // Prevent the form from submitting and reloading the page
-		addToCart(item, quantity); // Call the addToCart function with the selected item and quantity
-	}
 </script>
 
-<div class="card card-compact w-auto bg-base-100 shadow-xl">
-	<figure>
-		{#if image}
-			<img src={image} alt={item.name} />
-		{/if}
-	</figure>
-	<div class="card-body">
-		<h2 class="card-title">{item.name}</h2>
-		<p>{item.price} kr</p>
-		<p>{item.kommentar}</p>
-		<div class="card-actions justify-end">
-			<form on:submit={handleSubmit}>
-				<div class="form-control">
-					<label class="label" for="add to cart">
-						<span class="label-text">Add to cart</span>
-					</label>
-					<label class="join">
-						<button class="btn btn-primary join-item" on:click={() => quantity--}>-</button>
-						<input
-							type="text join-item input-bordered"
-							placeholder="3"
-							class="input input-bordered w-full"
-							bind:value={quantity}
-						/>
-						<button class="btn btn-primary join-item" on:click={() => quantity++}>+</button>
-						<button type="submit" class="btn btn-primary mx-1 join-item">Submit</button>
-					</label>
-				</div>
-			</form>
+<div class="w-full  bg-base-100 shadow rounded p-4">
+	<div
+		class="h-48 w-full flex flex-col justify-between p-4 bg-cover bg-center"
+		style={`background-image: url(${image})`}
+	>
+		<div class="flex justify-between">
+			<input type="checkbox" />
+			<button class="btn-ghost">
+				<Icon icon="ic:round-plus" class="h-6 w-4" />
+			</button>
 		</div>
+		<div>
+			<div class="badge badge-accent">Tilgjengelig</div>
+		</div>
+	</div>
+	<div class="p-4 flex flex-col items-center">
+		<p class="font-light text-xs text-center">Texbab</p>
+		<h1 class=" text-center mt-1">{item.name}</h1>
+		<p class="text-center mt-1">{item.price} kr</p>
+		<div class="inline-flex items-center mt-2">
+			<button
+				class="btn btn-neutral inline-flex items-center px-2 py-1 border-r"
+				on:click={() => quantity += 1}
+			>
+				<Icon icon="ic:round-minus" class="h-6 w-4" />
+			</button>
+			<div class=" btn btn-neutral inline-flex items-center px-4 py-1 select-none">
+				{quantity}
+			</div>
+			<button
+				class="btn btn-neutral disabled:opacity-50 inline-flex items-center px-2 py-1 border-r"
+				on:click={() => quantity += 1}
+			>
+				<Icon icon="ic:round-plus" class="h-6 w-4" />
+			</button>
+		</div>
+
+		<button
+			class="py-2 px-4 btn btn-primary disabled:opacity-50 mt-4 w-full flex items-center justify-center"
+			on:click={() => addToCart(item, quantity)}
+		>
+		
+			Bestill
+			<Icon icon="bytesize:cart" class="h-6 w-6 ml-2" />
+		
+		</button>
 	</div>
 </div>
