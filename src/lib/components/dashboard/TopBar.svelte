@@ -1,18 +1,19 @@
 <script>
 	import { toggleSidebar } from '$lib/utils/stores';
 	import ThemeChanger from '$lib/components/ThemeChanger.svelte';
-	import { logoutPocketbase } from '$lib/utils/api';
+	import { logoutPocketbase, pb } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
 	import { page } from '$app/stores';
 
 	export let site_logo = `${import.meta.env.VITE_SITE_LOGO}`;
 	export let site_name = `${import.meta.env.VITE_SITE_NAME}`;
 
-	const avatar = $authData.avatar
-		? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${
-				$authData.avatar
+	const avatar = pb.authStore.model?.avatar
+		? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${pb.authStore.model?.id}/${
+      pb.authStore.model?.avatar
 		  }`
-		: `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
+		: `https://avatars.dicebear.com/api/adventurer-neutral/${pb.authStore.model?.username}.svg`;
+
 </script>
 
 <header class="relative z-10 h-16 w-full items-center border-b border-primary md:h-20">
