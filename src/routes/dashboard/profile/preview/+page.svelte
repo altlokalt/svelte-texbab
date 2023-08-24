@@ -1,12 +1,15 @@
 <script>
 	import Chat from '$lib/components/Chat.svelte';
 	import { authData } from '$lib/utils/stores';
+	import { pb } from '$lib/utils/api';
 
-	const avatar = $authData.avatar
-		? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${$authData.id}/${
-				$authData.avatar
+	
+	const avatar = pb.authStore.model?.avatar
+		? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${pb.authStore.model?.id}/${
+      pb.authStore.model?.avatar
 		  }`
-		: `https://avatars.dicebear.com/api/adventurer-neutral/${$authData.username}.svg`;
+		: `https://avatars.dicebear.com/api/adventurer-neutral/${pb.authStore.model?.username}.svg`;
+
 </script>
 
 <div>
