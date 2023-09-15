@@ -153,3 +153,126 @@
 		<img src="assets/img/shape/leaf_6.png" alt="shape" />
 	</div>
 </section>
+
+
+<style>
+	.space {
+	  padding: 40px 0;
+	}
+  
+	.container {
+	  max-width: 1200px;
+	  margin: 0 auto;
+	}
+  
+	.title-area {
+	  text-align: center;
+	}
+  
+	.sub-title {
+	  display: flex;
+	  align-items: center;
+	}
+  
+	.icon {
+	  width: 40px;
+	  height: 40px;
+	  margin-right: 10px;
+	}
+  
+	.sec-title {
+	  font-size: 24px;
+	  font-weight: bold;
+	}
+  
+	.font-style {
+	  font-style: italic;
+	}
+  
+	.text-theme {
+	  color: #f08080;
+	}
+  
+	.sec-text {
+	  font-size: 16px;
+	  margin-top: 20px;
+	}
+  
+	.board-wrap {
+	  background-image: url(assets/img/bg/board_bg_1.jpg);
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  background-size: cover;
+	}
+  
+	.masonary-active {
+	  display: flex;
+	  flex-wrap: wrap;
+	}
+  
+	.filter-item {
+	  width: 33.33%;
+	  padding: 0 15px;
+	}
+  
+	.menu-board {
+	  border: 1px solid #ddd;
+	  padding: 20px;
+	}
+  
+	.menu-board_title {
+	  font-size: 20px;
+	  font-weight: bold;
+	  margin-bottom: 10px;
+	}
+  
+	.board-list {
+	  margin-bottom: 10px;
+	}
+  
+	.board-list_info {
+	  display: flex;
+	  align-items: center;
+	}
+  
+	.board-list_title {
+	  font-size: 16px;
+	  font-weight: bold;
+	  margin-right: 10px;
+	}
+  
+	.board-list_price {
+	  font-size: 14px;
+	  font-weight: bold;
+	  color: #f08080;
+	}
+  
+	.th-btn {
+	  border: none;
+	  background-color: #f08080;
+	  color: white;
+	  font-size: 16px;
+	  font-weight: bold;
+	  padding: 10px 20px;
+	  border-radius: 5px;
+	}
+  
+	/* Custom CSS */
+  
+	.menu-board {
+	  background-color: #fff;
+	}
+  
+	.board-list {
+	  border-bottom: 1px solid #ddd;
+	}
+  
+	.board-list_title {
+	  color: #333;
+	}
+  
+	.board-list_price {
+	  color: #f08080;
+	}
+  </style>
+
