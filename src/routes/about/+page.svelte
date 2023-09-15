@@ -162,7 +162,7 @@
                 </button>
                 <div class="mobile-logo">
                     <a href="/index.html">
-                        <img src="assets/img/logo.svg" alt="Pizzan">
+                        <img src={import.meta.env.VITE_SITE_LIGHT_LOGO} alt="Pizzan">
                     </a>
                 </div>
                 <div class="th-mobile-menu">
@@ -409,7 +409,7 @@
                             <div class="col-auto">
                                 <div class="header-logo">
                                     <a href="/index.html">
-                                        <img src="/assets/img/logo-white.svg" alt="Pizzan">
+                                        <img src={import.meta.env.VITE_SITE_DARK_LOGO} alt="Pizzan">
                                     </a>
                                 </div>
                             </div>
