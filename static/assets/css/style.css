@@ -1,6 +1,6 @@
 @use 'sass:math';
 :root {
-	--theme-color: #eb0029;
+	--theme-color: #ff9d2d;
 	--theme-color2: #ff9d2d;
 	--title-color: #010f1c;
 	--body-color: #4d5765;
@@ -10860,6 +10860,65 @@ span.select2-selection.select2-selection--single:focus {
 	-webkit-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);
+}
+
+.space,
+.space-top {
+	padding-top: var(--section-space);
+}
+.space,
+.space-bottom {
+	padding-bottom: var(--section-space);
+}
+.space-extra,
+.space-extra-top {
+	padding-top: calc(var(--section-space) - 30px);
+}
+.space-extra,
+.space-extra-bottom {
+	padding-bottom: calc(var(--section-space) - 30px);
+}
+.space-extra2,
+.space-extra2-top {
+	padding-top: calc(var(--section-space) - 40px);
+}
+.space-extra2,
+.space-extra2-bottom {
+	padding-bottom: calc(var(--section-space) - 40px);
+}
+@media (min-width: 1199px) {
+	.space-lg-top {
+		padding-top: var(--section-space);
+	}
+}
+@media (max-width: 991px) {
+	.space,
+	.space-top {
+		padding-top: var(--section-space-mobile);
+	}
+	.space,
+	.space-bottom {
+		padding-bottom: var(--section-space-mobile);
+	}
+	.space-extra,
+	.space-extra-top {
+		padding-top: calc(var(--section-space-mobile) - 30px);
+	}
+	.space-extra,
+	.space-extra-bottom {
+		padding-bottom: calc(var(--section-space-mobile) - 30px);
+	}
+	.space-top-md-none {
+		padding-top: 0;
+	}
+	.space-extra2,
+	.space-extra2-top {
+		padding-top: 70px;
+	}
+	.space-extra2,
+	.space-extra2-bottom {
+		padding-bottom: 70px;
+	}
 }
 @media (max-width: 1299px) {
 	.shape-mockup.coffee {
