@@ -90,14 +90,12 @@
 
 		intervalId = setInterval(sendLocationToPocketBase, 1000);
 		localStorage.setItem('tracking', 'true');
-		console.log('Tracking started');
 	}
 
 	function stopTracking() {
 		tracking = false;
 		clearInterval(intervalId);
 		localStorage.setItem('tracking', 'false');
-		console.log('Tracking stopped');
 	}
 
 	async function sendLocationToPocketBase() {
@@ -114,10 +112,9 @@
 			};
 
 			//const test = await pb.collection('texbab_rider').update('tt1vrf3b6z68ib4', data);
-			const test = await pb.collection('texbab_rider').create(data);
+			// const test = await pb.collection('texbab_rider').create(data);
 
 			if (response) {
-				console.log('Location sent to PocketBase');
 				lastDataTimestamp = Date.now();
 				localStorage.setItem('lastDataTimestamp', lastDataTimestamp.toString());
 			} else {

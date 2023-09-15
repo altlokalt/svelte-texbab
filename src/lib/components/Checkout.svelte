@@ -15,8 +15,6 @@
 	let orderItem: any = [];
 	$: orderItem = $order; // Observe the order store
 
-	console.log('$order:', $order);
-
 	// Step control
 	let currentStep = 1;
 
@@ -69,7 +67,6 @@
 		};
 
 		try {
-			console.log('orderItem.id', orderItem.id);
 			await patchPocketbase1only('texbab_orders', orderItem.id, status); // the actual endpoint for menu items in your Pocketbase
 		} catch (error) {
 			throw new Error('Failed to fetch menu items.');

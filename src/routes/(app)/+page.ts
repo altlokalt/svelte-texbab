@@ -2,11 +2,11 @@ import { getPocketbase } from '$lib/utils/api';
 import { page, pocketbaseResponse } from '$lib/utils/stores';
 
 export const ssr = false;
-export const prerender = true
+export const prerender = true;
 const defaultMenu = 'texbab_barnemenu';
 
 // export async function load({ params }) {
-export async function load({ params }: { params: { slug: string } }) {
+export async function load() {
 	let currentPage: any;
 	page.subscribe((value) => {
 		currentPage = value;

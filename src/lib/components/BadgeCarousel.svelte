@@ -1,7 +1,6 @@
 <script lang="ts">
 	import BadgeCard from './ui/BadgeCard.svelte';
 	import { badge } from '$lib/config/general';
-	import HorizontalCard from '$lib/components/ui/HorizontalCard.svelte';
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 	import '@splidejs/svelte-splide/css';
 
@@ -15,7 +14,6 @@
 		perMove: 1,
 		drag: 'free'
 	};
-
 </script>
 
 <h3 class="text-3xl font-semibold text-left mt-8 mb-4 mx-4">Populære</h3>

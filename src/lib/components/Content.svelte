@@ -173,7 +173,7 @@
 									</button>
 									<button
 										type="button"
-										class="w-full  border-y bg-base-200 px-4 py-2 text-base font-bold hover:bg-secondary"
+										class="w-full border-y bg-base-200 px-4 py-2 text-base font-bold hover:bg-secondary"
 									>
 										1
 									</button>

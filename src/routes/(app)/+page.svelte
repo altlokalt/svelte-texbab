@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Chat from '$lib/components/Chat.svelte';
 	import FoodItem from '$lib/components/FoodItem.svelte';
 	import Home from '$lib/components/Home.svelte';
 	import { page as current, pocketbaseResponse } from '$lib/utils/stores';
@@ -43,7 +42,7 @@
 <div>
 	<div class="grid grid-cols-1 gap-4 justify-items-center">
 		<div
-			class="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center"
+			class="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center m-2"
 		>
 			{#each $pocketbaseResponse.items as item}
 				<FoodItem bind:item />

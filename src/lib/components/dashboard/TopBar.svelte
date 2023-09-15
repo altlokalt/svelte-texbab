@@ -10,10 +10,9 @@
 
 	const avatar = pb.authStore.model?.avatar
 		? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${pb.authStore.model?.id}/${
-      pb.authStore.model?.avatar
+				pb.authStore.model?.avatar
 		  }`
 		: `https://avatars.dicebear.com/api/adventurer-neutral/${pb.authStore.model?.username}.svg`;
-
 </script>
 
 <header class="relative z-10 h-16 w-full items-center border-b border-primary md:h-20">

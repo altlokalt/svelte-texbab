@@ -89,7 +89,7 @@ const menuItems = [
 	// Add more menu items as needed
 ];
 
-export async function fetchMenuItems(menu: string) {
+export async function fetchMenuItems() {
 	// Simulate API request delay with a timeout
 	await new Promise((resolve) => setTimeout(resolve, 500));
 
@@ -120,7 +120,12 @@ export async function placeOrder(orderData: any) {
 // };
 
 export const getPocketbase = async (collection: string, data: any) => {
-	const resultList = await pb.collection(collection).getList(1, 8, data);
+	const resultList = await pb
+		.collection(collection)
+		.getList(1, 8, data)
+		.catch((error) => {
+			throw error;
+		});
 	return resultList;
 };
 
@@ -158,7 +163,7 @@ export const compressImage = async (
 	height: number,
 	quality: number
 ): Promise<File> => {
-	return new Promise<File>((resolve, reject) => {
+	return new Promise<File>((resolve) => {
 		const reader = new FileReader();
 
 		reader.onload = async (event: any) => {

@@ -6,7 +6,6 @@
 	export let data: { items: any[] }; // Specify the type for 'data'
 
 	async function handleOrderPrepared(id: any, prepared: any) {
-		console.log(`Preparing order ${id}...`);
 		const orderToUpdate = data.items.find((order: any) => order.id === id);
 
 		if (!orderToUpdate) {
@@ -14,16 +13,10 @@
 			return;
 		}
 
-		console.log(`Order ${id} preparation status:`, orderToUpdate.prepared);
-
 		try {
-			console.log(`Updating order ${id} preparation status...`);
-
 			const updatedOrder = await patchPocketbase1only('texbab_orders', id, {
 				prepared
 			});
-
-			console.log(`Order ${id} preparation status updated successfully.`, updatedOrder);
 
 			// Update the local data with the response from the server
 			data.items = data.items.map((order: any) =>

@@ -12,6 +12,7 @@
 
 	$: if (browser && currentTheme) {
 		document.documentElement.setAttribute('data-theme', currentTheme);
+		// eslint-disable-next-line 
 		currentThemeColor = hslToHex(
 			...(getComputedStyle(document.documentElement)
 				.getPropertyValue('--b1')
@@ -26,6 +27,7 @@
 		pin = lastY - scrollY > 0 || scrollY === 0 ? true : false;
 		lastY = scrollY;
 		if (browser)
+			// eslint-disable-next-line 
 			percent =
 				Math.round(
 					(scrollY /

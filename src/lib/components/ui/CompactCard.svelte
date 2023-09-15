@@ -23,7 +23,7 @@
 		// Add a cache-busting query parameter to the image URL
 		pb_image += `?cache=${Date.now()}`;
 
-		const res = await getImage(pb_image, 350, 200);
+		const res = await getImage(pb_image, 350, 300);
 		image = res;
 	}
 
@@ -33,54 +33,56 @@
 			fetchImage();
 		}
 	}
-
 </script>
 
-<div class="w-full  bg-base-100 shadow rounded p-4">
-	<div
-		class="h-48 w-full flex flex-col justify-between p-4 bg-cover bg-center"
-		style={`background-image: url(${image})`}
-	>
-		<div class="flex justify-between">
-			<input type="checkbox" />
-			<button class="btn-ghost">
-				<Icon icon="ic:round-plus" class="h-6 w-4" />
-			</button>
-		</div>
-		<div>
-			<div class="badge badge-accent">Tilgjengelig</div>
-		</div>
-	</div>
-	<div class="p-4 flex flex-col items-center">
-		<p class="font-light text-xs text-center">Texbab</p>
-		<h1 class=" text-center mt-1">{item.name}</h1>
-		<p class="text-center mt-1">{item.price} kr</p>
-		<div class="inline-flex items-center mt-2">
-			<button
-				class="btn btn-neutral inline-flex items-center px-2 py-1 border-r"
-				on:click={() => quantity += 1}
-			>
-				<Icon icon="ic:round-minus" class="h-6 w-4" />
-			</button>
-			<div class=" btn btn-neutral inline-flex items-center px-4 py-1 select-none">
-				{quantity}
-			</div>
-			<button
-				class="btn btn-neutral disabled:opacity-50 inline-flex items-center px-2 py-1 border-r"
-				on:click={() => quantity += 1}
-			>
-				<Icon icon="ic:round-plus" class="h-6 w-4" />
-			</button>
-		</div>
+<div
+	class="w-full bg-neutral text-neutral-content shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+>
+	
+		<img
+			class=" w-full group-hover:opacity-75 overflow-hidden rounded-t-xl"
+			src={image}
+			alt={`bilde anv texbab.no ${item.name} meny`}
+		/>
 
-		<button
-			class="py-2 px-4 btn btn-primary disabled:opacity-50 mt-4 w-full flex items-center justify-center"
-			on:click={() => addToCart(item, quantity)}
-		>
-		
-			Bestill
-			<Icon icon="bytesize:cart" class="h-6 w-6 ml-2" />
-		
-		</button>
-	</div>
+		<div class="px-4 py-3 w-full">
+			<span class="mr-3 uppercase text-xs truncate block">Texbab</span>
+			<p class="text-lg font-bold truncate block capitalize">{item.name}</p>
+			<div class="flex items-center">
+				<div class="badge badge-accent">
+					<p class="text-sm font-semibold cursor-auto truncate block">Tilgjengelig</p>
+				</div>
+				<div class="ml-auto">
+					<div class="rating rating-sm">
+						<label class="cursor-auto" for="rating-8">{item.price} kr</label>
+						<input type="radio" name="rating-8" class="mask mask-star-2 bg-info" checked />
+					</div>
+				</div>
+			</div>
+			<div class="inline-flex items-center mt-2">
+				<button
+					class="btn btn-neutral inline-flex items-center px-2 py-1 border-r"
+					on:click={() => (quantity += 1)}
+				>
+					<Icon icon="ic:round-minus" class="h-6 w-4" />
+				</button>
+				<div class=" btn btn-neutral inline-flex items-center px-4 py-1 select-none">
+					{quantity}
+				</div>
+				<button
+					class="btn btn-neutral disabled:opacity-50 inline-flex items-center px-2 py-1 border-r"
+					on:click={() => (quantity += 1)}
+				>
+					<Icon icon="ic:round-plus" class="h-6 w-4" />
+				</button>
+			</div>
+
+			<button
+				class="py-2 px-4 btn btn-primary disabled:opacity-50 mt-4 w-full flex items-center justify-center"
+				on:click={() => addToCart(item, quantity)}
+			>
+				Bestill
+				<Icon icon="bytesize:cart" class="h-6 w-6 ml-2" />
+			</button>
+		</div>
 </div>

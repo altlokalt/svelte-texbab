@@ -18,23 +18,20 @@
 
 	const avatar = pb.authStore.model?.avatar
 		? `${import.meta.env.VITE_PB_API_2}/api/files/_pb_users_auth_/${pb.authStore.model?.id}/${
-      pb.authStore.model?.avatar
+				pb.authStore.model?.avatar
 		  }`
 		: `https://avatars.dicebear.com/api/adventurer-neutral/${pb.authStore.model?.username}.svg`;
-
 </script>
 
 <div class="navbar bg-base-100 sticky top-0 z-50">
 	<div class="flex-1">
-		<a class="absolute h-auto w-32" href="/">
-			<img src={site_logo} alt="SvelteKit" class="w-14" />
+		<a class="absolute h-full" href="/">
+			<img src={site_logo} alt="SvelteKit" class="h-full" />
 		</a>
 	</div>
 	<ThemeChanger />
 
-	
 	<div class="flex-none">
-
 		<!-- cart-->
 		<div class="dropdown dropdown-end">
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->

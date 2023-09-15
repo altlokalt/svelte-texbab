@@ -1,9 +1,5 @@
-import EventsIcon from './icons/EventsIcon.svelte';
-import GuidesIcon from './icons/GuidesIcon.svelte';
-import MessagesIcon from './icons/MessagesIcon.svelte';
 import PicturesIcon from './icons/PicturesIcon.svelte';
 import DocumentsIcon from './icons/DocumentsIcon.svelte';
-import StatisticsIcon from './icons/StatisticsIcon.svelte';
 
 export const data = [
 	{

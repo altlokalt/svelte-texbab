@@ -22,7 +22,6 @@
 			try {
 				// Replace this with your actual Stripe payment handling code
 				paymentResult = await processCreditCardPayment();
-				console.log('Credit Card Payment Result:', paymentResult);
 			} catch (error) {
 				console.error('Error processing credit card payment:', error);
 			}
@@ -31,7 +30,6 @@
 			try {
 				// Replace this with your actual PayPal payment handling code
 				paymentResult = await processPayPalPayment();
-				console.log('PayPal Payment Result:', paymentResult);
 			} catch (error) {
 				console.error('Error processing PayPal payment:', error);
 			}
@@ -40,7 +38,6 @@
 			try {
 				// Replace this with your actual vipps payment handling code
 				paymentResult = await processVippsPayment(data);
-				console.log('vipps Payment Result:', paymentResult);
 			} catch (error) {
 				console.error('Error processing vipps payment:', error);
 			}

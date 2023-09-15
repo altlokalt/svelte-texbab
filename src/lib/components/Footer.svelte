@@ -6,10 +6,13 @@
 
 <footer class="footer footer-center p-10">
 	<div>
-		<a href="/" class=" rounded-2xl hover:bg-primary">
-			<img src={site_logo} alt="Texbab logo" class="w-14" />
+		<a href="/" class=" rounded-2xl">
+			<img src={site_logo} alt="Texbab logo" class="" />
 		</a>
-		<p>{import.meta.env.VITE_SITE_COMPANY}: Hvor hvert bitt er en rodeo av smak</p>
+		<div>
+			{import.meta.env.VITE_SITE_COMPANY}:
+			<p>Hvor hvert bitt er en rodeo av smak</p>
+		</div>
 		<p>
 			Made by <a href="https://altlokalt.com" class="font-bold hover:text-primary">altlokalt.</a> Copyright
 			© 2023 - All rights reserved

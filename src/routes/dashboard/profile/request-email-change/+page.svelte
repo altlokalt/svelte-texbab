@@ -9,7 +9,6 @@
 	async function requestEmailChange() {
 		try {
 			const request = await pb.collection('users').requestEmailChange(newEmail, pb.authStore.token);
-			console.log('Email change request:', request);
 			emailChangeRequested = true;
 		} catch (error) {
 			console.error('Failed to request email change:', error);

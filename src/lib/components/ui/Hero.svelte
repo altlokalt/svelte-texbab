@@ -1,6 +1,5 @@
 <script lang="ts">
 	let site_name = `${import.meta.env.VITE_SITE_NAME}`;
-	let site_logo = `${import.meta.env.VITE_SITE_LOGO}`;
 </script>
 
 <div
