@@ -3,9 +3,10 @@ import { authData } from '$lib/utils/stores';
 import { goto } from '$app/navigation';
 
 export const pb = new PocketBase(`${import.meta.env.VITE_PB_URL}`);
-export const pb2 = new PocketBase(`${import.meta.env.VITE_PB_API_2}`);
+export const pb2 = new PocketBase(`${import.meta.env.VITE_PB_URL_2}`);
 
 export const authPocketbase = async (user: string, password: string) => {
+	console.log('authPocketbase', pb, pb2);
 	const res = await pb.collection('users').authWithPassword(user, password);
 	await pb2.collection('users').authWithPassword(user, password);
 	authData.set(pb.authStore.model);
