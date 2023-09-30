@@ -1,6 +1,6 @@
 @use 'sass:math';
 :root {
-	--theme-color: #eb0029;
+	--theme-color: #ff9d2d;
 	--theme-color2: #ff9d2d;
 	--title-color: #010f1c;
 	--body-color: #4d5765;
@@ -10841,6 +10841,26 @@ span.select2-selection.select2-selection--single:focus {
 .mb-n5 {
 	margin-bottom: -3rem;
 }
+.theme-coffee {
+	--theme-color: #77524a;
+}
+.link-btn i.circle {
+	background-color: var(--theme-color);
+	color: var(--white-color);
+	width: 24px;
+	height: 24px;
+	text-align: center;
+	font-size: 12px;
+	line-height: 24px;
+	border-radius: 50%;
+	-webkit-transition: 0.3s ease-in-out;
+	transition: 0.3s ease-in-out;
+}
+.link-btn:hover i.circle {
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
 .space,
 .space-top {
 	padding-top: var(--section-space);
@@ -10898,26 +10918,6 @@ span.select2-selection.select2-selection--single:focus {
 	.space-extra2-bottom {
 		padding-bottom: 70px;
 	}
-}
-.theme-coffee {
-	--theme-color: #77524a;
-}
-.link-btn i.circle {
-	background-color: var(--theme-color);
-	color: var(--white-color);
-	width: 24px;
-	height: 24px;
-	text-align: center;
-	font-size: 12px;
-	line-height: 24px;
-	border-radius: 50%;
-	-webkit-transition: 0.3s ease-in-out;
-	transition: 0.3s ease-in-out;
-}
-.link-btn:hover i.circle {
-	-webkit-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
 }
 @media (max-width: 1299px) {
 	.shape-mockup.coffee {
