@@ -12,11 +12,11 @@
 	</div>
 	<div>
 		<div class="card-body  ">
-			<h2 class="text-lg font-semibold">{title}</h2>
-			<p class="text-xs">Sjekk ut {title}.</p>
+			<h2 class="text-xl font-bold">{title}</h2>
+			<p class="text-md">Sjekk ut {title}.</p>
 			<div class="card-actions justify-end">
 				<div
-					class="btn-primary text-sm font-semibold px-3 py-1 rounded-full bg-primary hover:bg-accent-dark"
+					class="btn-primary text-md font-semibold px-3 py-1 rounded-full bg-primary hover:bg-accent-dark"
 				>
 					Bestill
 				</div>
