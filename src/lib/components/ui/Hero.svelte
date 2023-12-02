@@ -1,5 +1,6 @@
 <script lang="ts">
-	let site_name = `${import.meta.env.VITE_SITE_NAME}`;
+	import { page } from '$app/stores'
+	let site_name = $page.data.siteName
 </script>
 
 <div

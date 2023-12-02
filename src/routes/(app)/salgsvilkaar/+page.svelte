@@ -1,10 +1,11 @@
 <script lang="ts">
-	let company_name = `${import.meta.env.VITE_SITE_COMPANY}`;
+	import { page } from '$app/stores';
+	let company_name = $page.data.siteName
 	let company_org_number = `${import.meta.env.VITE_SITE_ORG}`;
 	let company_email = `${import.meta.env.VITE_SITE_EMAIL}`;
 	let company_telefon = `${import.meta.env.VITE_SITE_PHONE}`;
-	let company_site = `${import.meta.env.VITE_SITE_URL}`;
-	let site = `${import.meta.env.VITE_SITE_NAME}`;
+	let company_site = $page.url.origin
+	let site = $page.data.siteName;
 </script>
 
 <svelte:head>

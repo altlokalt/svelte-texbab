@@ -1,16 +1,9 @@
 <script>
-	import { pb } from '$lib/utils/api';
-	import { authData } from '$lib/utils/stores';
-	import { onMount } from 'svelte';
 	import '../../app.pcss';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { Toaster } from 'svelte-french-toast';
 	import { page } from '$app/stores';
-
-	onMount(() => {
-		pb.authStore.isValid ? authData.set(pb.authStore.model) : null;
-	});
 </script>
 
 <Toaster />

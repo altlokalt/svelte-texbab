@@ -1,10 +1,9 @@
 import PocketBase from 'pocketbase';
-import { site } from '@valiantlynx/general-config';
 import { serializeNonPOJOs } from '$lib/utils/api';
 
 /** @type {import('@sveltejs/kit').Handle} */
 export const handle = async ({ event, resolve }) => {
-	event.locals.pb = new PocketBase(site.site.pocketbase);
+	event.locals.pb = new PocketBase(import.meta.env.VITE_PB_URL);
 	event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
 	
 	try {
@@ -18,6 +17,6 @@ export const handle = async ({ event, resolve }) => {
 	}
 
 	const response = await resolve(event);
-	response.headers.set('set-cookie', event.locals.pb.authStore.exportToCookie({ secure: false }));
+	response.headers.append('set-cookie', event.locals.pb.authStore.exportToCookie({ secure: false }));
 	return response;
 };
