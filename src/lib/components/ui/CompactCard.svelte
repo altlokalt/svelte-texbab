@@ -23,7 +23,7 @@
 		// Add a cache-busting query parameter to the image URL
 		pb_image += `?cache=${Date.now()}`;
 
-		const res = await getImage(pb_image, 350, 300);
+		const res = await getImage(pb_image);
 		image = res;
 	}
 
@@ -39,11 +39,11 @@
 	class="w-full bg-neutral text-neutral-content shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
 >
 	
-		<img
-			class=" w-full group-hover:opacity-75 overflow-hidden rounded-t-xl"
-			src={image}
-			alt={`bilde anv texbab.no ${item.name} meny`}
-		/>
+	<img
+		class="w-full object-cover group-hover:opacity-75 rounded-t-xl"
+		src={image}
+		alt={`bilde anv texbab.no ${item.name} meny`}
+	/>
 
 		<div class="px-4 py-3 w-full">
 			<span class="mr-3 uppercase text-xs truncate block">Texbab</span>

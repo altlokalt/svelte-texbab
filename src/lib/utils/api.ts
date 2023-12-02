@@ -147,11 +147,11 @@ export const patchPocketbase1only = async (collection: string, id: string, data:
 	return response;
 };
 
-export const getImage = async (url: string, width: number, height: number) => {
+export const getImage = async (url: string) => {
 	const response = await fetch(url);
 	if (response.ok) {
 		const originalImageBlob = await response.blob();
-		const compressedImageBlob = await compressImage(originalImageBlob, width, height, 1); // 1 = 100% quality (no compression) - change as needed, e.g 0 = 0% quality (full compression)
+		const compressedImageBlob = await compressImage(originalImageBlob, 1); // 1 = 100% quality (no compression) - change as needed, e.g 0 = 0% quality (full compression)
 		return URL.createObjectURL(compressedImageBlob);
 	}
 
@@ -160,8 +160,6 @@ export const getImage = async (url: string, width: number, height: number) => {
 
 export const compressImage = async (
 	file: any,
-	width: number,
-	height: number,
 	quality: number
 ): Promise<File> => {
 	return new Promise<File>((resolve) => {
@@ -173,8 +171,8 @@ export const compressImage = async (
 
 			image.onload = () => {
 				const canvas = document.createElement('canvas');
-				canvas.width = width;
-				canvas.height = height;
+				canvas.width = image.width;
+				canvas.height = image.height;
 
 				const ctx: any = canvas.getContext('2d');
 				ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
