@@ -54,8 +54,7 @@
 				</div>
 				<div class="ml-auto">
 					<div class="rating rating-sm">
-						<label class="cursor-auto" for="rating-8">{item.price} kr</label>
-						<input type="radio" name="rating-8" class="mask mask-star-2 bg-info" checked />
+						<p class="cursor-auto text-xl font-bold text-green-400" >{item.price} kr</p>
 					</div>
 				</div>
 			</div>
