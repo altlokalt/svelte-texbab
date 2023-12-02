@@ -1,10 +1,10 @@
 <script lang="ts">
-	import ingenbildetilgjengelig from '$lib/images/ingenbildetilgjengelig.webp';
 	import { cart } from '$lib/utils/stores';
+	import CompactCard from './ui/CompactCard.svelte';
 
-	 export let item: any;
+	export let item: any;
 
-	 function addToCart(item: any) {
+	function addToCart(item: any, quantity: number) {
 		cart.update((cartItems) => {
 			const updatedCart = [...cartItems];
 			// Check if the item is already in the cart
@@ -15,7 +15,7 @@
 				existingItem.quantity += 1;
 			} else {
 				// If the item is not in the cart, add it with quantity 1
-				updatedCart.push({ ...item, quantity: 1 });
+				updatedCart.push({ ...item, quantity: quantity });
 			}
 
 			return updatedCart;
@@ -23,18 +23,4 @@
 	}
 </script>
 
-<div class="border rounded-lg p-4 shadow-md">
-	<h2 class="font-semibold text-lg mb-2">{item.item}</h2>
-	<p class="mb-2">{item.kommentar}</p>
-	<img 
-	src={item.food_image ? 'https://api.texbab.no/api/files/' + item.collectionName + '/' + item.id + '/' + item.food_image : ingenbildetilgjengelig } 
-	alt={item.item} 
-	class="mb-2 w-52" />	
-	<p class="font-bold mb-2">{item.price} kr</p>
-	<!-- Add more details as needed -->
-	<button class="bg-blue-500 text-white px-4 py-2 rounded-md" on:click={() => addToCart(item)}>Add to Cart</button>
-</div>
-
-<style>
-	/* Add styling for the food item here */
-</style>
+<CompactCard bind:item {addToCart} />

@@ -1,10 +1,4 @@
-<script>
-	import Header from '$lib/components/Header.svelte';
-
-	// Replace this with the actual order data after a successful order placement
-	let order = {
-		// Add order details here
-	};
+<script lang="ts">
 </script>
 
 <section>
