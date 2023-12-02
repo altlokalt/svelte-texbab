@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ContentTableUser from './ContentTableUser.svelte';
 	import { getPocketbase } from '$lib/utils/api';
-	import Chat from './Chat.svelte';
+	import Chat from '$lib/components/Chat.svelte';
 	import { page } from '$app/stores';
 
 	let users: any[] = [];

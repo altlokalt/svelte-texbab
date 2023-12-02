@@ -29,9 +29,6 @@
 		try {
 			const resultList = await pb.collection('chat').getList(1, 50, {
 				sort: 'created',
-				filter: $page.params.chapterid
-					? `mangaid="${$page.params.id}" && chapterid="${$page.params.chapterid}"`
-					: `mangaid="${$page.params.id}"`,
 				expand: 'sender'
 			});
 
