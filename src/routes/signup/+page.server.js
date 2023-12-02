@@ -63,7 +63,7 @@ export const actions = {
 				);
 			}
 		}
-		return;
+		throw redirect(303, '/login');
 	},
 	oauth2google: async (event) => {
 		const authMethods = await event.locals.pb?.collection('users').listAuthMethods(); // generates a state and a verifier

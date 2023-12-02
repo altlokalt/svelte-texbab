@@ -1,12 +1,13 @@
 <script lang="ts">
 	import ContentTableUser from './ContentTableUser.svelte';
-	import { getPocketbase, pb } from '$lib/utils/api';
+	import { getPocketbase } from '$lib/utils/api';
 	import Chat from './Chat.svelte';
+	import { page } from '$app/stores';
 
 	let users: any[] = [];
 
 	async function getUsers() {
-		const token = pb.authStore.token;
+		const token = $page.data.user.token;
 		const data = {
 			sort: '-created',
 			perPage: 30,

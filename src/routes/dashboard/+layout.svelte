@@ -1,7 +1,11 @@
 <script>
-	import Layout from '$lib/components/dashboard/Layout.svelte';
+	import SideBar from '$lib/components/SideBar.svelte';
+	import Feedback from '$lib/components/feedback/Feedback.svelte';
 </script>
 
-<Layout>
+
+<div class="flex">
+	<SideBar />
 	<slot />
-</Layout>
+</div>
+<Feedback />

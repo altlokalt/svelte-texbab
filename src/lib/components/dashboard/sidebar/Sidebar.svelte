@@ -1,35 +1,27 @@
-<script lang="ts">
-	import { sidebarOpen } from '$lib/utils/stores';
-	import SidebarItems from '$lib/components/dashboard/sidebar/SidebarItems.svelte';
-
-	const style: any = {
-		mobileOrientation: {
-			start: 'left-0',
-			end: 'right-0'
-		},
-		close: 'hidden lg:block lg:w-80 lg:z-auto',
-		open: 'w-10/12 absolute z-40 sm:w-5/12 lg:w-24',
-		default: 'overflow-y-auto top-0 lg:relative'
-	};
-
-	export let mobileOrientation = 'end';
+<script>
+	import SideBarIcon  from '$lib/components/SideBarIcon.svelte';
+	import { page } from '$app/stores';
 </script>
 
-<aside
-	class={`${style.default} ${style.mobileOrientation[mobileOrientation]}
-       ${$sidebarOpen ? style.open : style.close} scrollbar`}
+<div
+	class="relative top-0 left-0 w-16 h-auto bg-base-300 m-0 flex flex-col text-base-content shadow "
 >
-	<div class="h-screen w-full">
-		<SidebarItems />
-	</div>
-</aside>
+	<a href="/dashboard/profile"> <SideBarIcon tooltip="Profile" icon="iconoir:profile-circle" /></a>
+	<a href="/dashboard/reading-progress"
+		><SideBarIcon tooltip="reading progress" icon="fluent-mdl2:reading-mode" /></a
+	>
+	<a href="/dashboard/settings"><SideBarIcon tooltip="Settings" icon="bx:bx-cog" /></a>
+	{#if $page.data.user?.role.includes('admin')}
+		<a href="/dashboard/admin"><SideBarIcon tooltip="Admin" icon="bx:bx-shield" /></a>
+		<a href="/dashboard/upload"><SideBarIcon tooltip="Upload" icon="ph:upload-bold" /></a>
+	{/if}
+	{#if $page.data.user?.role.includes('creator')}
+	<a href="/dashboard/upload"><SideBarIcon tooltip="Upload" icon="ph:upload-bold" /></a>
+	{/if}
 
-<style>
-	.scrollbar::-webkit-scrollbar {
-		width: 0;
-		background: transparent; /* hide Sidebar scrollbar on Chrome, Opera and other webkit Browsers*/
-	}
-	.scrollbar {
-		-ms-overflow-style: none;
-	}
-</style>
+	<form action="/api/logout" method="POST" class="w-full">
+		<button type="submit" class="w-full">
+			<SideBarIcon tooltip="Logout" icon="bx:bx-log-out" />
+		</button>
+	</form>
+</div>

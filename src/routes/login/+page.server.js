@@ -2,6 +2,7 @@ import { error, redirect } from '@sveltejs/kit';
 
 export const load = ({ locals }) => {
 	if (locals.pb.authStore.isValid) {
+		console.log('User is already logged in');
 		throw redirect(303, '/dashboard/profile/preview');
 	}
 };
