@@ -3,12 +3,9 @@ import { authData } from '$lib/utils/stores';
 import { goto } from '$app/navigation';
 
 export const pb = new PocketBase(`${import.meta.env.VITE_PB_URL}`);
-export const pb2 = new PocketBase(`${import.meta.env.VITE_PB_URL_2}`);
 
 export const authPocketbase = async (user: string, password: string) => {
-	console.log('authPocketbase', pb, pb2);
 	const res = await pb.collection('users').authWithPassword(user, password);
-	await pb2.collection('users').authWithPassword(user, password);
 	authData.set(pb.authStore.model);
 
 	goto('/');
@@ -21,7 +18,6 @@ export const authPocketbase = async (user: string, password: string) => {
 
 export const logoutPocketbase = async () => {
 	pb.authStore.clear();
-	pb2.authStore.clear();
 	authData.set({});
 
 	goto('/');
@@ -36,7 +32,7 @@ export const createPocketbaseUser = async (data: any) => {
 	const res = await pb.collection('users').create(data);
 	authData.set(res);
 
-	// (optional) send an email verification request and chat using the new pb2 api
+	// (optional) send an email verification request and chat using the new pb api
 	const data2 = {
 		id: res.id,
 		username: data.username,
@@ -46,10 +42,10 @@ export const createPocketbaseUser = async (data: any) => {
 		passwordConfirm: data.passwordConfirm
 	};
 
-	await pb2.collection('users').create(data2);
+	await pb.collection('users').create(data2);
 
 	// (optional) send an email verification request
-	await pb2.collection('users').requestVerification(data.email);
+	await pb.collection('users').requestVerification(data.email);
 
 	// login the user
 	await authPocketbase(data.username, data.password);
@@ -63,7 +59,6 @@ export const createPocketbaseUser = async (data: any) => {
 
 export const authPocketbaseAdmin = async (user: string, password: string) => {
 	const res = await pb.admins.authWithPassword(user, password);
-	await pb2.admins.authWithPassword(user, password);
 	authData.set(res);
 
 	if (!pb.authStore.isValid) {
@@ -137,7 +132,6 @@ export const postPocketbase = async (collection: string, data: any) => {
 
 export const patchPocketbase = async (collection: string, id: string, data: any) => {
 	const response = await pb.collection(collection).update(id, data);
-	await pb2.collection(collection).update(id, data);
 	return response;
 };
 
@@ -222,3 +216,15 @@ export async function processVippsPayment() {
 		return { success: false, message: 'Error processing Vipps payment' };
 	}
 }
+
+export const serializeNonPOJOs = (obj: any) => {
+	// // if the object is not a POJO, then serialize it
+	// if (obj && typeof obj === 'object' && obj.constructor !== Object) {
+	// 	return JSON.stringify(obj);
+	// }
+
+	// return obj;
+
+	return structuredClone(obj);
+};
+
