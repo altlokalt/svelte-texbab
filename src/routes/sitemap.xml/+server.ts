@@ -1,5 +1,4 @@
 // import type { RequestHandler } from './$types'
-// import { site } from '$lib/config/site'
 // //import { genPosts } from '$lib/utils/posts'
 // import { google } from "googleapis";
 

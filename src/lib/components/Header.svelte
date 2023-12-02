@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { cart } from '$lib/utils/stores';
-	import ThemeChanger from './ThemeChanger.svelte';
+	import {ThemeChanger} from '@valiantlynx/svelte-ui';
 	import { logoutPocketbase, pb } from '$lib/utils/api';
 	import { authData } from '$lib/utils/stores';
 
