@@ -11,12 +11,11 @@
 	{#if $page.data.user?.role.includes('admin')}
 		<a href="/dashboard/admin"><SideBarIcon tooltip="Admin" icon="bx:bx-shield" /></a>
 		<a href="/dashboard/guides"><SideBarIcon tooltip="Guides" icon="bx:bx-book-bookmark" /></a>
-		<a href="/dashboard/events"><SideBarIcon tooltip="Events" icon="bx:bx-calendar-event" /></a>
 		<a href="/dashboard/messages"><SideBarIcon tooltip="Messages" icon="bx:bx-message-square-detail" /></a>
 		<a href="/dashboard/statistics"><SideBarIcon tooltip="Statistics" icon="bx:bx-bar-chart-alt-2" /></a>
 	{/if}
-	{#if $page.data.user?.role.includes('cook')}
-		<a href="/dashboard/admin/cook"><SideBarIcon tooltip="Cook" icon="bx:bx-food-menu" /></a>
+	{#if $page.data.user?.role.includes('chef')}
+		<a href="/dashboard/admin/chef"><SideBarIcon tooltip="Cook" icon="bx:bx-food-menu" /></a>
 	{/if}
 	{#if $page.data.user?.role.includes('rider')}
 		<a href="/dashboard/admin/rider"><SideBarIcon tooltip="Rider" icon="bx:bx-biking" /></a>
