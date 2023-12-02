@@ -9,21 +9,32 @@
 		  }/${$page.data.sites?.logo}`
 		: `https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=${$page.data.sites?.siteName}`;
 </script>
-
-<div class="navbar bg-base-100 sticky top-0 z-50">
-	{#if !$page.data.isSmallDevice}
-		<img src={logo} alt="{$page.data.siteName} logo" class="w-20" />
-	{/if}
-	<div class="flex-1">
-		<a class="btn btn-ghost normal-case text-xl" href="/">{$page.data.siteName}</a>
-	</div>
-
-	<ThemeChanger />
-
-	<div class="flex-none">
+<!-- Small Devices Layout -->
+<div>
+	<div class="navbar bg-base-300 max-w-full sm:hidden">
+		<div class="flex-1">
+			<a class="btn btn-ghost normal-case text-xl" href="/">{$page.data.siteName}</a>
+			<ThemeChanger />
+		</div>
 		<!-- cart-->
 		<CartIcon />
-		<!-- profile-->
 		<ProfileModal />
 	</div>
 </div>
+
+<!-- Large Devices Layout -->
+<div class="navbar bg-base-300 hidden sm:flex">
+	<div class="flex-1">
+		{#if !$page.data.isSmallDevice}
+			<img src={logo} alt="{$page.data.siteName} logo" class="w-20" />
+		{/if}
+		<a class="btn btn-ghost normal-case text-xl" href="/">{$page.data.siteName}</a>
+		<ThemeChanger />
+	</div>
+	<div class="flex-none gap-2">
+		<!-- cart-->
+		<CartIcon />
+		<ProfileModal />
+	</div>
+</div>
+

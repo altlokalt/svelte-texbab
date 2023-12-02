@@ -4,7 +4,7 @@
 	export let site_logo = `${import.meta.env.VITE_SITE_LOGO}`;
 </script>
 
-<footer class="footer footer-center p-10">
+<footer class="footer footer-center p-10 bg-base-300">
 	<div>
 		<a href="/" class=" rounded-2xl">
 			<img src={site_logo} alt="Texbab logo" class="" />

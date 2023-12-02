@@ -50,17 +50,7 @@
 	};
 </script>
 
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-wrap">
+<div class="flex flex-wrap w-full">
 	<div class="left-content mt-4 w-full lg:w-3/4 p-4 order-1">
 		<div class="flex flex-col sm:w-1/2 h-full space-y-12 ml-5">
 			<div class="w-full">
@@ -87,7 +77,7 @@
 			<div class="w-full">
 				<h3 class="text-2xl font-medium">Change Username</h3>
 				<div class="divider mb-0.5" />
-				<Input id="username" label="Username" value={$page.data?.user?.username} disabled />
+				<Input id="username" label="Username" value={$page.data?.user?.username} disabled minlength="8"/>
 				<Modal label="change-username" checked={usernameModalOpen}>
 					<span slot="trigger" class="btn btn-primary">Change Username</span>
 					<h3 slot="heading">Change Your Username</h3>
@@ -132,7 +122,7 @@
 	<div class="right-content w-full lg:w-1/4 p-4 order-2">
 		<div class="flex flex-col sm:w-1/2 h-full space-y-12 ml-5">
 			<!-- Permissions Display -->
-			<div class="w-full md:w-1/2">
+			<div class="w-full">
 				<div class="bg-base-300 text-base-content p-6 rounded-lg shadow-md">
 				  <h2 class="text-2xl font-medium mb-4">Roles and Permissions</h2>
 				  <ul class="list-inside list-disc">
@@ -147,13 +137,13 @@
 			  </div>
 			
 			  <!-- Upgrade Section -->
-			  <div class="w-full md:w-1/2">
+			  <div class="w-full">
 				<div class="bg-base-300 text-base-content p-6 rounded-lg shadow-md">
 				  <h2 class="text-2xl font-medium mb-4">Upgrade Your Role</h2>
 				  <p class="mb-4">
 					Enhance your experience by upgrading to a higher role. Unlock additional features and privileges.
 				  </p>
-				  <a href="/pricing" class="btn btn-primary w-full" alt="pricing page">
+				  <a href="/contact" class="btn btn-primary w-full" alt="pricing page">
 					Upgrade Now
 				  </a>
 				</div>

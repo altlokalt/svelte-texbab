@@ -28,7 +28,7 @@
 	export let title: any;
 </script>
 
-<div class="mt-4">
+<div class="my-auto">
 	<div class="mb-5 text-2xl font-medium">{title}</div>
 	<div class="flex gap-8">
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full h-full">

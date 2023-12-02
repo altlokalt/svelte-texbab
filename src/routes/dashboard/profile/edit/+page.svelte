@@ -97,13 +97,6 @@
 		<div class="md:w-1/2">
 			<h3 class="text-2xl font-medium">Update Profile</h3>
 
-			<Input
-				id="username"
-				label="Username"
-				value={$page.data?.user?.username}
-				disabled={loading}
-			/>
-
 			<Input id="title" label="Title" value={$page.data?.user?.title} disabled={loading} />
 
 			<Input
