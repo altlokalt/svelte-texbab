@@ -36,6 +36,10 @@
 	onMount(() => {
 		fetchData(1);
 	});
+
+	$: {
+		console.log('current page', $current);
+	}
 </script>
 
 <svelte:head>
@@ -44,24 +48,37 @@
 </svelte:head>
 <Home />
 
-<div class="flex gap-4 flex-wrap justify-items-center m-2">
-	{#each $pocketbaseResponse.items as item}
-		<FoodItem bind:item />
-	{/each}
-</div>
+<div class="grid grid-cols-1 gap-4 justify-items-center">
+	<!-- Title for the Grid -->
+	<h2 class="text-3xl font-bold text-center mt-4">Sulten? Kjør Innom, Kos Deg!</h2>
 
-<span class="text-center">Page {$current} of {totalPages}</span>
-<div class="join grid grid-cols-2 w-full sm:w-1/4 ">
-	<button
-		class="join-item btn btn-primary"
-		on:click={() => setPage($current - 1)}
-		disabled={$current === 1}>Previous page</button
-	>
-	<button
-		class="join-item btn btn-primary"
-		on:click={() => setPage($current + 1)}
-		disabled={$current === totalPages}>Next</button
-	>
+	<!-- Food Items Container -->
+	<div class="flex flex-wrap gap-4 justify-center m-2">
+		{#each $pocketbaseResponse.items as item}
+			<FoodItem bind:item />
+		{/each}
+	</div>
+
+	<!-- Pagination Text -->
+	<span class="text-center">Page {$current} of {totalPages}</span>
+
+	<!-- Pagination Buttons -->
+	<div class="grid grid-cols-2 gap-4 w-full sm:w-1/4 justify-self-center">
+		<button
+			class="btn btn-primary"
+			on:click={() => setPage($current - 1)}
+			disabled={$current === 1}
+		>
+			Previous page
+		</button>
+		<button
+			class="btn btn-primary"
+			on:click={() => setPage($current + 1)}
+			disabled={$current === totalPages}
+		>
+			Next
+		</button>
+	</div>
 </div>
 
 <!-- <Chat /> -->

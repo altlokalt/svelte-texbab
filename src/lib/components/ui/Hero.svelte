@@ -12,6 +12,7 @@
 	<div class="hero-content text-center text-neutral-content">
 		<div class="max-w-md">
 			<h1 class="mb-5 text-5xl font-bold">Velkommen til {site_name}</h1>
+			<h2 class="mb-5 text-3xl font-bold">Rask Drivstoff, Enda Raskere Mat!</h2>
 			<p class="mb-5">
 				Opplev våre smakfulle retter tilberedt med kjærlighet av våre dyktige kokker. Bestill nå og
 				nyt en eksepsjonell matopplevelse!
