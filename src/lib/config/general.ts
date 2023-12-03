@@ -7,7 +7,7 @@ import type {
 	FeedConfig
 } from '$lib/types/general';
 
-export const API_BASE_URL = 'https://api.texbab.com';
+export const API_BASE_URL = import.meta.env.VITE_PB_URL;
 
 export const theme: ThemeConfig = [
 	{

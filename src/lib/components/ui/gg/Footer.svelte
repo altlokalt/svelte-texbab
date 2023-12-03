@@ -6,7 +6,7 @@
 					<!--assets/img/logo-white.svg -->
 					<div class="footer-logo2">
 						<img
-							src="https://api.texbab.com/api/files/vi08f0m1bznkfa3/1oxjijgxpr2j0fg/logo_94A57MNpr5.png?token="
+							src={`${import.meta.env.VITE_PB_URL}/api/files/vi08f0m1bznkfa3/1oxjijgxpr2j0fg/logo_94A57MNpr5.png?token=`}
 							alt="TEXBAB HORTEN"
 						/>
 					</div>

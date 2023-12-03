@@ -8,7 +8,7 @@
 		<img
 			width="1720"
 			height="850"
-			src="https://api.texbab.com/api/files/n4sfebjxm43jxvc/m4lzlv02n5le8w5/about_banner_YBp3hhV4Aw.jpg?token="
+			src="{import.meta.env.VITE_PB_URL}/api/files/n4sfebjxm43jxvc/m4lzlv02n5le8w5/about_banner_YBp3hhV4Aw.jpg?token="
 			class="ls-bg"
 			alt="hero img"
 		/>
@@ -24,7 +24,7 @@
 		<img
 			width="372"
 			height="154"
-			src="https://api.texbab.com/api/files/n4sfebjxm43jxvc/7ogu48n5lu9scd2/delivery_icon_nbSSvELwQW.png?token="
+			src="{import.meta.env.VITE_PB_URL}/api/files/n4sfebjxm43jxvc/7ogu48n5lu9scd2/delivery_icon_nbSSvELwQW.png?token="
 			class="ls-l ls-img-layer"
 			alt="hero img"
 			style="font-size:36px; color:#000; text-align:left; font-style:normal; text-decoration:none; text-transform:none; font-weight:400; letter-spacing:0px; background-position:0% 0%; background-repeat:no-repeat; left:454px; top:154px;"
@@ -63,7 +63,7 @@
 		<img
 			width="1720"
 			height="850"
-			src="https://api.texbab.com/api/files/n4sfebjxm43jxvc/qfk5pyqlvbq06uu/badge_2_bg_p14zy6_v78h_KQUopUMErC.png?token="
+			src="{import.meta.env.VITE_PB_URL}/api/files/n4sfebjxm43jxvc/qfk5pyqlvbq06uu/badge_2_bg_p14zy6_v78h_KQUopUMErC.png?token="
 			class="ls-bg"
 			alt="hero img"
 		/>
@@ -122,20 +122,20 @@
 		/>
 	</div>
 	<!-- assets/img/hero/hero_bg_3_1.png  assets/img/hero/hero_text_1.png 
-https://api.texbab.com/api/files/n4sfebjxm43jxvc/56p9wwjdct07xaw/20230825_180401_removebg_preview_IjDAC9qDw6.png?token=
+{import.meta.env.VITE_PB_URL}/api/files/n4sfebjxm43jxvc/56p9wwjdct07xaw/20230825_180401_removebg_preview_IjDAC9qDw6.png?token=
 -->
 	<div class="ls-slide" data-ls="duration:7000; transition2d:114; kenburnsscale:1.2;">
 		<img
 			width="1720"
 			height="850"
-			src="https://api.texbab.com/api/files/n4sfebjxm43jxvc/7n018r6q3tw2az7/hero_slider_3_lhr4ZhzBhy.png?token="
+			src="{import.meta.env.VITE_PB_URL}/api/files/n4sfebjxm43jxvc/7n018r6q3tw2az7/hero_slider_3_lhr4ZhzBhy.png?token="
 			class="ls-bg"
 			alt="hero img"
 		/>
 		<img
 			width="470"
 			height="187"
-			src="https://api.texbab.com/api/files/n4sfebjxm43jxvc/7ogu48n5lu9scd2/delivery_icon_nbSSvELwQW.png?token="
+			src="{import.meta.env.VITE_PB_URL}/api/files/n4sfebjxm43jxvc/7ogu48n5lu9scd2/delivery_icon_nbSSvELwQW.png?token="
 			class="ls-l ls-img-layer"
 			alt="Amerikansk"
 			style="font-size:36px; color:#000; text-align:left; font-style:normal; text-decoration:none; text-transform:none; font-weight:400; letter-spacing:0px; background-position:0% 0%; background-repeat:no-repeat; left:110px; top:40px;"
