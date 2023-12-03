@@ -40,6 +40,8 @@ export const GET = async ({ locals, url, cookies }) => {
 		console.log('Error Signing up with google auth', e, e.message);
 	}
 
+	console.log('google auth successful');
+
 	// redirect the response to the home page
-	throw redirect(302, '/login');
+	throw redirect(302, '/dashboard');
 };
