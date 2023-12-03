@@ -15,21 +15,17 @@
 		<tbody>
 			{#each data.items.filter((order) => order.prepared && order.delivered) as order}
 				<tr>
-					<td>{order.id}</td>
-					<td>{order.firstName} {order.lastName}</td>
-					<td>{order.address}</td>
+					<td class="font-bold text-sm sm:text-base md:text-lg overflow-wrap break-words word-break break-all" >{order.id}</td>
+					<td class="font-bold text-sm sm:text-base md:text-lg overflow-wrap break-words word-break break-all" >{order.firstName} {order.lastName}</td>
+					<td class="font-bold text-sm sm:text-base md:text-lg overflow-wrap break-words word-break break-all" >{order.address}</td>
 					<td>
-						{#if order.prepared}
-							<span class="badge badge-success badge-sm">Prepared</span>
-						{:else}
-							<span class="badge badge-warning badge-sm">Not Prepared</span>
-						{/if}
+						<span class={`badge ${order.delivered ? 'badge-success' : 'badge-warning'} badge-sm overflow-wrap break-words word-break break-all`}>
+                            {order.delivered ? 'Delivered' : 'Not Delivered'}
+                        </span>
+						<span class={`badge ${order.prepared ? 'badge-success' : 'badge-warning'} badge-sm overflow-wrap break-words word-break break-all`}>
+                            {order.delivered ? 'Prepared' : 'Not Prepared'}
+                        </span>
 
-						{#if order.delivered}
-							<span class="badge badge-success badge-sm">Delivered</span>
-						{:else}
-							<span class="badge badge-warning badge-sm">Not Delivered</span>
-						{/if}
 					</td>
 				</tr>
 			{/each}
