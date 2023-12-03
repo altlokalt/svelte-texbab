@@ -36,10 +36,6 @@
 	onMount(() => {
 		fetchData(1);
 	});
-
-	$: {
-		console.log('current page', $current);
-	}
 </script>
 
 <svelte:head>

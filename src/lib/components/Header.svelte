@@ -9,6 +9,7 @@
 		  }/${$page.data.sites?.logo}`
 		: `https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=${$page.data.sites?.siteName}`;
 </script>
+
 <!-- Small Devices Layout -->
 <div>
 	<div class="navbar bg-base-300 max-w-full sm:hidden">

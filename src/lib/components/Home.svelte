@@ -10,6 +10,3 @@
 	<MenuCarousel />
 </section>
 
-<style>
-	/* Add styling for the home page here */
-</style>
