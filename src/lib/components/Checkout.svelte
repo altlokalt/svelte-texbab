@@ -8,6 +8,7 @@
 	import { patchPocketbase1only } from '$lib/utils/api';
 
 	// Use the actual cart data from your app's state management
+	// cart is an array of the order items
 	let cartItems: any = [];
 	$: cartItems = $cart; // Observe the cart store
 
@@ -60,12 +61,24 @@
 		goto('/order-confirmation');
 	}
 
+
 	async function handleSubmit() {
+		//array of order items
+		const actualOrderList = cartItems.map((item: any) => {
+			return {
+				id: item.id,
+				quantity: item.quantity,
+				price: item.price,
+				name: item.name,
+				menunr: item.menunr,
+				kommentar: item.kommentar
+			};
+		});
 		const status = {
 			ordered,
-			paid
+			paid,
+			order_items: actualOrderList
 		};
-
 		try {
 			await patchPocketbase1only('texbab_orders', orderItem.id, status); // the actual endpoint for menu items in your Pocketbase
 		} catch (error) {
@@ -77,6 +90,7 @@
 <section class="p-4">
 	<h1 class="text-2xl font-semibold mb-4">Checkout</h1>
 	{#if cartItems.length > 0}
+
 		{#if currentStep === 1}
 			<!-- Step 1: Cart Summary -->
 			<div>

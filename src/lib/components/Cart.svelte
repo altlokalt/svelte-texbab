@@ -17,6 +17,7 @@
 	function calculateTotal() {
 		return parseFloat(calculateSubTotal().toFixed(2)) * 1 + shipping;
 	}
+	
 </script>
 
 <section class=" bg-base-200 text-base-content py-12 sm:py-16 lg:py-20 w-full">
