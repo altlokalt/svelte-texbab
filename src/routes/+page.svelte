@@ -4,9 +4,9 @@
 	import { page as current, pocketbaseResponse } from '$lib/utils/stores';
 	import { getPocketbase } from '$lib/utils/api';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
-	export let data;
-	export let site_name = $page.data.siteName
+	let site_name = $page.data.siteName
 
 	let totalPages: number = Math.ceil($pocketbaseResponse.totalItems / $pocketbaseResponse.perPage);
 
@@ -17,7 +17,9 @@
 			page
 		};
 
-		const menuItems: any = await getPocketbase(data.defaultMenu, dataPb).catch((error) => {
+
+
+		const menuItems: any = await getPocketbase('texbab_barnemenu', dataPb).catch((error) => {
 			throw error;
 		});
 
@@ -32,6 +34,10 @@
 			fetchData(no);
 		}
 	}
+
+	onMount(() => {
+		fetchData(1);
+	});
 </script>
 
 <svelte:head>

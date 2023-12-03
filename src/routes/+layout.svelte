@@ -4,6 +4,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import { Toaster } from 'svelte-french-toast';
 	import { page } from '$app/stores';
+	console.log('page layout', $page);
 </script>
 
 <Toaster />
