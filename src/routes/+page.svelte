@@ -6,7 +6,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 
-	let site_name = $page.data.siteName
+	let site_name = $page.data.siteName;
 
 	let totalPages: number = Math.ceil($pocketbaseResponse.totalItems / $pocketbaseResponse.perPage);
 
@@ -16,8 +16,6 @@
 			sort: `-food_image`,
 			page
 		};
-
-
 
 		const menuItems: any = await getPocketbase('texbab_barnemenu', dataPb).catch((error) => {
 			throw error;
@@ -46,30 +44,24 @@
 </svelte:head>
 <Home />
 
-<div>
-	<div class="grid grid-cols-1 gap-4 justify-items-center">
-		<div
-			class="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center m-2"
-		>
-			{#each $pocketbaseResponse.items as item}
-				<FoodItem bind:item />
-			{/each}
-		</div>
+<div class="flex gap-4 flex-wrap justify-items-center m-2">
+	{#each $pocketbaseResponse.items as item}
+		<FoodItem bind:item />
+	{/each}
+</div>
 
-		<span>Page {$current} of {totalPages}</span>
-		<div class="join grid grid-cols-2">
-			<button
-				class="join-item btn btn-outline"
-				on:click={() => setPage($current - 1)}
-				disabled={$current === 1}>Previous page</button
-			>
-			<button
-				class="join-item btn btn-outline"
-				on:click={() => setPage($current + 1)}
-				disabled={$current === totalPages}>Next</button
-			>
-		</div>
-	</div>
+<span class="text-center">Page {$current} of {totalPages}</span>
+<div class="join grid grid-cols-2 w-full sm:w-1/4 ">
+	<button
+		class="join-item btn btn-primary"
+		on:click={() => setPage($current - 1)}
+		disabled={$current === 1}>Previous page</button
+	>
+	<button
+		class="join-item btn btn-primary"
+		on:click={() => setPage($current + 1)}
+		disabled={$current === totalPages}>Next</button
+	>
 </div>
 
 <!-- <Chat /> -->

@@ -12,7 +12,8 @@
 		focus: 'center',
 		autoWidth: true,
 		perMove: 1,
-		drag: 'free'
+		drag: 'free',
+		fixedHeight: '10rem'
 	};
 </script>
 

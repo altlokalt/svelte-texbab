@@ -35,9 +35,9 @@
 	}
 </script>
 
-<div class="relative flex flex-col bg-base-300 text-base-content shadow-md bg-clip-border rounded-xl w-80">
+<div class="relative flex flex-col bg-base-300 text-base-content shadow-md bg-clip-border rounded-xl  sm:w-80 w-44">
 	<div
-		class="relative mx-4 mt-4 overflow-hidden   bg-clip-border rounded-xl h-80"
+		class="relative mx-4 mt-4 overflow-hidden   bg-clip-border rounded-xl sm:h-80 h-44"
 	>
 		<img
 			src={image}
