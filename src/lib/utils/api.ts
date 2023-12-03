@@ -4,6 +4,10 @@ import { goto } from '$app/navigation';
 
 export const pb = new PocketBase(`${import.meta.env.VITE_PB_URL}`);
 
+export const getImageURL = (collectionId: string, recordId: string, fileName: string) => {
+	return `${import.meta.env.VITE_PB_URL}/api/files/${collectionId}/${recordId}/${fileName}`;
+};
+
 export const authPocketbase = async (user: string, password: string) => {
 	const res = await pb.collection('users').authWithPassword(user, password);
 	authData.set(pb.authStore.model);

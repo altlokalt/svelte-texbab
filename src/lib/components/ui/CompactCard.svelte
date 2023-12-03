@@ -2,7 +2,7 @@
 	import Icon from '@iconify/svelte';
 	export let item: any; // Specify the type for 'data'
 	export let addToCart: any;
-	let quantity = 0;
+	let quantity = 1;
 	import { getImage } from '$lib/utils/api';
 
 	let image: any;
@@ -35,53 +35,45 @@
 	}
 </script>
 
-<div
-	class="w-full bg-neutral text-neutral-content shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
->
-	
-	<img
-		class="w-full object-cover group-hover:opacity-75 rounded-t-xl"
-		src={image}
-		alt={`bilde anv texbab.no ${item.name} meny`}
-	/>
-
-		<div class="px-4 py-3 w-full">
-			<span class="mr-3 uppercase text-xs truncate block">Texbab</span>
-			<p class="text-lg font-bold truncate block capitalize">{item.name}</p>
-			<div class="flex items-center">
-				<div class="badge badge-accent">
-					<p class="text-sm font-semibold cursor-auto truncate block">Tilgjengelig</p>
-				</div>
-				<div class="ml-auto">
-					<div class="rating rating-sm">
-						<p class="cursor-auto text-xl font-bold text-green-400" >{item.price} kr</p>
-					</div>
-				</div>
-			</div>
-			<div class="inline-flex items-center mt-2">
-				<button
-					class="btn btn-neutral inline-flex items-center px-2 py-1 border-r"
-					on:click={() => (quantity += 1)}
-				>
-					<Icon icon="ic:round-minus" class="h-6 w-4" />
-				</button>
-				<div class=" btn btn-neutral inline-flex items-center px-4 py-1 select-none">
-					{quantity}
-				</div>
-				<button
-					class="btn btn-neutral disabled:opacity-50 inline-flex items-center px-2 py-1 border-r"
-					on:click={() => (quantity += 1)}
-				>
-					<Icon icon="ic:round-plus" class="h-6 w-4" />
-				</button>
-			</div>
-
-			<button
-				class="py-2 px-4 btn btn-primary disabled:opacity-50 mt-4 w-full flex items-center justify-center"
-				on:click={() => addToCart(item, quantity)}
+<div class="relative flex flex-col bg-base-300 text-base-content shadow-md bg-clip-border rounded-xl w-80">
+	<div
+		class="relative mx-4 mt-4 overflow-hidden   bg-clip-border rounded-xl h-80"
+	>
+		<img
+			src={image}
+			alt={`bilde anv texbab.no ${item.name} meny`}
+			class="object-cover w-full h-full"
+		/>
+	</div>
+	<div class="p-6">
+		<div class="flex items-center justify-between mb-2">
+			<p
+				class="block font-sans  antialiased font-medium leading-relaxed "
 			>
-				Bestill
-				<Icon icon="bytesize:cart" class="h-6 w-6 ml-2" />
-			</button>
+				{item.name}
+			</p>
+			<p class="block font-sans  antialiased font-medium leading-relaxed text-success">
+				{item.price} kr
+			</p>
 		</div>
+
+		<div class="badge badge-accent">
+			<p
+				class="block font-sans text-sm antialiased font-normal leading-normal text-accent-content opacity-75"
+			>
+				Tilgjengelig
+			</p>
+		</div>
+	</div>
+	<div class="p-6 pt-0">
+		<button
+			class="btn-primary align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full  shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+			type="button"
+			on:click={() => addToCart(item, quantity)}
+		>
+		<!-- <Icon icon="bytesize:cart" class="h-6 w-6" /> -->
+			Add to Cart
+			
+		</button>
+	</div>
 </div>

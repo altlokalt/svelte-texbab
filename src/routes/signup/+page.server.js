@@ -20,6 +20,8 @@ export const actions = {
 
 		try {
 			await event.locals.pb.collection('users').create(pbData);
+			// Authenticate the user and get the token from the server
+			await event.locals.pb.collection('users').authWithPassword(pbData.email, pbData.password);
 			await event.locals.pb.collection('users').requestVerification(pbData.email);
 		} catch (err) {
 			if (err.data?.data?.username?.code) {
@@ -63,7 +65,7 @@ export const actions = {
 				);
 			}
 		}
-		throw redirect(303, '/login');
+		throw redirect(303, '/dashboard');
 	},
 	oauth2google: async (event) => {
 		const authMethods = await event.locals.pb?.collection('users').listAuthMethods(); // generates a state and a verifier

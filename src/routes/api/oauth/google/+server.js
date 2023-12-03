@@ -35,12 +35,13 @@ export const GET = async ({ locals, url, cookies }) => {
 			.authWithOAuth2Code(googleAuthProvider.name, code, expectedVerifier, redirectUrl, {
 				role: ['user']
 			});// the object will reset the properties on that user when they are created on pocketbase
-		await locals.pb.collection('users').authRefresh();
+		const user = await locals.pb.collection('users').authRefresh();
+		locals.user.token = locals.pb.authStore.token;
 	} catch (e) {
 		console.log('Error Signing up with google auth', e, e.message);
 	}
+	
 
-
-	// redirect the response to the home page
+	// redirect the response to the dashboard
 	throw redirect(302, '/dashboard');
 };
