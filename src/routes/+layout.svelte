@@ -34,6 +34,8 @@
 
 		<!-- Google tag (gtag.js) there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead -->
 		<!-- Google tag (gtag.js) there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead -->
+		<!-- Google tag (gtag.js) there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead -->
+		<!-- Google tag (gtag.js) there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead -->
 		<script
 			async
 			src="https://www.googletagmanager.com/gtag/js?id={$page.data.sites.google_tag}"
@@ -48,6 +50,8 @@
 			gtag('config', '${$page.data.sites.google_tag}');
 		</script>`}
 
+		<!-- Google Adsense -->
+		<!-- Google Adsense -->
 		<!-- Google Adsense -->
 		<!-- Google Adsense -->
 		<script

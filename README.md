@@ -115,10 +115,6 @@ yarn preview --filter svelte-texbab
 ```
 
 `yarn preview --filter svelte-texbab`
-or
-yarn deploy-test
-prettier --plugin-search-dir . --check . && eslint .
-
 #
 
 git log --oneline
