@@ -82,11 +82,11 @@ git checkout <existing-branch-name>
 git checkout -b grego
 
 ```bash
-yarn build --filter minfuel-svelte
-yarn preview --filter minfuel-svelte
+yarn build --filter svelte-texbab
+yarn preview --filter svelte-texbab
 ```
 
-`yarn preview --filter minfuel-svelte`
+`yarn preview --filter svelte-texbab`
 #
 git log --oneline
 
