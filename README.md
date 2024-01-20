@@ -39,13 +39,17 @@ best to go to your branch NEVER work in MAIN
 # lastly ALWAYS
 git pull origin main
 ```
-# new branch
+## to see all branches
+git branch -a
+# make a new branch
 git branch grego
 # switches branches
 git checkout grego
-OR switch bck to
+# OR switch bck to
 git checkout main
-#
+## delete local branch CAUSING PROBLEMS
+git branch -d <branch-name>
+git branch -d grego
 git add .
 git commit -m "lastly"
 git pull origin main
@@ -76,15 +80,6 @@ user.email=altlokalt@gmail.com`
 ## or Create a new branch and switch to it
 git checkout <existing-branch-name>
 git checkout -b grego
-
-# make a brach on the main repo named the same as the monorepo
-## to see all branches
-git branch -a
-
-## delete local branch CAUSING PROBLEMS
-git branch -d <branch-name>
-git branch -d grego
-
 
 ```bash
 yarn build --filter minfuel-svelte
