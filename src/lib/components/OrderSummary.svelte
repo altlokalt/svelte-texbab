@@ -6,7 +6,7 @@
 		return cartItems.reduce((total: any, item: any) => total + item.price * item.quantity, 0);
 	}
 
-console.log("cartItems", cartItems);
+	console.log('cartItems', cartItems);
 </script>
 
 <div class="border p-4 mb-4">

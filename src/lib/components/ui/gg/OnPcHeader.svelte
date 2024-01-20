@@ -13,7 +13,8 @@
 							<div class="header-logo">
 								<a href="index.html">
 									<img
-										src="{import.meta.env.VITE_PB_URL}/api/files/vi08f0m1bznkfa3/3yha8lupmqzb8pr/logo_W4qE8S8Q9i.png?token="
+										src="{import.meta.env
+											.VITE_PB_URL}/api/files/vi08f0m1bznkfa3/3yha8lupmqzb8pr/logo_W4qE8S8Q9i.png?token="
 										alt="Pizzan"
 									/></a
 								>

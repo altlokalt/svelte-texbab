@@ -61,7 +61,6 @@
 		goto('/order-confirmation');
 	}
 
-
 	async function handleSubmit() {
 		//array of order items
 		const actualOrderList = cartItems.map((item: any) => {
@@ -90,7 +89,6 @@
 <section class="p-4">
 	<h1 class="text-2xl font-semibold mb-4">Checkout</h1>
 	{#if cartItems.length > 0}
-
 		{#if currentStep === 1}
 			<!-- Step 1: Cart Summary -->
 			<div>

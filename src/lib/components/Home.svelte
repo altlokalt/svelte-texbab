@@ -9,4 +9,3 @@
 	<BadgeCarousel />
 	<MenuCarousel />
 </section>
-

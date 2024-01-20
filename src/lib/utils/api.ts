@@ -156,10 +156,7 @@ export const getImage = async (url: string) => {
 	throw new Error('Failed to fetch image');
 };
 
-export const compressImage = async (
-	file: any,
-	quality: number
-): Promise<File> => {
+export const compressImage = async (file: any, quality: number): Promise<File> => {
 	return new Promise<File>((resolve) => {
 		const reader = new FileReader();
 
@@ -231,4 +228,3 @@ export const serializeNonPOJOs = (obj: any) => {
 
 	return structuredClone(obj);
 };
-

@@ -4,14 +4,18 @@
 	export let url: any;
 </script>
 
-<a href={url} target="_self" class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-96 mx-4 bg-neutral text-neutral-content rounded-md " >
+<a
+	href={url}
+	target="_self"
+	class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-96 mx-4 bg-neutral text-neutral-content rounded-md"
+>
 	<div class="w-full">
 		<figure class="w-full h-full rounded-lg overflow-hidden">
 			<img src={img} alt={`bilde anv texbab.no ${title} meny`} class="h-full w-full object-cover" />
 		</figure>
 	</div>
 	<div>
-		<div class="card-body  ">
+		<div class="card-body">
 			<h2 class="text-xl font-bold">{title}</h2>
 			<p class="text-md">Sjekk ut {title}.</p>
 			<div class="card-actions justify-end">

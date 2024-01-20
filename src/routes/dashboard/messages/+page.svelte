@@ -21,20 +21,14 @@
 				href="/dashboard/messages/unbox"
 				class="p-4 border border-base-300 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-primary hover:text-primary-content"
 			>
-				<h5 class="text-lg font-semibold text-center text-secondary-content">
-					inbox
-				</h5>
+				<h5 class="text-lg font-semibold text-center text-secondary-content">inbox</h5>
 			</a>
 			<a
 				href="/dashboard/messages/unread"
 				class="p-4 border border-base-300 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-primary hover:text-primary-content"
 			>
-				<h5 class="text-lg font-semibold text-center text-secondary-content">
-					unread
-				</h5>
+				<h5 class="text-lg font-semibold text-center text-secondary-content">unread</h5>
 			</a>
-		
 		</div>
-			
 	</div>
 </div>
