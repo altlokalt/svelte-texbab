@@ -21,19 +21,14 @@
 				href="/dashboard/statistics/finances"
 				class="p-4 border border-base-300 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-primary hover:text-primary-content"
 			>
-				<h5 class="text-lg font-semibold text-center text-secondary-content">
-					finances
-				</h5>
+				<h5 class="text-lg font-semibold text-center text-secondary-content">finances</h5>
 			</a>
 			<a
-			href="/dashboard/statistics/food-logs"
-			class="p-4 border border-base-300 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-primary hover:text-primary-content"
-		>
-			<h5 class="text-lg font-semibold text-center text-secondary-content">
-				food logs
-			</h5>
-		</a>
+				href="/dashboard/statistics/food-logs"
+				class="p-4 border border-base-300 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-primary hover:text-primary-content"
+			>
+				<h5 class="text-lg font-semibold text-center text-secondary-content">food logs</h5>
+			</a>
 		</div>
-			
 	</div>
 </div>

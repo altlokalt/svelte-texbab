@@ -38,4 +38,3 @@
 		<ProfileModal />
 	</div>
 </div>
-

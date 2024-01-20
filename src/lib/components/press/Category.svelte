@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				<img
-					class="h-full lg:object-contain  object-fill rounded-md"
+					class="h-full lg:object-contain object-fill rounded-md"
 					src={$page.data.imageUrls[article.id]}
 					alt={article.title}
 				/>

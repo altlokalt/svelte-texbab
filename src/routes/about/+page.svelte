@@ -428,9 +428,7 @@
 								<div
 									class="mobile-logo w-12 h-12"
 									style="background-image: url({import.meta.env.VITE_SITE_DARK_LOGO});"
-								>
-							
-								</div>
+								/>
 							</div>
 							<div class="col-auto me-xl-auto">
 								<nav class="main-menu d-none d-lg-inline-block">
@@ -496,7 +494,7 @@
 												</li>
 											</ul>
 										</li>
-										
+
 										<li>
 											<a href="/contact.html">Contact Us</a>
 										</li>

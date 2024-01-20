@@ -17,8 +17,7 @@
 		<div class="max-w-md">
 			<h1 class="mb-5 text-5xl font-bold">{site_name} Hvor hvert bitt er en rodeo av smak</h1>
 			<!--reels-->
-			 <Menyvideo />
-
+			<Menyvideo />
 		</div>
 	</div>
 </div>

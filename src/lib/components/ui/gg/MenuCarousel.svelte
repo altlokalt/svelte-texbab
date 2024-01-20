@@ -3,7 +3,6 @@
 </script>
 
 <div class="space bg-smoke2 position-relative">
-
 	<h2 class="menu-title1">VI TA DIN BESTILLING VIA TELEFON</h2>
 	<div class="container th-container">
 		<div

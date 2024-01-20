@@ -4,7 +4,9 @@
 	let avatar;
 
 	$: avatar = $page.data.user?.avatar
-		? `${import.meta.env.VITE_PB_URL}/api/files/${$page.data.user?.collectionId}/${$page.data.user?.id}/${$page.data.user?.avatar}`
+		? `${import.meta.env.VITE_PB_URL}/api/files/${$page.data.user?.collectionId}/${
+				$page.data.user?.id
+		  }/${$page.data.user?.avatar}`
 		: `https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=${$page.data.user?.username}`;
 </script>
 

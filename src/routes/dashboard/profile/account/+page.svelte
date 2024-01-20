@@ -1,8 +1,8 @@
 <script>
 	import { enhance, applyAction } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
-	import {Modal} from '@valiantlynx/svelte-ui';
-	import {Input} from '@valiantlynx/svelte-ui';
+	import { Modal } from '@valiantlynx/svelte-ui';
+	import { Input } from '@valiantlynx/svelte-ui';
 	import { page } from '$app/stores';
 
 	let emailModalOpen;
@@ -59,7 +59,12 @@
 				<Modal label="change-email" checked={emailModalOpen}>
 					<span slot="trigger" class="btn btn-primary">Change Email</span>
 					<h3 slot="heading">Change Your Email</h3>
-					<form action="?/updateEmail" method="POST" class="space-y-2" use:enhance={submitUpdateEmail}>
+					<form
+						action="?/updateEmail"
+						method="POST"
+						class="space-y-2"
+						use:enhance={submitUpdateEmail}
+					>
 						<Input
 							id="email"
 							type="email"
@@ -77,7 +82,13 @@
 			<div class="w-full">
 				<h3 class="text-2xl font-medium">Change Username</h3>
 				<div class="divider mb-0.5" />
-				<Input id="username" label="Username" value={$page.data?.user?.username} disabled minlength="8"/>
+				<Input
+					id="username"
+					label="Username"
+					value={$page.data?.user?.username}
+					disabled
+					minlength="8"
+				/>
 				<Modal label="change-username" checked={usernameModalOpen}>
 					<span slot="trigger" class="btn btn-primary">Change Username</span>
 					<h3 slot="heading">Change Your Username</h3>
@@ -124,30 +135,28 @@
 			<!-- Permissions Display -->
 			<div class="w-full">
 				<div class="bg-base-300 text-base-content p-6 rounded-lg shadow-md">
-				  <h2 class="text-2xl font-medium mb-4">Roles and Permissions</h2>
-				  <ul class="list-inside list-disc">
-					{#each $page.data?.user?.role as role}
-					  <div class="badge badge-primary m-3 font-bold p-3">
-						{role}
-					  </div>
-		
-					{/each}
-				  </ul>
+					<h2 class="text-2xl font-medium mb-4">Roles and Permissions</h2>
+					<ul class="list-inside list-disc">
+						{#each $page.data?.user?.role as role}
+							<div class="badge badge-primary m-3 font-bold p-3">
+								{role}
+							</div>
+						{/each}
+					</ul>
 				</div>
-			  </div>
-			
-			  <!-- Upgrade Section -->
-			  <div class="w-full">
+			</div>
+
+			<!-- Upgrade Section -->
+			<div class="w-full">
 				<div class="bg-base-300 text-base-content p-6 rounded-lg shadow-md">
-				  <h2 class="text-2xl font-medium mb-4">Upgrade Your Role</h2>
-				  <p class="mb-4">
-					Enhance your experience by upgrading to a higher role. Unlock additional features and privileges.
-				  </p>
-				  <a href="/contact" class="btn btn-primary w-full" alt="pricing page">
-					Upgrade Now
-				  </a>
+					<h2 class="text-2xl font-medium mb-4">Upgrade Your Role</h2>
+					<p class="mb-4">
+						Enhance your experience by upgrading to a higher role. Unlock additional features and
+						privileges.
+					</p>
+					<a href="/contact" class="btn btn-primary w-full" alt="pricing page"> Upgrade Now </a>
 				</div>
-			  </div>
+			</div>
 		</div>
 	</div>
 </div>
