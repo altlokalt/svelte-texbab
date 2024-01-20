@@ -11,7 +11,7 @@
 	export let data: any;
 	export let selectedPaymentMethod: any;
 	export let placeOrder: any;
-	
+
 	// Function to handle payment method submission
 	async function handleSubmit() {
 		let paymentResult: any;

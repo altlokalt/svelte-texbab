@@ -85,9 +85,9 @@
 	}
 </script>
 
-<div class=" space-y-4  pb-4 border border-primary m-4 bg-base-200">
+<div class=" space-y-4 pb-4 border border-primary m-4 bg-base-200">
 	<h2 class="text-2xl font-bold mb-4 bg-primary text-primary-content rounded-b-md w-full">
-		<i class="fa fa-comments mx-2"></i> 
+		<i class="fa fa-comments mx-2" />
 		Join the Discussion
 	</h2>
 
@@ -109,14 +109,14 @@
 		</div>
 	{/if}
 
-	<div class="divider px-4 "></div>
+	<div class="divider px-4" />
 
-	<div class="border-t border-primary pt-4	">
+	<div class="border-t border-primary pt-4">
 		<div class="flex flex-wrap w-full">
-			<div class="left-content mb-2 ml-2 w-full lg:w-1/4  order-1 flex">
+			<div class="left-content mb-2 ml-2 w-full lg:w-1/4 order-1 flex">
 				<ProfileModal />
 				{#if $page.data.user}
-					<div class="flex-grow ml-2 mb-2"> 
+					<div class="flex-grow ml-2 mb-2">
 						<h3 class="text-lg font-bold break-all">{$page.data.user?.username}</h3>
 						<p class="text-sm break-all">{$page.data.user?.email}</p>
 					</div>
@@ -124,17 +124,15 @@
 			</div>
 			<div class="right-content w-full lg:w-3/4 order-2">
 				<form on:submit|preventDefault={sendMessage} class=" flex items-center">
-			
 					<input
-					type="text"
-					placeholder={$page.data.user ? 'Type a message...' : '<------ Login to chat 💬'}
-					id="comment"
-					required
-					minlength="1"
-					bind:value={newMessage}
-					disabled={loading}
-					class="input input-bordered input-primary flex-grow"
-					
+						type="text"
+						placeholder={$page.data.user ? 'Type a message...' : '<------ Login to chat 💬'}
+						id="comment"
+						required
+						minlength="1"
+						bind:value={newMessage}
+						disabled={loading}
+						class="input input-bordered input-primary flex-grow"
 					/>
 					{#if $page.data.user}
 						<button type="submit" disabled={loading} class="btn btn-primary"> Send </button>
@@ -144,4 +142,3 @@
 		</div>
 	</div>
 </div>
-

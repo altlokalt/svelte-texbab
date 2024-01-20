@@ -4,7 +4,6 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import { Toaster } from 'svelte-french-toast';
 	import { page } from '$app/stores';
-	
 </script>
 
 <Toaster />
@@ -14,10 +13,9 @@
 	<Footer />
 </div>
 
-
 <svelte:head>
 	<meta name="theme-color" content="#fff" />
-	{#if $page.data.sites }
+	{#if $page.data.sites}
 		<!-- clarity there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead-->
 		{@html `<script type="text/javascript">
 			(function (c, l, a, r, i, t, y) {
@@ -33,10 +31,15 @@
 				y.parentNode.insertBefore(t, y);
 			})(window, document, 'clarity', 'script', '${$page.data.sites.clarity_tag}');
 		</script>`}
-		
 
-		<!-- Google tag (gtag.js) there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead --> 
-		<script async src="https://www.googletagmanager.com/gtag/js?id={$page.data.sites.google_tag}"></script>
+		<!-- Google tag (gtag.js) there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead -->
+		<!-- Google tag (gtag.js) there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead -->
+		<!-- Google tag (gtag.js) there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead -->
+		<!-- Google tag (gtag.js) there is abug in svelte where inside the svript tags i cannot access the variables //! https://stackoverflow.com/questions/63419284/svelte-substitution-in-script-within-sveltehead -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id={$page.data.sites.google_tag}"
+		></script>
 		{@html `<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {
@@ -46,12 +49,15 @@
 
 			gtag('config', '${$page.data.sites.google_tag}');
 		</script>`}
-		
 
+		<!-- Google Adsense -->
+		<!-- Google Adsense -->
+		<!-- Google Adsense -->
 		<!-- Google Adsense -->
 		<script
 			async
-			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={$page.data.sites.google_ads_client}"
+			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={$page.data.sites
+				.google_ads_client}"
 			crossorigin="anonymous"
 		></script>
 	{/if}

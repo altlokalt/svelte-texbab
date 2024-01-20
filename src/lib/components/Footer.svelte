@@ -2,7 +2,6 @@
 	import Icon from '@iconify/svelte';
 
 	export let site_logo = `${import.meta.env.VITE_SITE_LOGO}`;
-
 </script>
 
 <footer class="footer footer-center p-10 bg-base-300">
@@ -20,11 +19,17 @@
 			<p class="font-bold hover:text-primary">
 				{import.meta.env.VITE_SITE_COMPANY} Org: 915 197 043
 			</p>
-			<p><a href="https://maps.google.com/?cid=15017972495342881663"
-				>ADRESSE: Raveien 314, 3184 Borre</a
-			></p>
+			<p>
+				<a href="https://maps.google.com/?cid=15017972495342881663"
+					>ADRESSE: Raveien 314, 3184 Borre</a
+				>
+			</p>
 			<p>Kontakte oss: <a href="tel:+4740848494">+47 40 84 84 94</a></p>
-			<p>Send Epost: <a href="mailto:texbabhorten@gmail.com" class="list-unstyled">kontakt@texbab.no</a></p>
+			<p>
+				Send Epost: <a href="mailto:texbabhorten@gmail.com" class="list-unstyled"
+					>kontakt@texbab.no</a
+				>
+			</p>
 		</div>
 		<div class="col-md-3">
 			<h4 class="font-bold hover:text-primary">Åpningstida</h4>
@@ -38,7 +43,7 @@
 		<div class="col-md-3">
 			<h4>Hva venter du på? RING OSS & sjekk om ditt favoritt retter er tilgjengelig.</h4>
 		</div>
-		
+
 		<p>
 			Designet av: <a href="https://www.altlokal.no/" class="font-bold hover:text-primary"
 				>ALT|LOKALT.NO</a

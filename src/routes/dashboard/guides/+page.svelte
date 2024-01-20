@@ -17,8 +17,6 @@
 			>
 				<h5 class="text-lg font-semibold text-center text-secondary-content">documentation</h5>
 			</a>
-
 		</div>
-			
 	</div>
 </div>

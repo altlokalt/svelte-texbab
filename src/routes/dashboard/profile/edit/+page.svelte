@@ -1,5 +1,5 @@
 <script>
-	import {Input} from '@valiantlynx/svelte-ui';
+	import { Input } from '@valiantlynx/svelte-ui';
 	import { enhance, applyAction } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -51,60 +51,59 @@
 		enctype="multipart/form-data"
 		use:enhance={submitUpdateProfile}
 	>
-	<div class="md:w-1/2">
-		<div class="form-control">
-			<label for="avatar" class="label font-medium">
-				<span class="label-text">Profile Picture</span>
-			</label>
-			<label for="avatar" class="avatar w-32 rounded-full hover:cursor-pointer relative">
-				<span
-					class="btn btn-circle btn-sm btn-secondary absolute -bottom-2 -right-2 hover:cursor-pointer"
-				>
-					<i class="fa fa-pencil-alt" />
-				</span>
-				<div class="w-32 h-32 rounded-full overflow-hidden">
-					<img src={avatar} alt="user avatar" id="avatar-preview" />
-				</div>
-			</label>
-			<input
-				type="file"
-				name="avatar"
-				id="avatar"
-				value=""
-				accept="image/*"
-				hidden
-				on:change={showPreview}
-				disabled={loading}
-			/>
-		</div>
+		<div class="md:w-1/2">
+			<div class="form-control">
+				<label for="avatar" class="label font-medium">
+					<span class="label-text">Profile Picture</span>
+				</label>
+				<label for="avatar" class="avatar w-32 rounded-full hover:cursor-pointer relative">
+					<span
+						class="btn btn-circle btn-sm btn-secondary absolute -bottom-2 -right-2 hover:cursor-pointer"
+					>
+						<i class="fa fa-pencil-alt" />
+					</span>
+					<div class="w-32 h-32 rounded-full overflow-hidden">
+						<img src={avatar} alt="user avatar" id="avatar-preview" />
+					</div>
+				</label>
+				<input
+					type="file"
+					name="avatar"
+					id="avatar"
+					value=""
+					accept="image/*"
+					hidden
+					on:change={showPreview}
+					disabled={loading}
+				/>
+			</div>
 
-		<!-- The users information not editable -->
-		<h3 class="text-2xl font-medium pt-4">User Information</h3>
-		<p class="text-base">
-			<span class="font-semibold text-primary">Username:</span> {$page.data?.user?.username}
-		</p>
-		<p class="text-base">
-			<span class="font-semibold text-primary">Email:</span> {$page.data?.user?.email}
-		</p>
-		<p class="text-base">
-			<span class="font-semibold text-primary">Title:</span> {$page.data?.user?.title}
-		</p>
-		<p class="text-base">
-			<span class="font-semibold text-primary">Language:</span> {$page.data?.user?.language}
-		</p>
-	</div>
+			<!-- The users information not editable -->
+			<h3 class="text-2xl font-medium pt-4">User Information</h3>
+			<p class="text-base">
+				<span class="font-semibold text-primary">Username:</span>
+				{$page.data?.user?.username}
+			</p>
+			<p class="text-base">
+				<span class="font-semibold text-primary">Email:</span>
+				{$page.data?.user?.email}
+			</p>
+			<p class="text-base">
+				<span class="font-semibold text-primary">Title:</span>
+				{$page.data?.user?.title}
+			</p>
+			<p class="text-base">
+				<span class="font-semibold text-primary">Language:</span>
+				{$page.data?.user?.language}
+			</p>
+		</div>
 
 		<div class="md:w-1/2">
 			<h3 class="text-2xl font-medium">Update Profile</h3>
 
 			<Input id="title" label="Title" value={$page.data?.user?.title} disabled={loading} />
 
-			<Input
-				id="language"
-				label="Language"
-				value={$page.data?.user?.language}
-				disabled={loading}
-			/>
+			<Input id="language" label="Language" value={$page.data?.user?.language} disabled={loading} />
 
 			<Input
 				type="address"
@@ -113,12 +112,10 @@
 				value={$page.data?.user?.address}
 				disabled={loading}
 			/>
-
-			
 		</div>
 
 		<div class="w-full">
-			<label for='about' class="label font-medium pb-1">
+			<label for="about" class="label font-medium pb-1">
 				<span class="label-text">About yourself</span>
 			</label>
 			<textarea
@@ -130,7 +127,7 @@
 				disabled={loading}
 				type="text"
 			/>
-			<div class="border-t border-primary mt-4"> 
+			<div class="border-t border-primary mt-4">
 				<label for="roles" class="text-xl font-medium">Roles and Permissions</label>
 				<div class="flex flex-wrap -m-1">
 					{#each $page.data?.user?.role as role}

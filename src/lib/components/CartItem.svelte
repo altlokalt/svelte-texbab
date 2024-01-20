@@ -16,19 +16,17 @@
 	<div class="relative flex flex-1 flex-col justify-between">
 		<div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
 			<div class="pr-8 sm:pr-5">
-				<p class="text-base font-semibold ">{item.name}</p>
-				<p class="mx-0 mt-1 mb-0 text-sm ">Quantity: {item.quantity}</p>
+				<p class="text-base font-semibold">{item.name}</p>
+				<p class="mx-0 mt-1 mb-0 text-sm">Quantity: {item.quantity}</p>
 			</div>
 
 			<div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-				<p
-					class="shrink-0 w-20  font-semibold sm:order-2 sm:ml-8 sm:text-right"
-				>
+				<p class="shrink-0 w-20 font-semibold sm:order-2 sm:ml-8 sm:text-right">
 					{(item.price * item.quantity).toFixed(2)} kr
 				</p>
 
 				<div class="sm:order-1">
-					<div class="mx-auto flex h-8 items-stretch ">
+					<div class="mx-auto flex h-8 items-stretch">
 						<button
 							class="flex items-center justify-center rounded-l-md bg-primary px-4 transition hover:bg-secondary hover:text-secondary-content text-primary-content"
 							>-</button

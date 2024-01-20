@@ -33,7 +33,9 @@
 
 <div class="grid grid-cols-1 gap-4 justify-items-center">
 	<!-- Title for the Grid -->
-	<h2 class="text-3xl font-bold text-center mt-4">Sulten? sjekk ut vår {$page.params.slug} meny.</h2>
+	<h2 class="text-3xl font-bold text-center mt-4">
+		Sulten? sjekk ut vår {$page.params.slug} meny.
+	</h2>
 
 	<!-- Food Items Container -->
 	<div class="flex flex-wrap gap-4 justify-center m-2">
