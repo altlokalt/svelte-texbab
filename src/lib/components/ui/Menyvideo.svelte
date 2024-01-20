@@ -61,7 +61,7 @@
       </div>
       {#if isVideoPlaying}
         <div class="absolute-center">
-          <button on:click={() => stopVideo(reel)}>Spille Video</button>
+          <button on:click={() => stopVideo(reel)}>Mat og Drikke Prisliste</button>
         </div>
       {/if}
     </div>
