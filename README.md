@@ -115,7 +115,6 @@ yarn preview --filter svelte-texbab
 ```
 
 `yarn preview --filter svelte-texbab`
-
 #
 
 git log --oneline
